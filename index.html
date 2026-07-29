@@ -905,18 +905,20 @@
 
 
 
-        <input 
-        class="terminal-input"
-        type="text"
-        placeholder="help status scan clear">
+     <input 
+id="terminalInput"
+class="terminal-input"
+type="text"
+placeholder="Type a command...">
 
 
+<button 
+id="executeCommand"
+class="primary-button mt-20">
 
-        <button class="primary-button mt-20">
+    EXECUTE
 
-            EXECUTE
-
-        </button>
+</button>
 
 
 
@@ -1559,24 +1561,231 @@
 
 <script>
 
+const terminalInput = document.getElementById("terminalInput");
 
-// System clock
+const executeButton = document.getElementById("executeCommand");
 
-function updateClock(){
+const terminalBody = document.querySelector(".terminal-body");
 
-    const now = new Date();
 
-    const time =
-    now.toLocaleTimeString();
 
-    console.log(time);
+function addTerminalLine(message){
+
+    const line = document.createElement("div");
+
+    line.className = "terminal-line";
+
+    line.innerHTML = message;
+
+    terminalBody.appendChild(line);
+
+    terminalBody.scrollTop = terminalBody.scrollHeight;
 
 }
 
 
-setInterval(updateClock,1000);
+
+function runCommand(){
+
+    let command = terminalInput.value.toLowerCase().trim();
 
 
+    if(command === "") return;
+
+
+
+    addTerminalLine(
+
+        `<span class="terminal-user">YT:~$</span> ${command}`
+
+    );
+
+
+
+    switch(command){
+
+
+        case "help":
+
+            addTerminalLine(
+            "AVAILABLE COMMANDS: help, status, scan, system, power, security, network, diagnostics, cpu, memory, uptime, version, clear, reboot"
+            );
+
+        break;
+
+
+
+        case "status":
+
+            addTerminalLine(
+            "SYSTEM ONLINE | HEALTH 100% | SECURITY ACTIVE"
+            );
+
+        break;
+
+
+
+        case "scan":
+
+            addTerminalLine(
+            "NETWORK SCAN COMPLETE - NO THREATS FOUND"
+            );
+
+        break;
+
+
+
+        case "system":
+
+            addTerminalLine(
+            "YOYOTECH COMMAND CONTROL CENTER VERSION 1.0.0"
+            );
+
+        break;
+
+
+
+        case "power":
+
+            addTerminalLine(
+            "POWER LEVEL: 100% | SYSTEM ACTIVE"
+            );
+
+        break;
+
+
+
+        case "security":
+
+            addTerminalLine(
+            "SECURITY SHIELD ACTIVE"
+            );
+
+        break;
+
+
+
+        case "network":
+
+            addTerminalLine(
+            "NETWORK STATUS: CONNECTED"
+            );
+
+        break;
+
+
+
+        case "diagnostics":
+
+            addTerminalLine(
+            "ALL SYSTEM MODULES WORKING"
+            );
+
+        break;
+
+
+
+        case "cpu":
+
+            addTerminalLine(
+            "CPU ACTIVITY: 22%"
+            );
+
+        break;
+
+
+
+        case "memory":
+
+            addTerminalLine(
+            "MEMORY USAGE: 49%"
+            );
+
+        break;
+
+
+
+        case "uptime":
+
+            addTerminalLine(
+            "UPTIME: 00:00:18"
+            );
+
+        break;
+
+
+
+        case "version":
+
+            addTerminalLine(
+            "YOYOTECH CONTROL CENTER VERSION 1.0.0"
+            );
+
+        break;
+
+
+
+        case "clear":
+
+            terminalBody.innerHTML = "";
+
+        break;
+
+
+
+        case "reboot":
+
+            addTerminalLine(
+            "REBOOT SEQUENCE STARTED..."
+            );
+
+
+            setTimeout(()=>{
+
+                addTerminalLine(
+                "SYSTEM REBOOT COMPLETE"
+                );
+
+            },1500);
+
+        break;
+
+
+
+        default:
+
+            addTerminalLine(
+            "UNKNOWN COMMAND. TYPE 'help' FOR COMMAND LIST."
+            );
+
+    }
+
+
+    terminalInput.value = "";
+
+
+}
+
+
+
+executeButton.addEventListener(
+"click",
+runCommand
+);
+
+
+
+terminalInput.addEventListener(
+"keydown",
+function(event){
+
+    if(event.key === "Enter"){
+
+        runCommand();
+
+    }
+
+});
 
 </script>
 
