@@ -1,8 +1,6 @@
 # YOYOTECH1B
 ## Professional Command Control Center
 
-![YOYOTECH1B](favicon.png)
-
 A futuristic and professional **Command Control Center Dashboard** built with a modern blue and black technology theme.
 
 ---
