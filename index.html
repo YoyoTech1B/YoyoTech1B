@@ -1,1 +1,2468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>YoyoTech Command Control Center</title>
+
+    <meta
+        name="description"
+        content="A professional futuristic command control center created by YoyoTech."
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ==================================================
+                        BACKGROUND
+    ================================================== -->
+
+    <div class="background-grid"></div>
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+    <div class="scan-lines"></div>
+
+
+    <!-- ==================================================
+                    STARTUP / BOOT SCREEN
+    ================================================== -->
+
+    <div class="boot-screen" id="bootScreen">
+
+        <div class="boot-content">
+
+            <div class="boot-logo">
+                <div class="logo-core"></div>
+            </div>
+
+            <h1>YOYOTECH</h1>
+
+            <p>COMMAND CONTROL CENTER</p>
+
+            <div class="boot-progress">
+
+                <div
+                    class="boot-progress-fill"
+                    id="bootProgress"
+                ></div>
+
+            </div>
+
+            <span id="bootText">
+                INITIALIZING SYSTEM...
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+                    MAIN CONTROL CENTER
+    ================================================== -->
+
+    <main class="control-center" id="controlCenter">
+
+
+        <!-- ==================================================
+                            TOP HEADER
+        ================================================== -->
+
+        <header class="top-header">
+
+            <div class="header-brand">
+
+                <div class="brand-symbol">
+
+                    <div class="brand-symbol-inner"></div>
+
+                </div>
+
+                <div class="brand-text">
+
+                    <span class="brand-name">
+                        YOYOTECH
+                    </span>
+
+                    <span class="brand-subtitle">
+                        COMMAND CONTROL CENTER
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="header-status">
+
+                <div class="system-status">
+
+                    <span class="status-dot"></span>
+
+                    <span>
+                        SYSTEM ONLINE
+                    </span>
+
+                </div>
+
+
+                <div class="header-time">
+
+                    <span class="time-label">
+                        LOCAL TIME
+                    </span>
+
+                    <span
+                        class="live-time"
+                        id="liveTime"
+                    >
+                        00:00:00
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ==================================================
+                        SYSTEM INFORMATION BAR
+        ================================================== -->
+
+        <section class="information-bar">
+
+            <div class="information-item">
+
+                <span class="info-label">
+                    SYSTEM ID
+                </span>
+
+                <strong>
+                    YT-CC-001
+                </strong>
+
+            </div>
+
+
+            <div class="information-item">
+
+                <span class="info-label">
+                    NETWORK
+                </span>
+
+                <strong id="networkStatus">
+                    CONNECTED
+                </strong>
+
+            </div>
+
+
+            <div class="information-item">
+
+                <span class="info-label">
+                    SECURITY
+                </span>
+
+                <strong id="securityStatus">
+                    PROTECTED
+                </strong>
+
+            </div>
+
+
+            <div class="information-item">
+
+                <span class="info-label">
+                    POWER
+                </span>
+
+                <strong id="powerStatus">
+                    100%
+                </strong>
+
+            </div>
+
+
+            <div class="information-item">
+
+                <span class="info-label">
+                    UPTIME
+                </span>
+
+                <strong id="uptime">
+                    00:00:00
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+                        DASHBOARD GRID
+        ================================================== -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- ==================================================
+                            LEFT CONTROL PANEL
+            ================================================== -->
+
+            <aside class="control-panel panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span class="panel-number">
+                            01
+                        </span>
+
+                        <h2>
+                            SYSTEM CONTROLS
+                        </h2>
+
+                    </div>
+
+                    <span class="panel-status">
+                        READY
+                    </span>
+
+                </div>
+
+
+                <div class="control-button-grid">
+
+
+                    <button
+                        class="control-button primary-control"
+                        id="powerButton"
+                    >
+
+                        <span class="button-icon">
+                            ⏻
+                        </span>
+
+                        <span class="button-content">
+
+                            <strong>
+                                SYSTEM POWER
+                            </strong>
+
+                            <small>
+                                Control system power
+                            </small>
+
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="control-button"
+                        id="scanButton"
+                    >
+
+                        <span class="button-icon">
+                            ◉
+                        </span>
+
+                        <span class="button-content">
+
+                            <strong>
+                                NETWORK SCAN
+                            </strong>
+
+                            <small>
+                                Scan active connections
+                            </small>
+
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="control-button"
+                        id="diagnosticsButton"
+                    >
+
+                        <span class="button-icon">
+                            ⌁
+                        </span>
+
+                        <span class="button-content">
+
+                            <strong>
+                                DIAGNOSTICS
+                            </strong>
+
+                            <small>
+                                Check all system modules
+                            </small>
+
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="control-button"
+                        id="securityButton"
+                    >
+
+                        <span class="button-icon">
+                            ◈
+                        </span>
+
+                        <span class="button-content">
+
+                            <strong>
+                                SECURITY SHIELD
+                            </strong>
+
+                            <small>
+                                Activate system protection
+                            </small>
+
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="control-button"
+                        id="lockdownButton"
+                    >
+
+                        <span class="button-icon">
+                            ⚠
+                        </span>
+
+                        <span class="button-content">
+
+                            <strong>
+                                LOCKDOWN MODE
+                            </strong>
+
+                            <small>
+                                Secure all system access
+                            </small>
+
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="control-button"
+                        id="rebootButton"
+                    >
+
+                        <span class="button-icon">
+                            ↻
+                        </span>
+
+                        <span class="button-content">
+
+                            <strong>
+                                SYSTEM REBOOT
+                            </strong>
+
+                            <small>
+                                Restart command systems
+                            </small>
+
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+                <div class="quick-controls">
+
+                    <span class="quick-controls-title">
+                        QUICK CONTROLS
+                    </span>
+
+
+                    <div class="quick-control-buttons">
+
+                        <button
+                            class="small-control-button"
+                            id="fullscreenButton"
+                        >
+                            FULLSCREEN
+                        </button>
+
+
+                        <button
+                            class="small-control-button"
+                            id="themeButton"
+                        >
+                            CHANGE THEME
+                        </button>
+
+
+                        <button
+                            class="small-control-button"
+                            id="randomButton"
+                        >
+                            RANDOM ACTION
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+
+            <!-- ==================================================
+                            CENTER COMMAND DISPLAY
+            ================================================== -->
+
+            <section class="command-display panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span class="panel-number">
+                            02
+                        </span>
+
+                        <h2>
+                            COMMAND INTERFACE
+                        </h2>
+
+                    </div>
+
+                    <span class="panel-status">
+                        ACTIVE
+                    </span>
+
+                </div>
+
+
+                <div class="system-visual">
+
+                    <div class="visual-rings">
+
+                        <div class="ring ring-one"></div>
+
+                        <div class="ring ring-two"></div>
+
+                        <div class="ring ring-three"></div>
+
+                        <div class="visual-core">
+
+                            <span>
+                                CORE
+                            </span>
+
+                            <strong id="coreStatus">
+                                ONLINE
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="command-terminal">
+
+                    <div class="terminal-header">
+
+                        <span class="terminal-dot"></span>
+
+                        <span>
+                            COMMAND TERMINAL
+                        </span>
+
+                        <span class="terminal-id">
+                            TERMINAL-01
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="terminal-output"
+                        id="terminalOutput"
+                    >
+
+                        <p>
+                            <span class="terminal-prefix">
+                                SYSTEM
+                            </span>
+
+                            Command center initialized.
+                        </p>
+
+
+                        <p>
+                            <span class="terminal-prefix">
+                                SYSTEM
+                            </span>
+
+                            All modules are online.
+                        </p>
+
+
+                        <p>
+                            <span class="terminal-prefix">
+                                READY
+                            </span>
+
+                            Waiting for command...
+                        </p>
+
+                    </div>
+
+
+                    <div class="terminal-input-area">
+
+                        <span class="command-prefix">
+                            YT:~$
+                        </span>
+
+
+                        <input
+                            type="text"
+                            id="commandInput"
+                            placeholder="Type a command..."
+                            autocomplete="off"
+                        >
+
+
+                        <button
+                            id="sendCommandButton"
+                        >
+                            EXECUTE
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="command-help">
+
+                    <span>
+                        AVAILABLE:
+                    </span>
+
+                    <button class="command-example">
+                        help
+                    </button>
+
+                    <button class="command-example">
+                        status
+                    </button>
+
+                    <button class="command-example">
+                        scan
+                    </button>
+
+                    <button class="command-example">
+                        clear
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                            RIGHT STATUS PANEL
+            ================================================== -->
+
+            <aside class="status-panel panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span class="panel-number">
+                            03
+                        </span>
+
+                        <h2>
+                            LIVE STATUS
+                        </h2>
+
+                    </div>
+
+                    <span class="panel-status">
+                        LIVE
+                    </span>
+
+                </div>
+
+
+                <div class="status-cards">
+
+
+                    <article class="status-card">
+
+                        <div class="status-card-top">
+
+                            <span>
+                                CPU ACTIVITY
+                            </span>
+
+                            <strong id="cpuValue">
+                                24%
+                            </strong>
+
+                        </div>
+
+                        <div class="progress-track">
+
+                            <div
+                                class="progress-fill"
+                                id="cpuBar"
+                            ></div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="status-card">
+
+                        <div class="status-card-top">
+
+                            <span>
+                                MEMORY
+                            </span>
+
+                            <strong id="memoryValue">
+                                48%
+                            </strong>
+
+                        </div>
+
+                        <div class="progress-track">
+
+                            <div
+                                class="progress-fill"
+                                id="memoryBar"
+                            ></div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="status-card">
+
+                        <div class="status-card-top">
+
+                            <span>
+                                NETWORK LOAD
+                            </span>
+
+                            <strong id="networkValue">
+                                16%
+                            </strong>
+
+                        </div>
+
+                        <div class="progress-track">
+
+                            <div
+                                class="progress-fill"
+                                id="networkBar"
+                            ></div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="status-card">
+
+                        <div class="status-card-top">
+
+                            <span>
+                                SYSTEM HEALTH
+                            </span>
+
+                            <strong id="healthValue">
+                                100%
+                            </strong>
+
+                        </div>
+
+                        <div class="progress-track">
+
+                            <div
+                                class="progress-fill"
+                                id="healthBar"
+                            ></div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <div class="radar-section">
+
+                    <div class="radar-heading">
+
+                        <span>
+                            ACTIVITY RADAR
+                        </span>
+
+                        <span class="radar-status">
+                            TRACKING
+                        </span>
+
+                    </div>
+
+
+                    <div class="radar">
+
+                        <div class="radar-circle circle-large"></div>
+
+                        <div class="radar-circle circle-medium"></div>
+
+                        <div class="radar-circle circle-small"></div>
+
+                        <div class="radar-line"></div>
+
+                        <span class="radar-point point-one"></span>
+
+                        <span class="radar-point point-two"></span>
+
+                        <span class="radar-point point-three"></span>
+
+                        <div class="radar-center"></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="system-message">
+
+                    <span class="message-icon">
+                        ℹ
+                    </span>
+
+                    <p id="systemMessage">
+
+                        All command systems are operating normally.
+
+                    </p>
+
+                </div>
+
+            </aside>
+
+        </section>
+
+
+        <!-- ==================================================
+                        ACTIVITY LOG
+        ================================================== -->
+
+        <section class="activity-section panel">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <span class="panel-number">
+                        04
+                    </span>
+
+                    <h2>
+                        SYSTEM ACTIVITY LOG
+                    </h2>
+
+                </div>
+
+
+                <button
+                    class="clear-log-button"
+                    id="clearLogButton"
+                >
+                    CLEAR LOG
+                </button>
+
+            </div>
+
+
+            <div
+                class="activity-log"
+                id="activityLog"
+            >
+
+                <div class="log-entry">
+
+                    <span class="log-time">
+                        00:00:00
+                    </span>
+
+                    <span class="log-type success">
+                        SYSTEM
+                    </span>
+
+                    <span class="log-message">
+
+                        Command control center started successfully.
+
+                    </span>
+
+                </div>
+
+
+                <div class="log-entry">
+
+                    <span class="log-time">
+                        00:00:01
+                    </span>
+
+                    <span class="log-type info">
+                        NETWORK
+                    </span>
+
+                    <span class="log-message">
+
+                        Secure network connection established.
+
+                    </span>
+
+                </div>
+
+
+                <div class="log-entry">
+
+                    <span class="log-time">
+                        00:00:02
+                    </span>
+
+                    <span class="log-type success">
+                        READY
+                    </span>
+
+                    <span class="log-message">
+
+                        All control modules are ready.
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+                            FOOTER
+        ================================================== -->
+
+        <footer class="control-footer">
+
+            <div>
+
+                <span>
+                    YOYOTECH COMMAND CONTROL CENTER
+                </span>
+
+                <span class="footer-version">
+                    VERSION 1.0.0
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    SECURE CONNECTION
+                </span>
+
+                <span class="footer-dot"></span>
+
+                <span>
+                    ALL SYSTEMS OPERATIONAL
+                </span>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+
+    <!-- ==================================================
+                    NOTIFICATION SYSTEM
+    ================================================== -->
+
+    <div
+        class="notification-container"
+        id="notificationContainer"
+    ></div>
+
+
+    <!-- ==================================================
+                    JAVASCRIPT
+    ================================================== -->
+
+    <script>
+
+        /* ================================================
+                        ELEMENTS
+        ================================================= */
+
+        const bootScreen =
+            document.getElementById("bootScreen");
+
+        const bootProgress =
+            document.getElementById("bootProgress");
+
+        const bootText =
+            document.getElementById("bootText");
+
+        const controlCenter =
+            document.getElementById("controlCenter");
+
+        const liveTime =
+            document.getElementById("liveTime");
+
+        const uptime =
+            document.getElementById("uptime");
+
+        const powerStatus =
+            document.getElementById("powerStatus");
+
+        const networkStatus =
+            document.getElementById("networkStatus");
+
+        const securityStatus =
+            document.getElementById("securityStatus");
+
+        const coreStatus =
+            document.getElementById("coreStatus");
+
+        const systemMessage =
+            document.getElementById("systemMessage");
+
+        const activityLog =
+            document.getElementById("activityLog");
+
+        const commandInput =
+            document.getElementById("commandInput");
+
+        const sendCommandButton =
+            document.getElementById("sendCommandButton");
+
+        const terminalOutput =
+            document.getElementById("terminalOutput");
+
+        const notificationContainer =
+            document.getElementById(
+                "notificationContainer"
+            );
+
+
+        /* ================================================
+                        BUTTONS
+        ================================================= */
+
+        const powerButton =
+            document.getElementById("powerButton");
+
+        const scanButton =
+            document.getElementById("scanButton");
+
+        const diagnosticsButton =
+            document.getElementById(
+                "diagnosticsButton"
+            );
+
+        const securityButton =
+            document.getElementById(
+                "securityButton"
+            );
+
+        const lockdownButton =
+            document.getElementById(
+                "lockdownButton"
+            );
+
+        const rebootButton =
+            document.getElementById(
+                "rebootButton"
+            );
+
+        const fullscreenButton =
+            document.getElementById(
+                "fullscreenButton"
+            );
+
+        const themeButton =
+            document.getElementById(
+                "themeButton"
+            );
+
+        const randomButton =
+            document.getElementById(
+                "randomButton"
+            );
+
+        const clearLogButton =
+            document.getElementById(
+                "clearLogButton"
+            );
+
+
+        /* ================================================
+                        SYSTEM VARIABLES
+        ================================================= */
+
+        let systemPowered = true;
+
+        let systemLocked = false;
+
+        let systemStartTime =
+            new Date();
+
+        let currentTheme = 0;
+
+
+        /* ================================================
+                        BOOT SYSTEM
+        ================================================= */
+
+        const bootMessages = [
+
+            "INITIALIZING SYSTEM...",
+
+            "LOADING COMMAND MODULES...",
+
+            "CONNECTING TO SECURE NETWORK...",
+
+            "CHECKING SYSTEM SECURITY...",
+
+            "STARTING CONTROL INTERFACE...",
+
+            "SYSTEM ONLINE"
+
+        ];
+
+
+        let bootValue = 0;
+
+
+        const bootInterval =
+            setInterval(() => {
+
+                bootValue += 2;
+
+                bootProgress.style.width =
+                    bootValue + "%";
+
+
+                const messageIndex =
+                    Math.min(
+
+                        Math.floor(
+                            bootValue / 18
+                        ),
+
+                        bootMessages.length - 1
+
+                    );
+
+
+                bootText.textContent =
+                    bootMessages[messageIndex];
+
+
+                if (bootValue >= 100) {
+
+                    clearInterval(
+                        bootInterval
+                    );
+
+
+                    setTimeout(() => {
+
+                        bootScreen.classList.add(
+                            "boot-hidden"
+                        );
+
+
+                        controlCenter.classList.add(
+                            "control-center-visible"
+                        );
+
+                    }, 500);
+
+                }
+
+            }, 40);
+
+
+        /* ================================================
+                        LIVE CLOCK
+        ================================================= */
+
+        function updateClock() {
+
+            const now =
+                new Date();
+
+
+            liveTime.textContent =
+                now.toLocaleTimeString(
+                    [],
+                    {
+                        hour:
+                            "2-digit",
+
+                        minute:
+                            "2-digit",
+
+                        second:
+                            "2-digit"
+                    }
+                );
+
+        }
+
+
+        updateClock();
+
+
+        setInterval(
+            updateClock,
+            1000
+        );
+
+
+        /* ================================================
+                        UPTIME
+        ================================================= */
+
+        function updateUptime() {
+
+            const now =
+                new Date();
+
+
+            const seconds =
+                Math.floor(
+
+                    (
+                        now -
+                        systemStartTime
+                    ) / 1000
+
+                );
+
+
+            const hours =
+                String(
+
+                    Math.floor(
+                        seconds / 3600
+                    )
+
+                ).padStart(
+                    2,
+                    "0"
+                );
+
+
+            const minutes =
+                String(
+
+                    Math.floor(
+
+                        (
+                            seconds % 3600
+                        ) / 60
+
+                    )
+
+                ).padStart(
+                    2,
+                    "0"
+                );
+
+
+            const remainingSeconds =
+                String(
+
+                    seconds % 60
+
+                ).padStart(
+                    2,
+                    "0"
+                );
+
+
+            uptime.textContent =
+
+                hours +
+                ":" +
+                minutes +
+                ":" +
+                remainingSeconds;
+
+        }
+
+
+        setInterval(
+            updateUptime,
+            1000
+        );
+
+
+        /* ================================================
+                    SYSTEM STATUS ANIMATION
+        ================================================= */
+
+        const cpuValue =
+            document.getElementById(
+                "cpuValue"
+            );
+
+        const memoryValue =
+            document.getElementById(
+                "memoryValue"
+            );
+
+        const networkValue =
+            document.getElementById(
+                "networkValue"
+            );
+
+        const cpuBar =
+            document.getElementById(
+                "cpuBar"
+            );
+
+        const memoryBar =
+            document.getElementById(
+                "memoryBar"
+            );
+
+        const networkBar =
+            document.getElementById(
+                "networkBar"
+            );
+
+
+        function updateSystemValues() {
+
+            if (!systemPowered) {
+
+                return;
+
+            }
+
+
+            const cpu =
+                Math.floor(
+                    Math.random() * 45
+                ) + 15;
+
+
+            const memory =
+                Math.floor(
+                    Math.random() * 25
+                ) + 40;
+
+
+            const network =
+                Math.floor(
+                    Math.random() * 35
+                ) + 10;
+
+
+            cpuValue.textContent =
+                cpu + "%";
+
+            memoryValue.textContent =
+                memory + "%";
+
+            networkValue.textContent =
+                network + "%";
+
+
+            cpuBar.style.width =
+                cpu + "%";
+
+            memoryBar.style.width =
+                memory + "%";
+
+            networkBar.style.width =
+                network + "%";
+
+        }
+
+
+        setInterval(
+            updateSystemValues,
+            2500
+        );
+
+
+        /* ================================================
+                        ACTIVITY LOG
+        ================================================= */
+
+        function getCurrentTime() {
+
+            return new Date()
+                .toLocaleTimeString(
+                    [],
+                    {
+                        hour:
+                            "2-digit",
+
+                        minute:
+                            "2-digit",
+
+                        second:
+                            "2-digit"
+                    }
+                );
+
+        }
+
+
+        function addLog(
+
+            type,
+
+            message,
+
+            status = "info"
+
+        ) {
+
+            const entry =
+                document.createElement(
+                    "div"
+                );
+
+
+            entry.className =
+                "log-entry";
+
+
+            entry.innerHTML = `
+
+                <span class="log-time">
+
+                    ${getCurrentTime()}
+
+                </span>
+
+
+                <span class="log-type ${status}">
+
+                    ${type}
+
+                </span>
+
+
+                <span class="log-message">
+
+                    ${message}
+
+                </span>
+
+            `;
+
+
+            activityLog.prepend(
+                entry
+            );
+
+        }
+
+
+        /* ================================================
+                    TERMINAL OUTPUT
+        ================================================= */
+
+        function addTerminalMessage(
+
+            prefix,
+
+            message
+
+        ) {
+
+            const paragraph =
+                document.createElement(
+                    "p"
+                );
+
+
+            paragraph.innerHTML = `
+
+                <span class="terminal-prefix">
+
+                    ${prefix}
+
+                </span>
+
+                ${message}
+
+            `;
+
+
+            terminalOutput.appendChild(
+                paragraph
+            );
+
+
+            terminalOutput.scrollTop =
+                terminalOutput.scrollHeight;
+
+        }
+
+
+        /* ================================================
+                    NOTIFICATIONS
+        ================================================= */
+
+        function showNotification(
+
+            title,
+
+            message,
+
+            type = "success"
+
+        ) {
+
+            const notification =
+                document.createElement(
+                    "div"
+                );
+
+
+            notification.className =
+
+                "notification " +
+                type;
+
+
+            notification.innerHTML = `
+
+                <strong>
+
+                    ${title}
+
+                </strong>
+
+                <span>
+
+                    ${message}
+
+                </span>
+
+            `;
+
+
+            notificationContainer.appendChild(
+                notification
+            );
+
+
+            setTimeout(() => {
+
+                notification.classList.add(
+                    "notification-hide"
+                );
+
+
+                setTimeout(() => {
+
+                    notification.remove();
+
+                }, 400);
+
+            }, 3500);
+
+        }
+
+
+        /* ================================================
+                    SYSTEM POWER
+        ================================================= */
+
+        powerButton.addEventListener(
+
+            "click",
+
+            () => {
+
+                systemPowered =
+                    !systemPowered;
+
+
+                if (systemPowered) {
+
+                    powerStatus.textContent =
+                        "100%";
+
+                    coreStatus.textContent =
+                        "ONLINE";
+
+                    systemMessage.textContent =
+
+                        "System power restored. All modules are online.";
+
+
+                    document.body.classList.remove(
+                        "system-off"
+                    );
+
+
+                    addLog(
+
+                        "POWER",
+
+                        "System power restored.",
+
+                        "success"
+
+                    );
+
+
+                    showNotification(
+
+                        "SYSTEM POWER",
+
+                        "All command systems are online."
+
+                    );
+
+                }
+
+                else {
+
+                    powerStatus.textContent =
+                        "0%";
+
+                    coreStatus.textContent =
+                        "OFFLINE";
+
+                    systemMessage.textContent =
+
+                        "System power is disabled.";
+
+
+                    document.body.classList.add(
+                        "system-off"
+                    );
+
+
+                    addLog(
+
+                        "POWER",
+
+                        "System power disabled.",
+
+                        "warning"
+
+                    );
+
+
+                    showNotification(
+
+                        "SYSTEM POWER",
+
+                        "Command systems are now offline.",
+
+                        "warning"
+
+                    );
+
+                }
+
+            }
+
+        );
+
+
+        /* ================================================
+                    NETWORK SCAN
+        ================================================= */
+
+        scanButton.addEventListener(
+
+            "click",
+
+            () => {
+
+                if (!systemPowered) {
+
+                    showNotification(
+
+                        "SYSTEM OFFLINE",
+
+                        "Power must be enabled first.",
+
+                        "warning"
+
+                    );
+
+                    return;
+
+                }
+
+
+                networkStatus.textContent =
+                    "SCANNING";
+
+
+                document.body.classList.add(
+                    "network-scanning"
+                );
+
+
+                systemMessage.textContent =
+
+                    "Network scan is currently running...";
+
+
+                addLog(
+
+                    "NETWORK",
+
+                    "Network scan started.",
+
+                    "info"
+
+                );
+
+
+                addTerminalMessage(
+
+                    "SCAN",
+
+                    "Searching active network connections..."
+
+                );
+
+
+                setTimeout(() => {
+
+                    networkStatus.textContent =
+                        "SECURE";
+
+
+                    document.body.classList.remove(
+                        "network-scanning"
+                    );
+
+
+                    systemMessage.textContent =
+
+                        "Network scan completed. No threats detected.";
+
+
+                    addLog(
+
+                        "NETWORK",
+
+                        "Scan completed. Network is secure.",
+
+                        "success"
+
+                    );
+
+
+                    addTerminalMessage(
+
+                        "SCAN",
+
+                        "Scan complete. Zero threats detected."
+
+                    );
+
+
+                    showNotification(
+
+                        "NETWORK SCAN",
+
+                        "Scan completed successfully."
+
+                    );
+
+                }, 3000);
+
+            }
+
+        );
+
+
+        /* ================================================
+                    DIAGNOSTICS
+        ================================================= */
+
+        diagnosticsButton.addEventListener(
+
+            "click",
+
+            () => {
+
+                if (!systemPowered) {
+
+                    showNotification(
+
+                        "SYSTEM OFFLINE",
+
+                        "Power must be enabled first.",
+
+                        "warning"
+
+                    );
+
+                    return;
+
+                }
+
+
+                systemMessage.textContent =
+
+                    "Running complete system diagnostics...";
+
+
+                addLog(
+
+                    "CHECK",
+
+                    "Full system diagnostics started.",
+
+                    "info"
+
+                );
+
+
+                addTerminalMessage(
+
+                    "CHECK",
+
+                    "Testing command modules..."
+
+                );
+
+
+                setTimeout(() => {
+
+                    systemMessage.textContent =
+
+                        "Diagnostics complete. All systems are healthy.";
+
+
+                    addLog(
+
+                        "CHECK",
+
+                        "Diagnostics passed. No errors found.",
+
+                        "success"
+
+                    );
+
+
+                    addTerminalMessage(
+
+                        "CHECK",
+
+                        "All modules passed successfully."
+
+                    );
+
+
+                    showNotification(
+
+                        "DIAGNOSTICS",
+
+                        "All systems passed the health check."
+
+                    );
+
+                }, 2500);
+
+            }
+
+        );
+
+
+        /* ================================================
+                    SECURITY SHIELD
+        ================================================= */
+
+        securityButton.addEventListener(
+
+            "click",
+
+            () => {
+
+                if (!systemPowered) {
+
+                    showNotification(
+
+                        "SYSTEM OFFLINE",
+
+                        "Power must be enabled first.",
+
+                        "warning"
+
+                    );
+
+                    return;
+
+                }
+
+
+                securityStatus.textContent =
+                    "MAXIMUM";
+
+
+                document.body.classList.toggle(
+                    "shield-active"
+                );
+
+
+                systemMessage.textContent =
+
+                    "Maximum security shield activated.";
+
+
+                addLog(
+
+                    "SECURITY",
+
+                    "Maximum security shield activated.",
+
+                    "success"
+
+                );
+
+
+                addTerminalMessage(
+
+                    "SHIELD",
+
+                    "Maximum protection is now active."
+
+                );
+
+
+                showNotification(
+
+                    "SECURITY SHIELD",
+
+                    "Maximum protection activated."
+
+                );
+
+            }
+
+        );
+
+
+        /* ================================================
+                    LOCKDOWN MODE
+        ================================================= */
+
+        lockdownButton.addEventListener(
+
+            "click",
+
+            () => {
+
+                if (!systemPowered) {
+
+                    showNotification(
+
+                        "SYSTEM OFFLINE",
+
+                        "Power must be enabled first.",
+
+                        "warning"
+
+                    );
+
+                    return;
+
+                }
+
+
+                systemLocked =
+                    !systemLocked;
+
+
+                if (systemLocked) {
+
+                    document.body.classList.add(
+                        "lockdown-active"
+                    );
+
+
+                    securityStatus.textContent =
+                        "LOCKDOWN";
+
+
+                    systemMessage.textContent =
+
+                        "LOCKDOWN MODE ACTIVE. Access is restricted.";
+
+
+                    addLog(
+
+                        "ALERT",
+
+                        "Lockdown mode activated.",
+
+                        "warning"
+
+                    );
+
+
+                    addTerminalMessage(
+
+                        "ALERT",
+
+                        "Lockdown mode enabled."
+
+                    );
+
+
+                    showNotification(
+
+                        "LOCKDOWN MODE",
+
+                        "System access has been restricted.",
+
+                        "warning"
+
+                    );
+
+                }
+
+                else {
+
+                    document.body.classList.remove(
+                        "lockdown-active"
+                    );
+
+
+                    securityStatus.textContent =
+                        "PROTECTED";
+
+
+                    systemMessage.textContent =
+
+                        "Lockdown mode disabled. Normal access restored.";
+
+
+                    addLog(
+
+                        "SECURITY",
+
+                        "Lockdown mode disabled.",
+
+                        "success"
+
+                    );
+
+
+                    addTerminalMessage(
+
+                        "SYSTEM",
+
+                        "Normal system access restored."
+
+                    );
+
+
+                    showNotification(
+
+                        "LOCKDOWN DISABLED",
+
+                        "Normal access has been restored."
+
+                    );
+
+                }
+
+            }
+
+        );
+
+
+        /* ================================================
+                    SYSTEM REBOOT
+        ================================================= */
+
+        rebootButton.addEventListener(
+
+            "click",
+
+            () => {
+
+                addLog(
+
+                    "REBOOT",
+
+                    "System reboot requested.",
+
+                    "warning"
+
+                );
+
+
+                showNotification(
+
+                    "SYSTEM REBOOT",
+
+                    "Restarting command center..."
+
+                );
+
+
+                bootScreen.classList.remove(
+                    "boot-hidden"
+                );
+
+
+                controlCenter.classList.remove(
+                    "control-center-visible"
+                );
+
+
+                setTimeout(() => {
+
+                    location.reload();
+
+                }, 1500);
+
+            }
+
+        );
+
+
+        /* ================================================
+                    FULLSCREEN
+        ================================================= */
+
+        fullscreenButton.addEventListener(
+
+            "click",
+
+            async () => {
+
+                if (!document.fullscreenElement) {
+
+                    await document
+                        .documentElement
+                        .requestFullscreen();
+
+                }
+
+                else {
+
+                    await document
+                        .exitFullscreen();
+
+                }
+
+
+                addLog(
+
+                    "DISPLAY",
+
+                    "Fullscreen display mode changed.",
+
+                    "info"
+
+                );
+
+            }
+
+        );
+
+
+        /* ================================================
+                    CHANGE THEME
+        ================================================= */
+
+        themeButton.addEventListener(
+
+            "click",
+
+            () => {
+
+                currentTheme++;
+
+
+                if (currentTheme > 2) {
+
+                    currentTheme = 0;
+
+                }
+
+
+                document.body.dataset.theme =
+                    currentTheme;
+
+
+                addLog(
+
+                    "THEME",
+
+                    "Interface theme changed.",
+
+                    "info"
+
+                );
+
+
+                showNotification(
+
+                    "INTERFACE THEME",
+
+                    "Command center appearance updated."
+
+                );
+
+            }
+
+        );
+
+
+        /* ================================================
+                    RANDOM ACTION
+        ================================================= */
+
+        randomButton.addEventListener(
+
+            "click",
+
+            () => {
+
+                const actions = [
+
+                    "Running quick system scan...",
+
+                    "Optimizing command modules...",
+
+                    "Refreshing secure network...",
+
+                    "Checking system health...",
+
+                    "Synchronizing control data...",
+
+                    "Updating activity radar..."
+
+                ];
+
+
+                const randomAction =
+
+                    actions[
+
+                        Math.floor(
+
+                            Math.random() *
+
+                            actions.length
+
+                        )
+
+                    ];
+
+
+                systemMessage.textContent =
+                    randomAction;
+
+
+                addLog(
+
+                    "ACTION",
+
+                    randomAction,
+
+                    "info"
+
+                );
+
+
+                addTerminalMessage(
+
+                    "ACTION",
+
+                    randomAction
+
+                );
+
+
+                showNotification(
+
+                    "RANDOM ACTION",
+
+                    randomAction
+
+                );
+
+            }
+
+        );
+
+
+        /* ================================================
+                    CLEAR LOG
+        ================================================= */
+
+        clearLogButton.addEventListener(
+
+            "click",
+
+            () => {
+
+                activityLog.innerHTML = "";
+
+
+                addLog(
+
+                    "SYSTEM",
+
+                    "Activity log cleared.",
+
+                    "info"
+
+                );
+
+
+                showNotification(
+
+                    "ACTIVITY LOG",
+
+                    "All previous activity was removed."
+
+                );
+
+            }
+
+        );
+
+
+        /* ================================================
+                    COMMAND SYSTEM
+        ================================================= */
+
+        function runCommand() {
+
+            const command =
+
+                commandInput.value
+                    .trim()
+                    .toLowerCase();
+
+
+            if (!command) {
+
+                return;
+
+            }
+
+
+            addTerminalMessage(
+
+                "YT:~$",
+
+                command
+
+            );
+
+
+            if (command === "help") {
+
+                addTerminalMessage(
+
+                    "HELP",
+
+                    "Available commands: help, status, scan, clear, time, reboot."
+
+                );
+
+            }
+
+
+            else if (
+                command === "status"
+            ) {
+
+                addTerminalMessage(
+
+                    "STATUS",
+
+                    systemPowered
+
+                        ? "All systems are online."
+
+                        : "System power is offline."
+
+                );
+
+            }
+
+
+            else if (
+                command === "scan"
+            ) {
+
+                scanButton.click();
+
+            }
+
+
+            else if (
+                command === "clear"
+            ) {
+
+                terminalOutput.innerHTML = "";
+
+            }
+
+
+            else if (
+                command === "time"
+            ) {
+
+                addTerminalMessage(
+
+                    "TIME",
+
+                    new Date()
+                        .toLocaleTimeString()
+
+                );
+
+            }
+
+
+            else if (
+                command === "reboot"
+            ) {
+
+                rebootButton.click();
+
+            }
+
+
+            else {
+
+                addTerminalMessage(
+
+                    "ERROR",
+
+                    `Unknown command: ${command}`
+
+                );
+
+            }
+
+
+            commandInput.value = "";
+
+        }
+
+
+        sendCommandButton.addEventListener(
+
+            "click",
+
+            runCommand
+
+        );
+
+
+        commandInput.addEventListener(
+
+            "keydown",
+
+            event => {
+
+                if (
+                    event.key === "Enter"
+                ) {
+
+                    runCommand();
+
+                }
+
+            }
+
+        );
+
+
+        /* ================================================
+                    COMMAND EXAMPLES
+        ================================================= */
+
+        const commandExamples =
+
+            document.querySelectorAll(
+                ".command-example"
+            );
+
+
+        commandExamples.forEach(
+
+            button => {
+
+                button.addEventListener(
+
+                    "click",
+
+                    () => {
+
+                        commandInput.value =
+
+                            button.textContent
+                                .trim();
+
+
+                        runCommand();
+
+                    }
+
+                );
+
+            }
+
+        );
+
+    </script>
+
+</body>
+</html>
