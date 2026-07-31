@@ -16,10 +16,7 @@ const filesToCache = [
    CACHE CONFIGURATION
    ================================================== */
 
-
-const CACHE_NAME =
-
-"YTCC-OFFLINE-V10";
+const CACHE_NAME = "YTCC-OFFLINE-V11";
 
 
 
