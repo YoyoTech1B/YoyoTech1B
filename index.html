@@ -7,25 +7,38 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>
-        YOYOTECH Command Control Center
-    </title>
+    <meta name="theme-color" content="#001a33">
 
+    <meta name="description" content="YOYOTECH Command Control Center — Command Core Update">
+
+    <title>YTCC 2.0 — Command Core</title>
+
+
+    <!-- FAVICON -->
 
     <link rel="icon" type="image/png" href="favicon.png">
 
 
+    <!-- PWA MANIFEST -->
+
+    <link rel="manifest" href="manifest.json">
+
+
+    <!-- MAIN STYLESHEET -->
+
     <link rel="stylesheet" href="style.css">
 
+
+    <!-- FONT -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#001a33">
 
 </head>
 
@@ -33,8 +46,180 @@
 <body>
 
 
+<!-- ==================================================
+     YTCC 2.0 BOOT SCREEN
+     ================================================== -->
 
-<div class="app">
+<div id="bootScreen" class="boot-screen">
+
+
+    <div class="boot-grid"></div>
+
+
+    <div class="boot-content">
+
+
+        <div class="boot-logo">
+
+            <div class="boot-logo-box">
+
+                YT
+
+            </div>
+
+
+            <div class="boot-logo-text">
+
+                YOYO<span>TECH</span>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="boot-title">
+
+            COMMAND CONTROL CENTER
+
+        </div>
+
+
+        <div class="boot-version">
+
+            COMMAND CORE UPDATE • VERSION 2.0.0
+
+        </div>
+
+
+        <div class="boot-loader">
+
+            <div id="bootProgress" class="boot-progress"></div>
+
+        </div>
+
+
+        <div id="bootMessage" class="boot-message">
+
+            INITIALIZING COMMAND CORE...
+
+        </div>
+
+
+        <div class="boot-details">
+
+
+            <span>
+
+                SYSTEM ID:
+                <strong>YT-CC-001</strong>
+
+            </span>
+
+
+            <span>
+
+                SECURITY:
+                <strong>PROTECTED</strong>
+
+            </span>
+
+
+            <span>
+
+                CORE:
+                <strong>ONLINE</strong>
+
+            </span>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- ==================================================
+     BACKGROUND EFFECTS
+     ================================================== -->
+
+<div class="background-effects">
+
+
+    <div class="background-grid"></div>
+
+
+    <div class="background-glow glow-one"></div>
+
+
+    <div class="background-glow glow-two"></div>
+
+
+</div>
+
+
+
+<!-- ==================================================
+     MAIN APPLICATION
+     ================================================== -->
+
+<div class="app" id="app">
+
+
+
+<!-- ==================================================
+     MOBILE TOP BAR
+     ================================================== -->
+
+<header class="mobile-header">
+
+
+    <div class="mobile-brand">
+
+
+        <div class="mobile-logo-box">
+
+            YT
+
+        </div>
+
+
+        <div>
+
+            <strong>
+
+                YOYO<span>TECH</span>
+
+            </strong>
+
+
+            <small>
+
+                COMMAND CORE 2.0
+
+            </small>
+
+        </div>
+
+
+    </div>
+
+
+    <button
+        id="mobileMenuButton"
+        class="icon-button"
+        aria-label="Open navigation">
+
+        ☰
+
+    </button>
+
+
+</header>
 
 
 
@@ -42,23 +227,87 @@
      SIDEBAR
      ================================================== -->
 
-
-<aside class="sidebar">
-
-
-    <div class="logo">
+<aside id="sidebar" class="sidebar">
 
 
-        <div class="logo-box">
+    <div class="sidebar-top">
 
-            YT
+
+        <div class="logo">
+
+
+            <div class="logo-box">
+
+                YT
+
+            </div>
+
+
+            <div class="logo-text">
+
+                YOYO<span>TECH</span>
+
+
+                <small>
+
+                    COMMAND CORE 2.0
+
+                </small>
+
+            </div>
+
 
         </div>
 
 
-        <div class="logo-text">
+        <button
+            id="closeSidebar"
+            class="close-sidebar"
+            aria-label="Close navigation">
 
-            YOYO<span>TECH</span>
+            ×
+
+        </button>
+
+
+    </div>
+
+
+
+    <!-- SYSTEM PROFILE -->
+
+    <div class="system-profile">
+
+
+        <div class="profile-ring">
+
+
+            <div class="profile-core">
+
+                CC
+
+            </div>
+
+
+        </div>
+
+
+        <div>
+
+
+            <strong>
+
+                COMMAND CORE
+
+            </strong>
+
+
+            <span>
+
+                ADMIN ACCESS
+
+            </span>
+
 
         </div>
 
@@ -67,47 +316,143 @@
 
 
 
+    <!-- NAVIGATION -->
+
     <nav class="menu">
 
 
-        <a href="#" class="active">
+        <a
+            href="#dashboard"
+            class="nav-link active"
+            data-section="dashboard">
 
-            ◈ Dashboard
+            <span class="nav-icon">
 
-        </a>
+                ◈
 
-
-        <a href="#controls">
-
-            ⚙ Controls
-
-        </a>
+            </span>
 
 
-        <a href="#terminal">
-
-            ⌁ Terminal
+            Dashboard
 
         </a>
 
 
-        <a href="#status">
+        <a
+            href="#controls"
+            class="nav-link"
+            data-section="controls">
 
-            ◉ Live Status
+            <span class="nav-icon">
+
+                ⚙
+
+            </span>
+
+
+            Controls
 
         </a>
 
 
-        <a href="#security">
+        <a
+            href="#terminal"
+            class="nav-link"
+            data-section="terminal">
 
-            🛡 Security
+            <span class="nav-icon">
+
+                ⌁
+
+            </span>
+
+
+            Command Core
 
         </a>
 
 
-        <a href="#settings">
+        <a
+            href="#monitor"
+            class="nav-link"
+            data-section="monitor">
 
-            ⚙ Settings
+            <span class="nav-icon">
+
+                ◉
+
+            </span>
+
+
+            System Monitor
+
+        </a>
+
+
+        <a
+            href="#tools"
+            class="nav-link"
+            data-section="tools">
+
+            <span class="nav-icon">
+
+                ◫
+
+            </span>
+
+
+            Utility Tools
+
+        </a>
+
+
+        <a
+            href="#security"
+            class="nav-link"
+            data-section="security">
+
+            <span class="nav-icon">
+
+                🛡
+
+            </span>
+
+
+            Security
+
+        </a>
+
+
+        <a
+            href="#activity"
+            class="nav-link"
+            data-section="activity">
+
+            <span class="nav-icon">
+
+                ≡
+
+            </span>
+
+
+            Activity Log
+
+        </a>
+
+
+        <a
+            href="#settings"
+            class="nav-link"
+            data-section="settings">
+
+            <span class="nav-icon">
+
+                ⚙
+
+            </span>
+
+
+            Settings
 
         </a>
 
@@ -116,9 +461,71 @@
 
 
 
+    <!-- SIDEBAR STATUS -->
+
+    <div class="sidebar-status">
+
+
+        <div class="sidebar-status-row">
+
+
+            <span class="status-light"></span>
+
+
+            <span>
+
+                SYSTEM ONLINE
+
+            </span>
+
+
+        </div>
+
+
+        <div class="sidebar-status-row">
+
+
+            <span>
+
+                NETWORK
+
+            </span>
+
+
+            <strong class="text-green">
+
+                CONNECTED
+
+            </strong>
+
+
+        </div>
+
+
+        <div class="sidebar-status-row">
+
+
+            <span>
+
+                VERSION
+
+            </span>
+
+
+            <strong class="text-cyan">
+
+                2.0.0
+
+            </strong>
+
+
+        </div>
+
+
+    </div>
+
+
 </aside>
-
-
 
 
 
@@ -126,17 +533,13 @@
      MAIN CONTENT
      ================================================== -->
 
-
 <main class="main">
-
-
 
 
 
 <!-- ==================================================
      TOP SYSTEM BAR
      ================================================== -->
-
 
 <header class="top-bar">
 
@@ -150,21 +553,9 @@
             <span class="status-light"></span>
 
 
-            SYSTEM ONLINE
+            <span>
 
-
-        </div>
-
-
-
-        <div>
-
-
-            SYSTEM ID:
-
-            <span class="text-cyan">
-
-                YT-CC-001
+                SYSTEM ONLINE
 
             </span>
 
@@ -172,94 +563,450 @@
         </div>
 
 
+        <div class="top-divider"></div>
+
+
+        <div>
+
+            SYSTEM ID:
+
+            <strong class="text-cyan">
+
+                YT-CC-001
+
+            </strong>
+
+        </div>
+
+
+        <div class="top-divider"></div>
+
+
+        <div>
+
+            ACCESS:
+
+            <strong class="text-green">
+
+                ADMIN
+
+            </strong>
+
+        </div>
+
 
     </div>
 
 
+    <div class="top-actions">
 
 
-    <div>
+        <div class="live-clock">
 
 
-        NETWORK
+            <span>
 
-        <span class="text-green">
+                LOCAL TIME
 
-            CONNECTED
+            </span>
 
-        </span>
+
+            <strong id="liveClock">
+
+                00:00:00
+
+            </strong>
+
+
+        </div>
+
+
+        <button
+            id="notificationButton"
+            class="icon-button notification-button"
+            aria-label="Notifications">
+
+
+            ◉
+
+
+            <span
+                id="notificationBadge"
+                class="notification-badge">
+
+                3
+
+            </span>
+
+
+        </button>
+
+
+        <button
+            id="fullscreenButton"
+            class="icon-button"
+            aria-label="Fullscreen">
+
+            ⛶
+
+        </button>
 
 
     </div>
-
-
 
 
 </header>
 
 
 
+<!-- ==================================================
+     NOTIFICATION PANEL
+     ================================================== -->
+
+<div
+    id="notificationPanel"
+    class="notification-panel">
+
+
+    <div class="panel-heading">
+
+
+        <div>
+
+
+            <span class="eyebrow">
+
+                COMMAND ALERTS
+
+            </span>
+
+
+            <h3>
+
+                Notifications
+
+            </h3>
+
+
+        </div>
+
+
+        <button
+            id="clearNotifications"
+            class="text-button">
+
+            CLEAR
+
+        </button>
+
+
+    </div>
+
+
+    <div id="notificationList" class="notification-list">
+
+
+        <div class="notification-item">
+
+
+            <span class="notification-icon">
+
+                ✓
+
+            </span>
+
+
+            <div>
+
+
+                <strong>
+
+                    Command Core Online
+
+                </strong>
+
+
+                <small>
+
+                    All primary modules initialized.
+
+                </small>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="notification-item">
+
+
+            <span class="notification-icon">
+
+                ◉
+
+            </span>
+
+
+            <div>
+
+
+                <strong>
+
+                    Network Connected
+
+                </strong>
+
+
+                <small>
+
+                    Secure connection established.
+
+                </small>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="notification-item">
+
+
+            <span class="notification-icon">
+
+                🛡
+
+            </span>
+
+
+            <div>
+
+
+                <strong>
+
+                    Security Protected
+
+                </strong>
+
+
+                <small>
+
+                    Threat monitoring is active.
+
+                </small>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
 
 
 <!-- ==================================================
-     DASHBOARD TITLE
+     DASHBOARD
      ================================================== -->
 
-
-<section class="dashboard-title">
-
-
-    <h1>
-
-        YOYOTECH
-
-        <span>
-
-            COMMAND CONTROL CENTER
-
-        </span>
+<section id="dashboard" class="page-section dashboard-section">
 
 
-    </h1>
+    <div class="hero-panel">
 
 
-    <p>
-
-        Professional system management dashboard
-
-    </p>
+        <div class="hero-content">
 
 
+            <div class="hero-kicker">
 
-</section>
+
+                <span class="hero-status-dot"></span>
 
 
+                COMMAND CORE ACTIVE
+
+            </div>
+
+
+            <h1>
+
+                YOYOTECH
+
+                <span>
+
+                    COMMAND CONTROL CENTER
+
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                Centralized system management, live monitoring,
+                command execution, security control, and advanced
+                utility tools — all inside one professional dashboard.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+
+                <button
+                    id="refreshSystem"
+                    class="primary-button">
+
+                    <span>
+
+                        ↻
+
+                    </span>
+
+
+                    REFRESH SYSTEM
+
+                </button>
+
+
+                <button
+                    id="openCommandCore"
+                    class="secondary-button">
+
+                    <span>
+
+                        ⌁
+
+                    </span>
+
+
+                    OPEN COMMAND CORE
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="hero-visual">
+
+
+            <div class="core-orbit orbit-one"></div>
+
+
+            <div class="core-orbit orbit-two"></div>
+
+
+            <div class="core-orbit orbit-three"></div>
+
+
+            <div class="command-core">
+
+
+                <div class="core-pulse"></div>
+
+
+                <div class="core-center">
+
+
+                    <span>
+
+                        YT
+
+                    </span>
+
+
+                    <small>
+
+                        CORE
+
+                    </small>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="core-label core-label-top">
+
+                COMMAND
+
+            </div>
+
+
+            <div class="core-label core-label-right">
+
+                SECURE
+
+            </div>
+
+
+            <div class="core-label core-label-bottom">
+
+                ONLINE
+
+            </div>
+
+
+        </div>
+
+
+    </div>
 
 
 
 <!-- ==================================================
-     SYSTEM OVERVIEW CARDS
+     END OF PART 1
+     ================================================== -->
+    <!-- ==================================================
+     COMMAND OVERVIEW CARDS
      ================================================== -->
 
-
-<section class="dashboard-grid">
-
+<div class="overview-grid">
 
 
-    <div class="card animate-card">
+    <article class="overview-card">
 
 
-        <div class="card-header">
+        <div class="overview-top">
 
 
-            <h2>
-
-                Power System
-
-            </h2>
+            <div>
 
 
-            <div class="card-icon">
+                <span class="overview-label">
+
+                    SYSTEM POWER
+
+                </span>
+
+
+                <strong
+                    id="powerValue"
+                    class="overview-value text-green">
+
+                    100%
+
+                </strong>
+
+
+            </div>
+
+
+            <div class="overview-icon">
 
                 ⏻
 
@@ -269,40 +1016,60 @@
         </div>
 
 
-        <h1 class="text-green">
-
-            100%
-
-        </h1>
+        <div class="mini-progress">
 
 
-        <p>
+            <div
+                id="powerBar"
+                class="mini-progress-fill"
+                style="width: 100%;">
 
-            System power active
-
-        </p>
-
-
-    </div>
+            </div>
 
 
+        </div>
+
+
+        <small>
+
+            Main power core operating normally
+
+        </small>
+
+
+    </article>
 
 
 
-    <div class="card animate-card">
+    <article class="overview-card">
 
 
-        <div class="card-header">
+        <div class="overview-top">
 
 
-            <h2>
-
-                Security
-
-            </h2>
+            <div>
 
 
-            <div class="card-icon">
+                <span class="overview-label">
+
+                    SECURITY
+
+                </span>
+
+
+                <strong
+                    id="securityValue"
+                    class="overview-value text-cyan">
+
+                    PROTECTED
+
+                </strong>
+
+
+            </div>
+
+
+            <div class="overview-icon">
 
                 🛡
 
@@ -312,40 +1079,78 @@
         </div>
 
 
-        <h1 class="text-cyan">
-
-            PROTECTED
-
-        </h1>
+        <div class="security-indicators">
 
 
-        <p>
+            <span>
 
-            All systems secured
+                FIREWALL
 
-        </p>
+                <strong>
 
+                    ON
 
-    </div>
+                </strong>
 
-
-
-
-
-    <div class="card animate-card">
+            </span>
 
 
-        <div class="card-header">
+            <span>
+
+                MONITOR
+
+                <strong>
+
+                    ACTIVE
+
+                </strong>
+
+            </span>
 
 
-            <h2>
-
-                Uptime
-
-            </h2>
+        </div>
 
 
-            <div class="card-icon">
+        <small>
+
+            No active threats detected
+
+        </small>
+
+
+    </article>
+
+
+
+    <article class="overview-card">
+
+
+        <div class="overview-top">
+
+
+            <div>
+
+
+                <span class="overview-label">
+
+                    SYSTEM UPTIME
+
+                </span>
+
+
+                <strong
+                    id="uptimeValue"
+                    class="overview-value">
+
+                    00:00:00
+
+                </strong>
+
+
+            </div>
+
+
+            <div class="overview-icon">
 
                 ◷
 
@@ -355,1114 +1160,76 @@
         </div>
 
 
-        <h1>
-
-            00:00:18
-
-        </h1>
+        <div class="uptime-dots">
 
 
-        <p>
-
-            Continuous operation
-
-        </p>
+            <span></span>
 
 
-    </div>
+            <span></span>
 
 
-<button onclick="location.reload()">
-    🔄 Refresh System
-</button>
-
-</section>
+            <span></span>
 
 
-
-<!-- ==================================================
-     END OF PART 1 / 3
-     ================================================== -->
-<!-- ==================================================
-     SYSTEM CONTROLS
-     ================================================== -->
+            <span></span>
 
 
-<section id="controls" class="mt-20">
+            <span></span>
 
 
-    <div class="dashboard-title">
+            <span></span>
 
 
-        <h1>
-
-            01
-
-            <span>
-
-                SYSTEM CONTROLS
-
-            </span>
+            <span></span>
 
 
-        </h1>
+            <span></span>
 
 
-        <p>
-
-            Manage and control YOYOTECH system modules
-
-        </p>
+        </div>
 
 
-    </div>
+        <small>
+
+            Continuous command core operation
+
+        </small>
+
+
+    </article>
 
 
 
-
-    <div class="dashboard-grid">
-
+    <article class="overview-card">
 
 
+        <div class="overview-top">
 
 
-        <div class="card control-card animate-card">
+            <div>
 
 
-            <div class="card-header">
+                <span class="overview-label">
+
+                    NETWORK
+
+                </span>
 
 
-                <h2>
+                <strong
+                    id="networkValue"
+                    class="overview-value text-green">
 
-                    System Power
+                    CONNECTED
 
-                </h2>
-
-
-                <div class="card-icon">
-
-                    ⏻
-
-                </div>
+                </strong>
 
 
             </div>
 
 
-            <p>
-
-                Control system power operations
-
-            </p>
-
-
-            <button class="dark-button">
-
-                ACTIVATE
-
-            </button>
-
-
-        </div>
-
-
-
-
-
-        <div class="card control-card animate-card">
-
-
-            <div class="card-header">
-
-
-                <h2>
-
-                    Network Scan
-
-                </h2>
-
-
-                <div class="card-icon">
-
-                    ◉
-
-                </div>
-
-
-            </div>
-
-
-            <p>
-
-                Scan active network connections
-
-            </p>
-
-
-            <button class="dark-button">
-
-                SCAN
-
-            </button>
-
-
-        </div>
-
-
-
-
-
-        <div class="card control-card animate-card">
-
-
-            <div class="card-header">
-
-
-                <h2>
-
-                    Diagnostics
-
-                </h2>
-
-
-                <div class="card-icon">
-
-                    ⌁
-
-                </div>
-
-
-            </div>
-
-
-            <p>
-
-                Check system modules
-
-            </p>
-
-
-            <button class="dark-button">
-
-                CHECK
-
-            </button>
-
-
-        </div>
-
-
-
-
-
-        <div class="card control-card animate-card">
-
-
-            <div class="card-header">
-
-
-                <h2>
-
-                    Security Shield
-
-                </h2>
-
-
-                <div class="card-icon">
-
-                    🛡
-
-                </div>
-
-
-            </div>
-
-
-            <p>
-
-                Activate protection mode
-
-            </p>
-
-
-            <button class="dark-button">
-
-                ENABLE
-
-            </button>
-
-
-        </div>
-
-
-
-
-
-        <div class="card control-card animate-card">
-
-
-            <div class="card-header">
-
-
-                <h2>
-
-                    Lockdown Mode
-
-                </h2>
-
-
-                <div class="card-icon">
-
-                    ⚠
-
-                </div>
-
-
-            </div>
-
-
-            <p>
-
-                Secure all system access
-
-            </p>
-
-
-            <button class="dark-button">
-
-                LOCK
-
-            </button>
-
-
-        </div>
-
-
-
-
-
-        <div class="card control-card animate-card">
-
-
-            <div class="card-header">
-
-
-                <h2>
-
-                    System Reboot
-
-                </h2>
-
-
-                <div class="card-icon">
-
-                    ↻
-
-                </div>
-
-
-            </div>
-
-
-            <p>
-
-                Restart command systems
-
-            </p>
-
-
-            <button class="dark-button">
-
-                REBOOT
-
-            </button>
-
-
-        </div>
-
-
-
-    </div>
-
-
-
-</section>
-
-
-
-
-
-<!-- ==================================================
-     QUICK CONTROLS
-     ================================================== -->
-
-
-<section class="mt-20">
-
-
-
-<div class="card">
-
-
-    <div class="card-header">
-
-
-        <h2>
-
-            QUICK CONTROLS
-
-        </h2>
-
-
-    </div>
-
-
-
-    <div class="quick-actions">
-
-
-        <button class="quick-action">
-
-            ⛶
-
-            <br>
-
-            FULLSCREEN
-
-        </button>
-
-
-        <button class="quick-action">
-
-            ◐
-
-            <br>
-
-            CHANGE THEME
-
-        </button>
-
-
-        <button class="quick-action">
-
-            ⚡
-
-            <br>
-
-            RANDOM ACTION
-
-        </button>
-
-
-    </div>
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-<!-- ==================================================
-     COMMAND TERMINAL
-     ================================================== -->
-
-
-<section id="terminal" class="mt-20">
-
-
-
-<div class="dashboard-title">
-
-
-    <h1>
-
-        02
-
-        <span>
-
-            COMMAND INTERFACE
-
-        </span>
-
-
-    </h1>
-
-
-    <p>
-
-        Execute commands through the system terminal
-
-    </p>
-
-
-</div>
-
-
-
-
-
-<div class="terminal">
-
-
-
-    <div class="terminal-header">
-
-
-        <span class="terminal-dot red"></span>
-
-
-        <span class="terminal-dot yellow"></span>
-
-
-        <span class="terminal-dot green"></span>
-
-
-
-        <span class="terminal-title">
-
-            TERMINAL-01
-
-        </span>
-
-
-    </div>
-
-
-
-
-
-    <div class="terminal-body">
-
-
-        <div class="terminal-line">
-
-
-            <span class="terminal-user">
-
-                SYSTEM
-
-            </span>
-
-
-            Command center initialized.
-
-        </div>
-
-
-
-        <div class="terminal-line">
-
-
-            <span class="terminal-user">
-
-                SYSTEM
-
-            </span>
-
-
-            All modules are online.
-
-        </div>
-
-
-
-        <div class="terminal-line">
-
-
-            <span class="terminal-user">
-
-                READY
-
-            </span>
-
-
-            Waiting for command...
-
-        </div>
-
-
-
-        <br>
-
-
-
-        <div class="terminal-line">
-
-
-            <span class="terminal-user">
-
-                YT:~$
-
-            </span>
-
-
-            Type a command...
-
-        </div>
-
-
-
-
-     <input 
-id="terminalInput"
-class="terminal-input"
-type="text"
-placeholder="Type a command...">
-
-
-<button 
-id="executeCommand"
-class="primary-button mt-20">
-
-    EXECUTE
-
-</button>
-
-
-
-    </div>
-
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-<!-- ==================================================
-     END OF PART 2 / 3
-     ================================================== -->
-    <!-- ==================================================
-     LIVE STATUS
-     ================================================== -->
-
-
-<section id="status" class="mt-20">
-
-
-
-<div class="dashboard-title">
-
-
-    <h1>
-
-        03
-
-        <span>
-
-            LIVE STATUS
-
-        </span>
-
-
-    </h1>
-
-
-    <p>
-
-        Real-time system performance monitoring
-
-    </p>
-
-
-</div>
-
-
-
-
-
-<div class="status-grid">
-
-
-
-    <div class="status-card animate-card">
-
-
-        <h3>
-
-            CPU ACTIVITY
-
-        </h3>
-
-
-        <div class="status-number">
-
-            22%
-
-        </div>
-
-
-
-        <div class="progress">
-
-
-            <div 
-            class="progress-fill"
-            style="width:22%">
-            </div>
-
-
-        </div>
-
-
-
-    </div>
-
-
-
-
-
-    <div class="status-card animate-card">
-
-
-        <h3>
-
-            MEMORY
-
-        </h3>
-
-
-        <div class="status-number">
-
-            49%
-
-        </div>
-
-
-
-        <div class="progress">
-
-
-            <div 
-            class="progress-fill"
-            style="width:49%">
-            </div>
-
-
-        </div>
-
-
-
-    </div>
-
-
-
-
-
-    <div class="status-card animate-card">
-
-
-        <h3>
-
-            NETWORK LOAD
-
-        </h3>
-
-
-        <div class="status-number">
-
-            10%
-
-        </div>
-
-
-
-        <div class="progress">
-
-
-            <div 
-            class="progress-fill"
-            style="width:10%">
-            </div>
-
-
-        </div>
-
-
-
-    </div>
-
-
-
-
-
-    <div class="status-card animate-card">
-
-
-        <h3>
-
-            SYSTEM HEALTH
-
-        </h3>
-
-
-        <div class="status-number">
-
-            100%
-
-        </div>
-
-
-
-        <div class="progress">
-
-
-            <div 
-            class="progress-fill"
-            style="width:100%">
-            </div>
-
-
-        </div>
-
-
-
-    </div>
-
-
-
-</div>
-
-
-
-
-</section>
-
-
-
-
-
-
-
-<!-- ==================================================
-     SYSTEM ACTIVITY LOG
-     ================================================== -->
-
-
-<section class="mt-20">
-
-
-
-<div class="dashboard-title">
-
-
-    <h1>
-
-        04
-
-        <span>
-
-            SYSTEM ACTIVITY LOG
-
-        </span>
-
-
-    </h1>
-
-
-    <p>
-
-        Latest system events and operations
-
-    </p>
-
-
-</div>
-
-
-
-
-
-<div class="card">
-
-
-
-<div class="log-list">
-
-
-
-    <div class="log-item">
-
-
-        <div>
-
-
-            <strong class="text-cyan">
-
-                SYSTEM
-
-            </strong>
-
-
-            Command control center started successfully.
-
-
-        </div>
-
-
-        <div class="log-time">
-
-            00:00:00
-
-        </div>
-
-
-    </div>
-
-
-
-
-
-    <div class="log-item">
-
-
-        <div>
-
-
-            <strong class="text-cyan">
-
-                NETWORK
-
-            </strong>
-
-
-            Secure network connection established.
-
-
-        </div>
-
-
-        <div class="log-time">
-
-            00:00:01
-
-        </div>
-
-
-    </div>
-
-
-
-
-
-    <div class="log-item">
-
-
-        <div>
-
-
-            <strong class="text-cyan">
-
-                READY
-
-            </strong>
-
-
-            All control modules are ready.
-
-
-        </div>
-
-
-        <div class="log-time">
-
-            00:00:02
-
-        </div>
-
-
-    </div>
-
-
-
-
-</div>
-
-
-
-<br>
-
-
-
-<button class="dark-button">
-
-    CLEAR LOG
-
-</button>
-
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-<!-- ==================================================
-     SECURITY CENTER
-     ================================================== -->
-
-
-<section id="security" class="mt-20">
-
-
-
-<div class="dashboard-title">
-
-
-    <h1>
-
-
-        SECURITY
-
-        <span>
-
-            CENTER
-
-        </span>
-
-
-    </h1>
-
-
-    <p>
-
-        System protection and security monitoring
-
-    </p>
-
-
-</div>
-
-
-
-
-
-<div class="dashboard-grid">
-
-
-
-    <div class="card animate-card">
-
-
-        <div class="card-header">
-
-
-            <h2>
-
-                Firewall
-
-            </h2>
-
-
-            <div class="card-icon">
-
-                🛡
-
-            </div>
-
-
-        </div>
-
-
-
-        <h2 class="text-green">
-
-            ACTIVE
-
-        </h2>
-
-
-
-        <p>
-
-            Protection system enabled
-
-        </p>
-
-
-    </div>
-
-
-
-
-
-    <div class="card animate-card">
-
-
-        <div class="card-header">
-
-
-            <h2>
-
-                Encryption
-
-            </h2>
-
-
-            <div class="card-icon">
-
-                🔒
-
-            </div>
-
-
-        </div>
-
-
-
-        <h2 class="text-cyan">
-
-            AES SECURE
-
-        </h2>
-
-
-
-        <p>
-
-            Secure data communication
-
-        </p>
-
-
-    </div>
-
-
-
-
-
-    <div class="card animate-card">
-
-
-        <div class="card-header">
-
-
-            <h2>
-
-                Threat Monitor
-
-            </h2>
-
-
-            <div class="card-icon">
+            <div class="overview-icon">
 
                 ◉
 
@@ -1472,35 +1239,2820 @@ class="primary-button mt-20">
         </div>
 
 
-
-        <h2 class="text-green">
-
-            NO THREATS
-
-        </h2>
+        <div class="network-stats">
 
 
+            <span>
 
-        <p>
+                SIGNAL
 
-            System operating normally
+                <strong id="signalValue">
 
-        </p>
+                    98%
+
+                </strong>
+
+            </span>
 
 
-    </div>
+            <span>
 
+                LOAD
+
+                <strong id="networkLoadTop">
+
+                    12%
+
+                </strong>
+
+            </span>
+
+
+        </div>
+
+
+        <small>
+
+            Secure network channel established
+
+        </small>
+
+
+    </article>
 
 
 </div>
 
 
 
+<!-- ==================================================
+     COMMAND SHORTCUTS
+     ================================================== -->
+
+<div class="section-heading compact-heading">
+
+
+    <div>
+
+
+        <span class="eyebrow">
+
+            QUICK ACCESS
+
+        </span>
+
+
+        <h2>
+
+            Command Shortcuts
+
+        </h2>
+
+
+    </div>
+
+
+    <span class="section-code">
+
+        CORE-01
+
+    </span>
+
+
+</div>
+
+
+<div class="shortcut-grid">
+
+
+    <button
+        class="shortcut-card"
+        data-command="status">
+
+
+        <span class="shortcut-icon">
+
+            ◉
+
+        </span>
+
+
+        <strong>
+
+            SYSTEM STATUS
+
+        </strong>
+
+
+        <small>
+
+            View core status
+
+        </small>
+
+
+    </button>
+
+
+
+    <button
+        class="shortcut-card"
+        data-command="scan">
+
+
+        <span class="shortcut-icon">
+
+            ◌
+
+        </span>
+
+
+        <strong>
+
+            NETWORK SCAN
+
+        </strong>
+
+
+        <small>
+
+            Scan active channels
+
+        </small>
+
+
+    </button>
+
+
+
+    <button
+        class="shortcut-card"
+        data-command="diagnostics">
+
+
+        <span class="shortcut-icon">
+
+            ⌁
+
+        </span>
+
+
+        <strong>
+
+            DIAGNOSTICS
+
+        </strong>
+
+
+        <small>
+
+            Check all modules
+
+        </small>
+
+
+    </button>
+
+
+
+    <button
+        class="shortcut-card"
+        data-command="security">
+
+
+        <span class="shortcut-icon">
+
+            🛡
+
+        </span>
+
+
+        <strong>
+
+            SECURITY CHECK
+
+        </strong>
+
+
+        <small>
+
+            Verify protection
+
+        </small>
+
+
+    </button>
+
+
+
+    <button
+        id="shortcutFullscreen"
+        class="shortcut-card">
+
+
+        <span class="shortcut-icon">
+
+            ⛶
+
+        </span>
+
+
+        <strong>
+
+            FULLSCREEN
+
+        </strong>
+
+
+        <small>
+
+            Enter command view
+
+        </small>
+
+
+    </button>
+
+
+
+    <button
+        id="shortcutTheme"
+        class="shortcut-card">
+
+
+        <span class="shortcut-icon">
+
+            ◐
+
+        </span>
+
+
+        <strong>
+
+            CHANGE THEME
+
+        </strong>
+
+
+        <small>
+
+            Switch core colors
+
+        </small>
+
+
+    </button>
+
+
+</div>
+
+
 </section>
 
 
 
+<!-- ==================================================
+     SYSTEM CONTROLS
+     ================================================== -->
 
+<section id="controls" class="page-section">
+
+
+    <div class="section-heading">
+
+
+        <div>
+
+
+            <span class="eyebrow">
+
+                MODULE CONTROL
+
+            </span>
+
+
+            <h2>
+
+                01
+
+                <span>
+
+                    SYSTEM CONTROLS
+
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Manage command-center modules and execute
+                simulated system operations.
+
+            </p>
+
+
+        </div>
+
+
+        <div class="section-status">
+
+
+            <span class="status-light"></span>
+
+
+            6 MODULES READY
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="control-grid">
+
+
+        <article class="control-card">
+
+
+            <div class="control-card-header">
+
+
+                <div class="control-icon">
+
+                    ⏻
+
+                </div>
+
+
+                <span class="module-id">
+
+                    MOD-001
+
+                </span>
+
+
+            </div>
+
+
+            <h3>
+
+                System Power
+
+            </h3>
+
+
+            <p>
+
+                Control the primary command-core power module.
+
+            </p>
+
+
+            <div class="control-footer">
+
+
+                <span class="module-status active-status">
+
+                    ● ACTIVE
+
+                </span>
+
+
+                <button
+                    class="dark-button control-action"
+                    data-action="power">
+
+                    MANAGE
+
+                </button>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <article class="control-card">
+
+
+            <div class="control-card-header">
+
+
+                <div class="control-icon">
+
+                    ◉
+
+                </div>
+
+
+                <span class="module-id">
+
+                    MOD-002
+
+                </span>
+
+
+            </div>
+
+
+            <h3>
+
+                Network Scan
+
+            </h3>
+
+
+            <p>
+
+                Scan the active network and verify secure channels.
+
+            </p>
+
+
+            <div class="control-footer">
+
+
+                <span class="module-status active-status">
+
+                    ● CONNECTED
+
+                </span>
+
+
+                <button
+                    class="dark-button control-action"
+                    data-action="scan">
+
+                    SCAN
+
+                </button>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <article class="control-card">
+
+
+            <div class="control-card-header">
+
+
+                <div class="control-icon">
+
+                    ⌁
+
+                </div>
+
+
+                <span class="module-id">
+
+                    MOD-003
+
+                </span>
+
+
+            </div>
+
+
+            <h3>
+
+                Diagnostics
+
+            </h3>
+
+
+            <p>
+
+                Run a complete check of all command-core modules.
+
+            </p>
+
+
+            <div class="control-footer">
+
+
+                <span class="module-status active-status">
+
+                    ● READY
+
+                </span>
+
+
+                <button
+                    class="dark-button control-action"
+                    data-action="diagnostics">
+
+                    CHECK
+
+                </button>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <article class="control-card">
+
+
+            <div class="control-card-header">
+
+
+                <div class="control-icon">
+
+                    🛡
+
+                </div>
+
+
+                <span class="module-id">
+
+                    MOD-004
+
+                </span>
+
+
+            </div>
+
+
+            <h3>
+
+                Security Shield
+
+            </h3>
+
+
+            <p>
+
+                Enable enhanced protection and threat monitoring.
+
+            </p>
+
+
+            <div class="control-footer">
+
+
+                <span class="module-status active-status">
+
+                    ● PROTECTED
+
+                </span>
+
+
+                <button
+                    class="dark-button control-action"
+                    data-action="shield">
+
+                    ENABLE
+
+                </button>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <article class="control-card warning-card">
+
+
+            <div class="control-card-header">
+
+
+                <div class="control-icon">
+
+                    ⚠
+
+                </div>
+
+
+                <span class="module-id">
+
+                    MOD-005
+
+                </span>
+
+
+            </div>
+
+
+            <h3>
+
+                Lockdown Mode
+
+            </h3>
+
+
+            <p>
+
+                Secure command access and activate protection mode.
+
+            </p>
+
+
+            <div class="control-footer">
+
+
+                <span class="module-status standby-status">
+
+                    ● STANDBY
+
+                </span>
+
+
+                <button
+                    class="dark-button control-action"
+                    data-action="lockdown">
+
+                    LOCK
+
+                </button>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <article class="control-card">
+
+
+            <div class="control-card-header">
+
+
+                <div class="control-icon">
+
+                    ↻
+
+                </div>
+
+
+                <span class="module-id">
+
+                    MOD-006
+
+                </span>
+
+
+            </div>
+
+
+            <h3>
+
+                System Reboot
+
+            </h3>
+
+
+            <p>
+
+                Restart the command interface and reload all modules.
+
+            </p>
+
+
+            <div class="control-footer">
+
+
+                <span class="module-status active-status">
+
+                    ● AVAILABLE
+
+                </span>
+
+
+                <button
+                    class="dark-button control-action"
+                    data-action="reboot">
+
+                    REBOOT
+
+                </button>
+
+
+            </div>
+
+
+        </article>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ==================================================
+     COMMAND TERMINAL
+     ================================================== -->
+
+<section id="terminal" class="page-section">
+
+
+    <div class="section-heading">
+
+
+        <div>
+
+
+            <span class="eyebrow">
+
+                DIRECT COMMAND ACCESS
+
+            </span>
+
+
+            <h2>
+
+                02
+
+                <span>
+
+                    COMMAND CORE
+
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Execute commands through the YTCC terminal interface.
+
+            </p>
+
+
+        </div>
+
+
+        <div class="terminal-status">
+
+
+            <span></span>
+
+
+            TERMINAL-01 ONLINE
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="terminal-shell">
+
+
+        <div class="terminal-header">
+
+
+            <div class="terminal-controls">
+
+
+                <span class="terminal-dot red"></span>
+
+
+                <span class="terminal-dot yellow"></span>
+
+
+                <span class="terminal-dot green"></span>
+
+
+            </div>
+
+
+            <div class="terminal-title">
+
+                YTCC://COMMAND-CORE/TERMINAL-01
+
+            </div>
+
+
+            <button
+                id="clearTerminal"
+                class="terminal-clear">
+
+                CLEAR
+
+            </button>
+
+
+        </div>
+
+
+        <div
+            id="terminalOutput"
+            class="terminal-output">
+
+
+            <div class="terminal-line system-line">
+
+
+                <span class="terminal-user">
+
+                    SYSTEM
+
+                </span>
+
+
+                Command Core 2.0 initialized successfully.
+
+            </div>
+
+
+            <div class="terminal-line system-line">
+
+
+                <span class="terminal-user">
+
+                    SECURITY
+
+                </span>
+
+
+                Protection modules loaded and verified.
+
+            </div>
+
+
+            <div class="terminal-line system-line">
+
+
+                <span class="terminal-user">
+
+                    NETWORK
+
+                </span>
+
+
+                Secure network connection established.
+
+            </div>
+
+
+            <div class="terminal-line ready-line">
+
+
+                <span class="terminal-user">
+
+                    READY
+
+                </span>
+
+
+                Type <strong>help</strong> to view all commands.
+
+            </div>
+
+
+        </div>
+
+
+        <div class="terminal-input-row">
+
+
+            <span class="terminal-prompt">
+
+                YTCC:~$
+
+            </span>
+
+
+            <input
+                id="terminalInput"
+                class="terminal-input"
+                type="text"
+                autocomplete="off"
+                spellcheck="false"
+                placeholder="Enter a command...">
+
+
+            <button
+                id="executeCommand"
+                class="primary-button terminal-execute">
+
+                EXECUTE
+
+            </button>
+
+
+        </div>
+
+
+        <div class="terminal-help">
+
+
+            <span>
+
+                QUICK COMMANDS:
+
+            </span>
+
+
+            <button class="terminal-chip" data-command="help">
+
+                help
+
+            </button>
+
+
+            <button class="terminal-chip" data-command="status">
+
+                status
+
+            </button>
+
+
+            <button class="terminal-chip" data-command="scan">
+
+                scan
+
+            </button>
+
+
+            <button class="terminal-chip" data-command="monitor">
+
+                monitor
+
+            </button>
+
+
+            <button class="terminal-chip" data-command="theme">
+
+                theme
+
+            </button>
+
+
+            <button class="terminal-chip" data-command="fullscreen">
+
+                fullscreen
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ==================================================
+     END OF PART 2
+     ================================================== -->
+    <!-- ==================================================
+     LIVE SYSTEM MONITOR
+     ================================================== -->
+
+<section id="monitor" class="page-section">
+
+
+    <div class="section-heading">
+
+
+        <div>
+
+
+            <span class="eyebrow">
+
+                REAL-TIME PERFORMANCE
+
+            </span>
+
+
+            <h2>
+
+                03
+
+                <span>
+
+                    SYSTEM MONITOR
+
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Live command-core performance and system health data.
+
+            </p>
+
+
+        </div>
+
+
+        <div class="section-status">
+
+
+            <span class="status-light"></span>
+
+
+            LIVE MONITORING
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="monitor-grid">
+
+
+        <article class="monitor-card">
+
+
+            <div class="monitor-card-top">
+
+
+                <div>
+
+
+                    <span class="monitor-label">
+
+                        CPU ACTIVITY
+
+                    </span>
+
+
+                    <strong
+                        id="cpuValue"
+                        class="monitor-value">
+
+                        22%
+
+                    </strong>
+
+
+                </div>
+
+
+                <span class="monitor-icon">
+
+                    ◉
+
+                </span>
+
+
+            </div>
+
+
+            <div class="progress-track">
+
+
+                <div
+                    id="cpuBar"
+                    class="progress-fill"
+                    style="width: 22%;">
+
+                </div>
+
+
+            </div>
+
+
+            <div class="monitor-footer">
+
+
+                <span>
+
+                    PROCESSING CORE
+
+                </span>
+
+
+                <strong id="cpuState">
+
+                    STABLE
+
+                </strong>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <article class="monitor-card">
+
+
+            <div class="monitor-card-top">
+
+
+                <div>
+
+
+                    <span class="monitor-label">
+
+                        MEMORY
+
+                    </span>
+
+
+                    <strong
+                        id="memoryValue"
+                        class="monitor-value">
+
+                        49%
+
+                    </strong>
+
+
+                </div>
+
+
+                <span class="monitor-icon">
+
+                    ▣
+
+                </span>
+
+
+            </div>
+
+
+            <div class="progress-track">
+
+
+                <div
+                    id="memoryBar"
+                    class="progress-fill"
+                    style="width: 49%;">
+
+                </div>
+
+
+            </div>
+
+
+            <div class="monitor-footer">
+
+
+                <span>
+
+                    CORE MEMORY
+
+                </span>
+
+
+                <strong id="memoryState">
+
+                    NORMAL
+
+                </strong>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <article class="monitor-card">
+
+
+            <div class="monitor-card-top">
+
+
+                <div>
+
+
+                    <span class="monitor-label">
+
+                        NETWORK LOAD
+
+                    </span>
+
+
+                    <strong
+                        id="networkLoadValue"
+                        class="monitor-value">
+
+                        12%
+
+                    </strong>
+
+
+                </div>
+
+
+                <span class="monitor-icon">
+
+                    ◌
+
+                </span>
+
+
+            </div>
+
+
+            <div class="progress-track">
+
+
+                <div
+                    id="networkBar"
+                    class="progress-fill"
+                    style="width: 12%;">
+
+                </div>
+
+
+            </div>
+
+
+            <div class="monitor-footer">
+
+
+                <span>
+
+                    SECURE CHANNEL
+
+                </span>
+
+
+                <strong id="networkState">
+
+                    OPTIMAL
+
+                </strong>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <article class="monitor-card health-card">
+
+
+            <div class="monitor-card-top">
+
+
+                <div>
+
+
+                    <span class="monitor-label">
+
+                        SYSTEM HEALTH
+
+                    </span>
+
+
+                    <strong
+                        id="healthValue"
+                        class="monitor-value text-green">
+
+                        100%
+
+                    </strong>
+
+
+                </div>
+
+
+                <span class="monitor-icon">
+
+                    ✓
+
+                </span>
+
+
+            </div>
+
+
+            <div class="progress-track">
+
+
+                <div
+                    id="healthBar"
+                    class="progress-fill health-fill"
+                    style="width: 100%;">
+
+                </div>
+
+
+            </div>
+
+
+            <div class="monitor-footer">
+
+
+                <span>
+
+                    CORE INTEGRITY
+
+                </span>
+
+
+                <strong>
+
+                    EXCELLENT
+
+                </strong>
+
+
+            </div>
+
+
+        </article>
+
+
+    </div>
+
+
+
+    <div class="monitor-bottom-grid">
+
+
+        <article class="chart-card">
+
+
+            <div class="chart-header">
+
+
+                <div>
+
+
+                    <span class="eyebrow">
+
+                        LIVE DATA
+
+                    </span>
+
+
+                    <h3>
+
+                        Core Activity
+
+                    </h3>
+
+
+                </div>
+
+
+                <span id="chartStatus">
+
+                    UPDATING
+
+                </span>
+
+
+            </div>
+
+
+            <div
+                id="activityChart"
+                class="activity-chart">
+
+
+                <span style="height: 34%;"></span>
+
+
+                <span style="height: 55%;"></span>
+
+
+                <span style="height: 42%;"></span>
+
+
+                <span style="height: 72%;"></span>
+
+
+                <span style="height: 48%;"></span>
+
+
+                <span style="height: 63%;"></span>
+
+
+                <span style="height: 38%;"></span>
+
+
+                <span style="height: 76%;"></span>
+
+
+                <span style="height: 57%;"></span>
+
+
+                <span style="height: 69%;"></span>
+
+
+                <span style="height: 45%;"></span>
+
+
+                <span style="height: 61%;"></span>
+
+
+            </div>
+
+
+            <div class="chart-labels">
+
+
+                <span>
+
+                    -60s
+
+                </span>
+
+
+                <span>
+
+                    -40s
+
+                </span>
+
+
+                <span>
+
+                    -20s
+
+                </span>
+
+
+                <span>
+
+                    NOW
+
+                </span>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <article class="core-map-card">
+
+
+            <div class="chart-header">
+
+
+                <div>
+
+
+                    <span class="eyebrow">
+
+                        MODULE MAP
+
+                    </span>
+
+
+                    <h3>
+
+                        Command Core Network
+
+                    </h3>
+
+
+                </div>
+
+
+                <span class="text-green">
+
+                    8/8 ONLINE
+
+                </span>
+
+
+            </div>
+
+
+            <div class="core-map">
+
+
+                <div class="map-line line-one"></div>
+
+
+                <div class="map-line line-two"></div>
+
+
+                <div class="map-line line-three"></div>
+
+
+                <div class="map-line line-four"></div>
+
+
+                <div class="map-center">
+
+                    YT
+
+                </div>
+
+
+                <span class="map-node node-one">
+
+                    PWR
+
+                </span>
+
+
+                <span class="map-node node-two">
+
+                    NET
+
+                </span>
+
+
+                <span class="map-node node-three">
+
+                    SEC
+
+                </span>
+
+
+                <span class="map-node node-four">
+
+                    MEM
+
+                </span>
+
+
+                <span class="map-node node-five">
+
+                    CPU
+
+                </span>
+
+
+                <span class="map-node node-six">
+
+                    LOG
+
+                </span>
+
+
+            </div>
+
+
+        </article>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ==================================================
+     UTILITY TOOLS
+     ================================================== -->
+
+<section id="tools" class="page-section">
+
+
+    <div class="section-heading">
+
+
+        <div>
+
+
+            <span class="eyebrow">
+
+                COMMAND UTILITIES
+
+            </span>
+
+
+            <h2>
+
+                04
+
+                <span>
+
+                    UTILITY TOOLS
+
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Built-in tools designed for quick tasks inside YTCC.
+
+            </p>
+
+
+        </div>
+
+
+        <span class="section-code">
+
+            TOOLKIT-01
+
+        </span>
+
+
+    </div>
+
+
+
+    <div class="tools-grid">
+
+
+        <article class="tool-card">
+
+
+            <div class="tool-icon">
+
+                ⌗
+
+            </div>
+
+
+            <h3>
+
+                Password Generator
+
+            </h3>
+
+
+            <p>
+
+                Create a secure random password instantly.
+
+            </p>
+
+
+            <div class="tool-output-row">
+
+
+                <input
+                    id="passwordOutput"
+                    type="text"
+                    readonly
+                    value="YTCC-READY-2026">
+
+
+                <button
+                    id="copyPassword"
+                    class="small-action">
+
+                    COPY
+
+                </button>
+
+
+            </div>
+
+
+            <button
+                id="generatePassword"
+                class="dark-button tool-button">
+
+                GENERATE PASSWORD
+
+            </button>
+
+
+        </article>
+
+
+
+        <article class="tool-card">
+
+
+            <div class="tool-icon">
+
+                ◷
+
+            </div>
+
+
+            <h3>
+
+                Command Timer
+
+            </h3>
+
+
+            <p>
+
+                Run a timer directly inside the command center.
+
+            </p>
+
+
+            <div
+                id="timerDisplay"
+                class="timer-display">
+
+                00:00
+
+            </div>
+
+
+            <div class="tool-button-row">
+
+
+                <button
+                    id="startTimer"
+                    class="dark-button">
+
+                    START
+
+                </button>
+
+
+                <button
+                    id="resetTimer"
+                    class="small-action">
+
+                    RESET
+
+                </button>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <article class="tool-card notes-card">
+
+
+            <div class="tool-icon">
+
+                ✎
+
+            </div>
+
+
+            <h3>
+
+                Command Notes
+
+            </h3>
+
+
+            <p>
+
+                Save quick notes locally in your browser.
+
+            </p>
+
+
+            <textarea
+                id="commandNotes"
+                placeholder="Write a command note..."></textarea>
+
+
+            <div class="tool-button-row">
+
+
+                <button
+                    id="saveNotes"
+                    class="dark-button">
+
+                    SAVE NOTE
+
+                </button>
+
+
+                <span id="notesStatus">
+
+                    READY
+
+                </span>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <article class="tool-card">
+
+
+            <div class="tool-icon">
+
+                ⚄
+
+            </div>
+
+
+            <h3>
+
+                Random Generator
+
+            </h3>
+
+
+            <p>
+
+                Generate a random command value from 1 to 1000.
+
+            </p>
+
+
+            <div
+                id="randomOutput"
+                class="random-display">
+
+                000
+
+            </div>
+
+
+            <button
+                id="generateRandom"
+                class="dark-button tool-button">
+
+                GENERATE VALUE
+
+            </button>
+
+
+        </article>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ==================================================
+     SECURITY CENTER
+     ================================================== -->
+
+<section id="security" class="page-section">
+
+
+    <div class="section-heading">
+
+
+        <div>
+
+
+            <span class="eyebrow">
+
+                PROTECTION LAYER
+
+            </span>
+
+
+            <h2>
+
+                05
+
+                <span>
+
+                    SECURITY CENTER
+
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Monitor command-center protection and security modules.
+
+            </p>
+
+
+        </div>
+
+
+        <div class="security-score">
+
+
+            <span>
+
+                SECURITY SCORE
+
+            </span>
+
+
+            <strong>
+
+                100
+
+            </strong>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="security-grid">
+
+
+        <article class="security-main-card">
+
+
+            <div class="shield-visual">
+
+
+                <div class="shield-ring ring-a"></div>
+
+
+                <div class="shield-ring ring-b"></div>
+
+
+                <div class="shield-center">
+
+                    🛡
+
+                </div>
+
+
+            </div>
+
+
+            <div class="security-main-content">
+
+
+                <span class="eyebrow">
+
+                    THREAT MONITOR
+
+                </span>
+
+
+                <h3>
+
+                    SYSTEM PROTECTED
+
+                </h3>
+
+
+                <p>
+
+                    All protection layers are active and no threats
+                    have been detected.
+
+                </p>
+
+
+                <div class="security-main-stats">
+
+
+                    <span>
+
+                        THREATS
+
+                        <strong>
+
+                            0
+
+                        </strong>
+
+                    </span>
+
+
+                    <span>
+
+                        FIREWALL
+
+                        <strong>
+
+                            ACTIVE
+
+                        </strong>
+
+                    </span>
+
+
+                    <span>
+
+                        ENCRYPTION
+
+                        <strong>
+
+                            SECURE
+
+                        </strong>
+
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <div class="security-module-list">
+
+
+            <article class="security-module">
+
+
+                <div class="security-module-icon">
+
+                    🛡
+
+                </div>
+
+
+                <div>
+
+
+                    <strong>
+
+                        Firewall
+
+                    </strong>
+
+
+                    <small>
+
+                        Network protection enabled
+
+                    </small>
+
+
+                </div>
+
+
+                <span class="module-status active-status">
+
+                    ACTIVE
+
+                </span>
+
+
+            </article>
+
+
+
+            <article class="security-module">
+
+
+                <div class="security-module-icon">
+
+                    🔒
+
+                </div>
+
+
+                <div>
+
+
+                    <strong>
+
+                        Encryption
+
+                    </strong>
+
+
+                    <small>
+
+                        Secure command communication
+
+                    </small>
+
+
+                </div>
+
+
+                <span class="module-status active-status">
+
+                    AES
+
+                </span>
+
+
+            </article>
+
+
+
+            <article class="security-module">
+
+
+                <div class="security-module-icon">
+
+                    ◉
+
+                </div>
+
+
+                <div>
+
+
+                    <strong>
+
+                        Threat Monitor
+
+                    </strong>
+
+
+                    <small>
+
+                        Continuous system monitoring
+
+                    </small>
+
+
+                </div>
+
+
+                <span class="module-status active-status">
+
+                    CLEAR
+
+                </span>
+
+
+            </article>
+
+
+
+            <article class="security-module">
+
+
+                <div class="security-module-icon">
+
+                    ✓
+
+                </div>
+
+
+                <div>
+
+
+                    <strong>
+
+                        Access Control
+
+                    </strong>
+
+
+                    <small>
+
+                        Administrator access verified
+
+                    </small>
+
+
+                </div>
+
+
+                <span class="module-status active-status">
+
+                    ADMIN
+
+                </span>
+
+
+            </article>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ==================================================
+     SYSTEM ACTIVITY LOG
+     ================================================== -->
+
+<section id="activity" class="page-section">
+
+
+    <div class="section-heading">
+
+
+        <div>
+
+
+            <span class="eyebrow">
+
+                EVENT HISTORY
+
+            </span>
+
+
+            <h2>
+
+                06
+
+                <span>
+
+                    SYSTEM ACTIVITY
+
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Live events and command-center operations.
+
+            </p>
+
+
+        </div>
+
+
+        <div class="activity-actions">
+
+
+            <button
+                id="pauseActivity"
+                class="small-action">
+
+                PAUSE
+
+            </button>
+
+
+            <button
+                id="clearActivity"
+                class="dark-button">
+
+                CLEAR LOG
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="activity-card">
+
+
+        <div class="activity-header-row">
+
+
+            <span>
+
+                EVENT
+
+            </span>
+
+
+            <span>
+
+                MODULE
+
+            </span>
+
+
+            <span>
+
+                STATUS
+
+            </span>
+
+
+            <span>
+
+                TIME
+
+            </span>
+
+
+        </div>
+
+
+        <div
+            id="activityLog"
+            class="activity-log">
+
+
+            <div class="activity-row">
+
+
+                <div>
+
+                    Command Core initialized successfully.
+
+                </div>
+
+
+                <span>
+
+                    CORE
+
+                </span>
+
+
+                <strong class="text-green">
+
+                    COMPLETE
+
+                </strong>
+
+
+                <time>
+
+                    00:00:00
+
+                </time>
+
+
+            </div>
+
+
+            <div class="activity-row">
+
+
+                <div>
+
+                    Secure network connection established.
+
+                </div>
+
+
+                <span>
+
+                    NETWORK
+
+                </span>
+
+
+                <strong class="text-green">
+
+                    CONNECTED
+
+                </strong>
+
+
+                <time>
+
+                    00:00:01
+
+                </time>
+
+
+            </div>
+
+
+            <div class="activity-row">
+
+
+                <div>
+
+                    Security protection modules verified.
+
+                </div>
+
+
+                <span>
+
+                    SECURITY
+
+                </span>
+
+
+                <strong class="text-cyan">
+
+                    PROTECTED
+
+                </strong>
+
+
+                <time>
+
+                    00:00:02
+
+                </time>
+
+
+            </div>
+
+
+            <div class="activity-row">
+
+
+                <div>
+
+                    All command modules are ready.
+
+                </div>
+
+
+                <span>
+
+                    SYSTEM
+
+                </span>
+
+
+                <strong class="text-green">
+
+                    READY
+
+                </strong>
+
+
+                <time>
+
+                    00:00:03
+
+                </time>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ==================================================
+     SETTINGS
+     ================================================== -->
+
+<section id="settings" class="page-section">
+
+
+    <div class="section-heading">
+
+
+        <div>
+
+
+            <span class="eyebrow">
+
+                COMMAND PREFERENCES
+
+            </span>
+
+
+            <h2>
+
+                07
+
+                <span>
+
+                    SETTINGS
+
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Customize the appearance and behavior of YTCC.
+
+            </p>
+
+
+        </div>
+
+
+        <span class="section-code">
+
+            SETTINGS-01
+
+        </span>
+
+
+    </div>
+
+
+
+    <div class="settings-grid">
+
+
+        <article class="settings-card">
+
+
+            <div class="settings-card-heading">
+
+
+                <div>
+
+
+                    <span class="settings-icon">
+
+                        ◐
+
+                    </span>
+
+
+                    <div>
+
+
+                        <h3>
+
+                            Command Theme
+
+                        </h3>
+
+
+                        <p>
+
+                            Select your command-core color.
+
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <span id="currentThemeLabel">
+
+                    CYAN
+
+                </span>
+
+
+            </div>
+
+
+            <div class="theme-options">
+
+
+                <button
+                    class="theme-option active"
+                    data-theme="cyan"
+                    aria-label="Cyan theme">
+
+                    <span></span>
+
+                    CYAN
+
+                </button>
+
+
+                <button
+                    class="theme-option"
+                    data-theme="blue"
+                    aria-label="Blue theme">
+
+                    <span></span>
+
+                    BLUE
+
+                </button>
+
+
+                <button
+                    class="theme-option"
+                    data-theme="purple"
+                    aria-label="Purple theme">
+
+                    <span></span>
+
+                    PURPLE
+
+                </button>
+
+
+                <button
+                    class="theme-option"
+                    data-theme="green"
+                    aria-label="Green theme">
+
+                    <span></span>
+
+                    GREEN
+
+                </button>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <article class="settings-card">
+
+
+            <div class="settings-card-heading">
+
+
+                <div>
+
+
+                    <span class="settings-icon">
+
+                        ◉
+
+                    </span>
+
+
+                    <div>
+
+
+                        <h3>
+
+                            Live Monitoring
+
+                        </h3>
+
+
+                        <p>
+
+                            Animate system values and activity data.
+
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <label class="switch">
+
+
+                    <input
+                        id="monitorToggle"
+                        type="checkbox"
+                        checked>
+
+
+                    <span class="switch-slider"></span>
+
+
+                </label>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <article class="settings-card">
+
+
+            <div class="settings-card-heading">
+
+
+                <div>
+
+
+                    <span class="settings-icon">
+
+                        🔔
+
+                    </span>
+
+
+                    <div>
+
+
+                        <h3>
+
+                            Command Notifications
+
+                        </h3>
+
+
+                        <p>
+
+                            Show system events and command alerts.
+
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <label class="switch">
+
+
+                    <input
+                        id="notificationToggle"
+                        type="checkbox"
+                        checked>
+
+
+                    <span class="switch-slider"></span>
+
+
+                </label>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <article class="settings-card">
+
+
+            <div class="settings-card-heading">
+
+
+                <div>
+
+
+                    <span class="settings-icon">
+
+                        ⛶
+
+                    </span>
+
+
+                    <div>
+
+
+                        <h3>
+
+                            Fullscreen Command View
+
+                        </h3>
+
+
+                        <p>
+
+                            Open YTCC without browser controls.
+
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <button
+                    id="settingsFullscreen"
+                    class="dark-button">
+
+                    OPEN
+
+                </button>
+
+
+            </div>
+
+
+        </article>
+
+
+    </div>
+
+
+</section>
 
 
 
@@ -1508,50 +4060,57 @@ class="primary-button mt-20">
      FOOTER
      ================================================== -->
 
-
 <footer class="footer">
 
 
-
-    <p>
-
-
-        YOYOTECH COMMAND CONTROL CENTER
+    <div>
 
 
-    </p>
+        <strong>
 
+            YOYOTECH
 
+        </strong>
 
-    <p>
-
-
-        VERSION 1.0.0
-
-        |
 
         <span>
 
-            SECURE CONNECTION
+            COMMAND CONTROL CENTER
 
         </span>
 
 
-        |
-
-        ALL SYSTEMS OPERATIONAL
+    </div>
 
 
-    </p>
+    <div>
 
+
+        <span>
+
+            COMMAND CORE UPDATE
+
+        </span>
+
+
+        <span>
+
+            VERSION 2.0.0
+
+        </span>
+
+
+        <span class="footer-online">
+
+            ● ALL SYSTEMS OPERATIONAL
+
+        </span>
+
+
+    </div>
 
 
 </footer>
-
-
-
-
-
 
 
 </main>
@@ -1561,246 +4120,2595 @@ class="primary-button mt-20">
 
 
 
+<!-- ==================================================
+     TOAST NOTIFICATIONS
+     ================================================== -->
 
+<div
+    id="toastContainer"
+    class="toast-container">
+
+</div>
+
+
+
+<!-- ==================================================
+     JAVASCRIPT
+     ================================================== -->
 
 <script>
 
-const terminalInput = document.getElementById("terminalInput");
 
-const executeButton = document.getElementById("executeCommand");
-
-const terminalBody = document.querySelector(".terminal-body");
-
+/* ==================================================
+   YTCC 2.0 COMMAND CORE
+   ================================================== */
 
 
-function addTerminalLine(message){
+const appStartTime = Date.now();
 
-    const line = document.createElement("div");
 
-    line.className = "terminal-line";
+let timerSeconds = 0;
 
-    line.innerHTML = message;
+let timerRunning = false;
 
-    terminalBody.appendChild(line);
+let timerInterval = null;
 
-    terminalBody.scrollTop = terminalBody.scrollHeight;
+let activityPaused = false;
+
+let monitoringEnabled = true;
+
+let notificationsEnabled = true;
+
+
+const terminalInput =
+document.getElementById("terminalInput");
+
+
+const terminalOutput =
+document.getElementById("terminalOutput");
+
+
+const executeButton =
+document.getElementById("executeCommand");
+
+
+const activityLog =
+document.getElementById("activityLog");
+
+
+const liveClock =
+document.getElementById("liveClock");
+
+
+const uptimeValue =
+document.getElementById("uptimeValue");
+
+
+/* ==================================================
+   BOOT SCREEN
+   ================================================== */
+
+
+const bootMessages = [
+
+    "INITIALIZING COMMAND CORE...",
+
+    "LOADING SYSTEM MODULES...",
+
+    "VERIFYING SECURITY LAYERS...",
+
+    "CONNECTING SECURE NETWORK...",
+
+    "STARTING LIVE MONITOR...",
+
+    "COMMAND CORE ONLINE."
+
+];
+
+
+const bootMessage =
+document.getElementById("bootMessage");
+
+
+const bootProgress =
+document.getElementById("bootProgress");
+
+
+let bootStep = 0;
+
+
+const bootInterval =
+setInterval(() => {
+
+
+    bootMessage.textContent =
+    bootMessages[bootStep];
+
+
+    bootProgress.style.width =
+    ((bootStep + 1) /
+    bootMessages.length * 100) + "%";
+
+
+    bootStep++;
+
+
+    if(
+        bootStep >=
+        bootMessages.length
+    ){
+
+
+        clearInterval(
+        bootInterval
+        );
+
+
+        setTimeout(() => {
+
+
+            document
+            .getElementById(
+            "bootScreen"
+            )
+            .classList
+            .add(
+            "boot-complete"
+            );
+
+
+        }, 500);
+
+
+    }
+
+
+}, 450);
+
+
+/* ==================================================
+   LIVE CLOCK
+   ================================================== */
+
+
+function updateClock(){
+
+
+    const now =
+    new Date();
+
+
+    liveClock.textContent =
+    now.toLocaleTimeString(
+    [],
+    {
+        hour:
+        "2-digit",
+
+        minute:
+        "2-digit",
+
+        second:
+        "2-digit"
+    }
+    );
+
 
 }
 
 
-
-function runCommand(){
-
-    let command = terminalInput.value.toLowerCase().trim();
+updateClock();
 
 
-    if(command === "") return;
+setInterval(
+updateClock,
+1000
+);
 
+
+/* ==================================================
+   SYSTEM UPTIME
+   ================================================== */
+
+
+function updateUptime(){
+
+
+    const elapsed =
+    Math.floor(
+    (Date.now() -
+    appStartTime) /
+    1000
+    );
+
+
+    const hours =
+    String(
+    Math.floor(
+    elapsed / 3600
+    )
+    )
+    .padStart(
+    2,
+    "0"
+    );
+
+
+    const minutes =
+    String(
+    Math.floor(
+    (elapsed % 3600) /
+    60
+    )
+    )
+    .padStart(
+    2,
+    "0"
+    );
+
+
+    const seconds =
+    String(
+    elapsed % 60
+    )
+    .padStart(
+    2,
+    "0"
+    );
+
+
+    uptimeValue.textContent =
+
+    hours +
+    ":" +
+    minutes +
+    ":" +
+    seconds;
+
+
+}
+
+
+setInterval(
+updateUptime,
+1000
+);
+
+
+/* ==================================================
+   TERMINAL
+   ================================================== */
+
+
+function addTerminalLine(
+message,
+type = ""
+){
+
+
+    const line =
+    document.createElement(
+    "div"
+    );
+
+
+    line.className =
+    "terminal-line " +
+    type;
+
+
+    line.innerHTML =
+    message;
+
+
+    terminalOutput
+    .appendChild(
+    line
+    );
+
+
+    terminalOutput
+    .scrollTop =
+    terminalOutput
+    .scrollHeight;
+
+
+}
+
+
+function runCommand(
+forcedCommand = null
+){
+
+
+    const command =
+
+    (
+    forcedCommand ||
+    terminalInput.value
+    )
+
+    .toLowerCase()
+
+    .trim();
+
+
+    if(
+        command === ""
+    ){
+
+        return;
+
+    }
 
 
     addTerminalLine(
 
-        `<span class="terminal-user">YT:~$</span> ${command}`
+    `<span class="terminal-user">
+    YTCC:~$
+    </span>
+
+    ${command}`,
+
+    "user-command"
 
     );
 
 
-
-    switch(command){
+    switch(
+    command
+    ){
 
 
         case "help":
 
+
             addTerminalLine(
-            "AVAILABLE COMMANDS: help, status, scan, system, power, security, network, diagnostics, cpu, memory, uptime, version, clear, reboot"
+
+            `<span class="terminal-user">
+            HELP
+            </span>
+
+            AVAILABLE COMMANDS:
+            help, status, scan,
+            diagnostics, security,
+            network, cpu, memory,
+            uptime, monitor,
+            theme, fullscreen,
+            refresh, reboot,
+            clear, version`
+
             );
 
-        break;
 
+        break;
 
 
         case "status":
 
+
             addTerminalLine(
-            "SYSTEM ONLINE | HEALTH 100% | SECURITY ACTIVE"
+
+            `<span class="terminal-user">
+            STATUS
+            </span>
+
+            SYSTEM ONLINE |
+            HEALTH 100% |
+            SECURITY PROTECTED |
+            NETWORK CONNECTED`
+
             );
 
-        break;
 
+        break;
 
 
         case "scan":
 
-            addTerminalLine(
-            "NETWORK SCAN COMPLETE - NO THREATS FOUND"
-            );
-
-        break;
-
-
-
-        case "system":
 
             addTerminalLine(
-            "YOYOTECH COMMAND CONTROL CENTER VERSION 1.0.0"
+
+            `<span class="terminal-user">
+            NETWORK
+            </span>
+
+            SCANNING ACTIVE
+            CHANNELS...`
+
             );
 
+
+            setTimeout(() => {
+
+
+                addTerminalLine(
+
+                `<span class="terminal-user">
+                COMPLETE
+                </span>
+
+                NETWORK SCAN COMPLETE.
+                NO THREATS FOUND.`
+
+                );
+
+
+                addActivity(
+
+                "Network scan completed successfully.",
+
+                "NETWORK",
+
+                "CLEAR"
+
+                );
+
+
+            }, 1200);
+
+
         break;
-
-
-
-        case "power":
-
-            addTerminalLine(
-            "POWER LEVEL: 100% | SYSTEM ACTIVE"
-            );
-
-        break;
-
-
-
-        case "security":
-
-            addTerminalLine(
-            "SECURITY SHIELD ACTIVE"
-            );
-
-        break;
-
-
-
-        case "network":
-
-            addTerminalLine(
-            "NETWORK STATUS: CONNECTED"
-            );
-
-        break;
-
 
 
         case "diagnostics":
 
+
             addTerminalLine(
-            "ALL SYSTEM MODULES WORKING"
+
+            `<span class="terminal-user">
+            DIAGNOSTICS
+            </span>
+
+            CHECKING COMMAND
+            MODULES...`
+
             );
+
+
+            setTimeout(() => {
+
+
+                addTerminalLine(
+
+                `<span class="terminal-user">
+                COMPLETE
+                </span>
+
+                ALL 8 MODULES
+                ARE WORKING NORMALLY.`
+
+                );
+
+
+                addActivity(
+
+                "Complete diagnostics check finished.",
+
+                "SYSTEM",
+
+                "COMPLETE"
+
+                );
+
+
+            }, 1000);
+
 
         break;
 
+
+        case "security":
+
+
+            addTerminalLine(
+
+            `<span class="terminal-user">
+            SECURITY
+            </span>
+
+            FIREWALL ACTIVE |
+            ENCRYPTION SECURE |
+            THREAT COUNT: 0`
+
+            );
+
+
+        break;
+
+
+        case "network":
+
+
+            addTerminalLine(
+
+            `<span class="terminal-user">
+            NETWORK
+            </span>
+
+            CONNECTED |
+            SIGNAL 98% |
+            SECURE CHANNEL ACTIVE`
+
+            );
+
+
+        break;
 
 
         case "cpu":
 
+
             addTerminalLine(
-            "CPU ACTIVITY: 22%"
+
+            `<span class="terminal-user">
+            CPU
+            </span>
+
+            CURRENT ACTIVITY:
+            ${document
+            .getElementById(
+            "cpuValue"
+            )
+            .textContent}`
+
             );
 
-        break;
 
+        break;
 
 
         case "memory":
 
+
             addTerminalLine(
-            "MEMORY USAGE: 49%"
+
+            `<span class="terminal-user">
+            MEMORY
+            </span>
+
+            CURRENT USAGE:
+            ${document
+            .getElementById(
+            "memoryValue"
+            )
+            .textContent}`
+
             );
 
-        break;
 
+        break;
 
 
         case "uptime":
 
-            addTerminalLine(
-            "UPTIME: 00:00:18"
-            );
-
-        break;
-
-
-
-        case "version":
 
             addTerminalLine(
-            "YOYOTECH CONTROL CENTER VERSION 1.0.0"
+
+            `<span class="terminal-user">
+            UPTIME
+            </span>
+
+            SYSTEM UPTIME:
+            ${uptimeValue
+            .textContent}`
+
             );
 
-        break;
-
-
-
-        case "clear":
-
-            terminalBody.innerHTML = "";
 
         break;
 
+
+        case "monitor":
+
+
+            document
+            .getElementById(
+            "monitor"
+            )
+            .scrollIntoView(
+            {
+                behavior:
+                "smooth"
+            }
+            );
+
+
+            addTerminalLine(
+
+            `<span class="terminal-user">
+            MONITOR
+            </span>
+
+            OPENING LIVE
+            SYSTEM MONITOR...`
+
+            );
+
+
+        break;
+
+
+        case "theme":
+
+
+            cycleTheme();
+
+
+            addTerminalLine(
+
+            `<span class="terminal-user">
+            THEME
+            </span>
+
+            COMMAND THEME
+            UPDATED.`
+
+            );
+
+
+        break;
+
+
+        case "fullscreen":
+
+
+            toggleFullscreen();
+
+
+            addTerminalLine(
+
+            `<span class="terminal-user">
+            DISPLAY
+            </span>
+
+            TOGGLING FULLSCREEN
+            COMMAND VIEW...`
+
+            );
+
+
+        break;
+
+
+        case "refresh":
+
+
+            addTerminalLine(
+
+            `<span class="terminal-user">
+            SYSTEM
+            </span>
+
+            REFRESHING COMMAND
+            CORE...`
+
+            );
+
+
+            setTimeout(() => {
+
+
+                location.reload();
+
+
+            }, 700);
+
+
+        break;
 
 
         case "reboot":
 
+
             addTerminalLine(
-            "REBOOT SEQUENCE STARTED..."
+
+            `<span class="terminal-user">
+            REBOOT
+            </span>
+
+            REBOOT SEQUENCE
+            STARTED...`
+
             );
 
 
-            setTimeout(()=>{
+            setTimeout(() => {
 
-                addTerminalLine(
-                "SYSTEM REBOOT COMPLETE"
-                );
 
-            },1500);
+                location.reload();
+
+
+            }, 1500);
+
 
         break;
 
 
+        case "version":
+
+
+            addTerminalLine(
+
+            `<span class="terminal-user">
+            VERSION
+            </span>
+
+            YOYOTECH COMMAND
+            CONTROL CENTER
+            VERSION 2.0.0`
+
+            );
+
+
+        break;
+
+
+        case "clear":
+
+
+            terminalOutput
+            .innerHTML = "";
+
+
+        break;
+
 
         default:
 
+
             addTerminalLine(
-            "UNKNOWN COMMAND. TYPE 'help' FOR COMMAND LIST."
+
+            `<span class="terminal-user">
+            ERROR
+            </span>
+
+            UNKNOWN COMMAND.
+            TYPE 'help' FOR
+            THE COMMAND LIST.`,
+
+            "error-line"
+
             );
+
 
     }
 
 
-    terminalInput.value = "";
+    terminalInput.value =
+    "";
+
+
+    terminalInput.focus();
 
 
 }
 
 
-
-executeButton.addEventListener(
+executeButton
+.addEventListener(
 "click",
-runCommand
+() => runCommand()
 );
 
 
-
-terminalInput.addEventListener(
+terminalInput
+.addEventListener(
 "keydown",
-function(event){
+event => {
 
-    if(event.key === "Enter"){
+
+    if(
+        event.key ===
+        "Enter"
+    ){
+
 
         runCommand();
 
+
     }
+
 
 });
 
-</script>
+
+document
+.querySelectorAll(
+"[data-command]"
+)
+.forEach(
+button => {
 
 
+    button
+    .addEventListener(
+    "click",
+    () => {
 
-<script>
-if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("service-worker.js");
+
+        const command =
+        button.dataset
+        .command;
+
+
+        if(
+            button.classList
+            .contains(
+            "shortcut-card"
+            )
+        ){
+
+
+            document
+            .getElementById(
+            "terminal"
+            )
+            .scrollIntoView(
+            {
+                behavior:
+                "smooth"
+            }
+            );
+
+
+        }
+
+
+        runCommand(
+        command
+        );
+
+
+    }
+    );
+
+
 }
+);
+
+
+document
+.getElementById(
+"clearTerminal"
+)
+.addEventListener(
+"click",
+() => {
+
+
+    terminalOutput
+    .innerHTML = "";
+
+
+}
+);
+
+
+/* ==================================================
+   ACTIVITY LOG
+   ================================================== */
+
+
+function getSystemTime(){
+
+
+    const elapsed =
+    Math.floor(
+    (Date.now() -
+    appStartTime) /
+    1000
+    );
+
+
+    return "00:" +
+
+    String(
+    Math.floor(
+    elapsed / 60
+    )
+    )
+    .padStart(
+    2,
+    "0"
+    )
+
+    +
+
+    ":" +
+
+    String(
+    elapsed % 60
+    )
+    .padStart(
+    2,
+    "0"
+    );
+
+
+}
+
+
+function addActivity(
+message,
+module = "SYSTEM",
+status = "READY"
+){
+
+
+    if(
+        activityPaused
+    ){
+
+        return;
+
+    }
+
+
+    const row =
+    document.createElement(
+    "div"
+    );
+
+
+    row.className =
+    "activity-row";
+
+
+    row.innerHTML =
+
+    `<div>
+    ${message}
+    </div>
+
+    <span>
+    ${module}
+    </span>
+
+    <strong class="text-green">
+    ${status}
+    </strong>
+
+    <time>
+    ${getSystemTime()}
+    </time>`;
+
+
+    activityLog
+    .prepend(
+    row
+    );
+
+
+    while(
+        activityLog
+        .children
+        .length > 12
+    ){
+
+
+        activityLog
+        .lastElementChild
+        .remove();
+
+
+    }
+
+
+}
+
+
+const automaticEvents = [
+
+    [
+    "Command-core performance updated.",
+    "CORE",
+    "STABLE"
+    ],
+
+    [
+    "Network channel verified.",
+    "NETWORK",
+    "SECURE"
+    ],
+
+    [
+    "Security monitor completed a check.",
+    "SECURITY",
+    "CLEAR"
+    ],
+
+    [
+    "System memory optimized.",
+    "MEMORY",
+    "NORMAL"
+    ],
+
+    [
+    "Command modules synchronized.",
+    "SYSTEM",
+    "READY"
+    ]
+
+];
+
+
+setInterval(
+() => {
+
+
+    if(
+        !activityPaused
+    ){
+
+
+        const event =
+
+        automaticEvents[
+        Math.floor(
+        Math.random() *
+        automaticEvents.length
+        )
+        ];
+
+
+        addActivity(
+        event[0],
+        event[1],
+        event[2]
+        );
+
+
+    }
+
+
+},
+7000
+);
+
+
+document
+.getElementById(
+"pauseActivity"
+)
+.addEventListener(
+"click",
+event => {
+
+
+    activityPaused =
+    !activityPaused;
+
+
+    event.target
+    .textContent =
+
+    activityPaused
+
+    ?
+
+    "RESUME"
+
+    :
+
+    "PAUSE";
+
+
+}
+);
+
+
+document
+.getElementById(
+"clearActivity"
+)
+.addEventListener(
+"click",
+() => {
+
+
+    activityLog
+    .innerHTML = "";
+
+
+    showToast(
+
+    "Activity log cleared.",
+
+    "success"
+
+    );
+
+
+}
+);
+
+
+/* ==================================================
+   LIVE MONITOR
+   ================================================== */
+
+
+function updateMonitor(){
+
+
+    if(
+        !monitoringEnabled
+    ){
+
+        return;
+
+    }
+
+
+    const cpu =
+    Math.floor(
+    18 +
+    Math.random() *
+    38
+    );
+
+
+    const memory =
+    Math.floor(
+    42 +
+    Math.random() *
+    18
+    );
+
+
+    const network =
+    Math.floor(
+    6 +
+    Math.random() *
+    20
+    );
+
+
+    updateMonitorItem(
+    "cpu",
+    cpu
+    );
+
+
+    updateMonitorItem(
+    "memory",
+    memory
+    );
+
+
+    updateMonitorItem(
+    "network",
+    network
+    );
+
+
+    document
+    .getElementById(
+    "networkLoadTop"
+    )
+    .textContent =
+
+    network + "%";
+
+
+    document
+    .getElementById(
+    "networkLoadValue"
+    )
+    .textContent =
+
+    network + "%";
+
+
+    const bars =
+    document
+    .querySelectorAll(
+    "#activityChart span"
+    );
+
+
+    bars.forEach(
+    bar => {
+
+
+        bar.style.height =
+
+        (
+        25 +
+        Math.random() *
+        60
+        )
+
+        + "%";
+
+
+    }
+    );
+
+
+}
+
+
+function updateMonitorItem(
+name,
+value
+){
+
+
+    const valueElement =
+
+    document
+    .getElementById(
+
+    name === "network"
+
+    ?
+
+    "networkLoadValue"
+
+    :
+
+    name + "Value"
+
+    );
+
+
+    const barElement =
+
+    document
+    .getElementById(
+
+    name === "network"
+
+    ?
+
+    "networkBar"
+
+    :
+
+    name + "Bar"
+
+    );
+
+
+    if(
+        valueElement
+    ){
+
+
+        valueElement
+        .textContent =
+
+        value + "%";
+
+
+    }
+
+
+    if(
+        barElement
+    ){
+
+
+        barElement
+        .style.width =
+
+        value + "%";
+
+
+    }
+
+
+}
+
+
+setInterval(
+updateMonitor,
+2200
+);
+
+
+/* ==================================================
+   CONTROL BUTTONS
+   ================================================== */
+
+
+document
+.querySelectorAll(
+".control-action"
+)
+.forEach(
+button => {
+
+
+    button
+    .addEventListener(
+    "click",
+    () => {
+
+
+        const action =
+
+        button
+        .dataset
+        .action;
+
+
+        const messages = {
+
+
+            power:
+            "Power module checked. System power is stable.",
+
+
+            scan:
+            "Network scan started.",
+
+
+            diagnostics:
+            "Diagnostics check started.",
+
+
+            shield:
+            "Security shield reinforced.",
+
+
+            lockdown:
+            "Lockdown mode activated.",
+
+
+            reboot:
+            "System reboot sequence started."
+
+
+        };
+
+
+        showToast(
+
+        messages[action],
+
+        action ===
+        "lockdown"
+
+        ?
+
+        "warning"
+
+        :
+
+        "success"
+
+        );
+
+
+        addActivity(
+
+        messages[action],
+
+        "CONTROL",
+
+        "EXECUTED"
+
+        );
+
+
+        if(
+            action ===
+            "scan" ||
+            action ===
+            "diagnostics"
+        ){
+
+
+            runCommand(
+            action
+            );
+
+
+        }
+
+
+        if(
+            action ===
+            "reboot"
+        ){
+
+
+            setTimeout(
+            () => {
+
+
+                location
+                .reload();
+
+
+            },
+            1500
+            );
+
+
+        }
+
+
+    }
+    );
+
+
+}
+);
+
+
+/* ==================================================
+   REFRESH
+   ================================================== */
+
+
+document
+.getElementById(
+"refreshSystem"
+)
+.addEventListener(
+"click",
+() => {
+
+
+    showToast(
+
+    "Refreshing command system...",
+
+    "success"
+
+    );
+
+
+    setTimeout(
+    () => {
+
+
+        location
+        .reload();
+
+
+    },
+    600
+    );
+
+
+}
+);
+
+
+/* ==================================================
+   FULLSCREEN
+   ================================================== */
+
+
+function toggleFullscreen(){
+
+
+    if(
+        !document
+        .fullscreenElement
+    ){
+
+
+        document
+        .documentElement
+        .requestFullscreen()
+        .catch(
+        () => {}
+        );
+
+
+    }else{
+
+
+        document
+        .exitFullscreen();
+
+
+    }
+
+
+}
+
+
+document
+.getElementById(
+"fullscreenButton"
+)
+.addEventListener(
+"click",
+toggleFullscreen
+);
+
+
+document
+.getElementById(
+"shortcutFullscreen"
+)
+.addEventListener(
+"click",
+toggleFullscreen
+);
+
+
+document
+.getElementById(
+"settingsFullscreen"
+)
+.addEventListener(
+"click",
+toggleFullscreen
+);
+
+
+/* ==================================================
+   OPEN COMMAND CORE
+   ================================================== */
+
+
+document
+.getElementById(
+"openCommandCore"
+)
+.addEventListener(
+"click",
+() => {
+
+
+    document
+    .getElementById(
+    "terminal"
+    )
+    .scrollIntoView(
+    {
+        behavior:
+        "smooth"
+    }
+    );
+
+
+    setTimeout(
+    () => {
+
+
+        terminalInput
+        .focus();
+
+
+    },
+    700
+    );
+
+
+}
+);
+
+
+/* ==================================================
+   THEMES
+   ================================================== */
+
+
+const themes = [
+
+"cyan",
+
+"blue",
+
+"purple",
+
+"green"
+
+];
+
+
+function setTheme(
+theme
+){
+
+
+    document
+    .documentElement
+    .setAttribute(
+
+    "data-theme",
+
+    theme
+
+    );
+
+
+    localStorage
+    .setItem(
+
+    "ytcc-theme",
+
+    theme
+
+    );
+
+
+    document
+    .getElementById(
+    "currentThemeLabel"
+    )
+    .textContent =
+
+    theme
+    .toUpperCase();
+
+
+    document
+    .querySelectorAll(
+    ".theme-option"
+    )
+    .forEach(
+    button => {
+
+
+        button
+        .classList
+        .toggle(
+
+        "active",
+
+        button
+        .dataset
+        .theme ===
+        theme
+
+        );
+
+
+    }
+    );
+
+
+}
+
+
+function cycleTheme(){
+
+
+    const current =
+
+    document
+    .documentElement
+    .getAttribute(
+    "data-theme"
+    )
+
+    ||
+
+    "cyan";
+
+
+    const index =
+
+    themes
+    .indexOf(
+    current
+    );
+
+
+    const next =
+
+    themes[
+    (
+    index + 1
+    )
+
+    %
+
+    themes.length
+    ];
+
+
+    setTheme(
+    next
+    );
+
+
+    showToast(
+
+    "Theme changed to " +
+
+    next.toUpperCase(),
+
+    "success"
+
+    );
+
+
+}
+
+
+const savedTheme =
+
+localStorage
+.getItem(
+"ytcc-theme"
+);
+
+
+if(
+    savedTheme
+){
+
+
+    setTheme(
+    savedTheme
+    );
+
+
+}
+
+
+document
+.querySelectorAll(
+".theme-option"
+)
+.forEach(
+button => {
+
+
+    button
+    .addEventListener(
+    "click",
+    () => {
+
+
+        setTheme(
+
+        button
+        .dataset
+        .theme
+
+        );
+
+
+        showToast(
+
+        "Command theme updated.",
+
+        "success"
+
+        );
+
+
+    }
+    );
+
+
+}
+);
+
+
+document
+.getElementById(
+"shortcutTheme"
+)
+.addEventListener(
+"click",
+cycleTheme
+);
+
+
+/* ==================================================
+   PASSWORD GENERATOR
+   ================================================== */
+
+
+const passwordCharacters =
+
+"ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+
+"abcdefghijklmnopqrstuvwxyz" +
+
+"0123456789" +
+
+"!@#$%^&*";
+
+
+document
+.getElementById(
+"generatePassword"
+)
+.addEventListener(
+"click",
+() => {
+
+
+    let password = "";
+
+
+    for(
+        let i = 0;
+        i < 16;
+        i++
+    ){
+
+
+        password +=
+
+        passwordCharacters[
+        Math.floor(
+        Math.random() *
+
+        passwordCharacters
+        .length
+        )
+        ];
+
+
+    }
+
+
+    document
+    .getElementById(
+    "passwordOutput"
+    )
+    .value =
+
+    password;
+
+
+}
+);
+
+
+document
+.getElementById(
+"copyPassword"
+)
+.addEventListener(
+"click",
+async () => {
+
+
+    const password =
+
+    document
+    .getElementById(
+    "passwordOutput"
+    )
+    .value;
+
+
+    try{
+
+
+        await navigator
+        .clipboard
+        .writeText(
+        password
+        );
+
+
+        showToast(
+
+        "Password copied.",
+
+        "success"
+
+        );
+
+
+    }catch{
+
+
+        showToast(
+
+        "Copy was not available.",
+
+        "warning"
+
+        );
+
+
+    }
+
+
+}
+);
+
+
+/* ==================================================
+   TIMER
+   ================================================== */
+
+
+function updateTimerDisplay(){
+
+
+    const minutes =
+
+    String(
+    Math.floor(
+    timerSeconds / 60
+    )
+    )
+    .padStart(
+    2,
+    "0"
+    );
+
+
+    const seconds =
+
+    String(
+    timerSeconds % 60
+    )
+    .padStart(
+    2,
+    "0"
+    );
+
+
+    document
+    .getElementById(
+    "timerDisplay"
+    )
+    .textContent =
+
+    minutes +
+
+    ":" +
+
+    seconds;
+
+
+}
+
+
+document
+.getElementById(
+"startTimer"
+)
+.addEventListener(
+"click",
+event => {
+
+
+    timerRunning =
+    !timerRunning;
+
+
+    if(
+        timerRunning
+    ){
+
+
+        event
+        .target
+        .textContent =
+
+        "PAUSE";
+
+
+        timerInterval =
+        setInterval(
+        () => {
+
+
+            timerSeconds++;
+
+
+            updateTimerDisplay();
+
+
+        },
+        1000
+        );
+
+
+    }else{
+
+
+        event
+        .target
+        .textContent =
+
+        "START";
+
+
+        clearInterval(
+        timerInterval
+        );
+
+
+    }
+
+
+}
+);
+
+
+document
+.getElementById(
+"resetTimer"
+)
+.addEventListener(
+"click",
+() => {
+
+
+    timerSeconds = 0;
+
+
+    timerRunning = false;
+
+
+    clearInterval(
+    timerInterval
+    );
+
+
+    document
+    .getElementById(
+    "startTimer"
+    )
+    .textContent =
+
+    "START";
+
+
+    updateTimerDisplay();
+
+
+}
+);
+
+
+/* ==================================================
+   NOTES
+   ================================================== */
+
+
+const commandNotes =
+
+document
+.getElementById(
+"commandNotes"
+);
+
+
+const savedNotes =
+
+localStorage
+.getItem(
+"ytcc-notes"
+);
+
+
+if(
+    savedNotes
+){
+
+
+    commandNotes.value =
+
+    savedNotes;
+
+
+}
+
+
+document
+.getElementById(
+"saveNotes"
+)
+.addEventListener(
+"click",
+() => {
+
+
+    localStorage
+    .setItem(
+
+    "ytcc-notes",
+
+    commandNotes
+    .value
+
+    );
+
+
+    document
+    .getElementById(
+    "notesStatus"
+    )
+    .textContent =
+
+    "SAVED";
+
+
+    showToast(
+
+    "Command note saved.",
+
+    "success"
+
+    );
+
+
+    setTimeout(
+    () => {
+
+
+        document
+        .getElementById(
+        "notesStatus"
+        )
+        .textContent =
+
+        "READY";
+
+
+    },
+    1800
+    );
+
+
+}
+);
+
+
+/* ==================================================
+   RANDOM GENERATOR
+   ================================================== */
+
+
+document
+.getElementById(
+"generateRandom"
+)
+.addEventListener(
+"click",
+() => {
+
+
+    const value =
+
+    Math.floor(
+    1 +
+    Math.random() *
+    1000
+    );
+
+
+    document
+    .getElementById(
+    "randomOutput"
+    )
+    .textContent =
+
+    String(
+    value
+    )
+    .padStart(
+    3,
+    "0"
+    );
+
+
+}
+);
+
+
+/* ==================================================
+   SETTINGS
+   ================================================== */
+
+
+document
+.getElementById(
+"monitorToggle"
+)
+.addEventListener(
+"change",
+event => {
+
+
+    monitoringEnabled =
+
+    event.target
+    .checked;
+
+
+    showToast(
+
+    monitoringEnabled
+
+    ?
+
+    "Live monitoring enabled."
+
+    :
+
+    "Live monitoring paused.",
+
+    "success"
+
+    );
+
+
+}
+);
+
+
+document
+.getElementById(
+"notificationToggle"
+)
+.addEventListener(
+"change",
+event => {
+
+
+    notificationsEnabled =
+
+    event.target
+    .checked;
+
+
+    showToast(
+
+    notificationsEnabled
+
+    ?
+
+    "Notifications enabled."
+
+    :
+
+    "Notifications disabled.",
+
+    "success"
+
+    );
+
+
+}
+);
+
+
+/* ==================================================
+   NOTIFICATIONS
+   ================================================== */
+
+
+const notificationButton =
+
+document
+.getElementById(
+"notificationButton"
+);
+
+
+const notificationPanel =
+
+document
+.getElementById(
+"notificationPanel"
+);
+
+
+notificationButton
+.addEventListener(
+"click",
+() => {
+
+
+    notificationPanel
+    .classList
+    .toggle(
+    "open"
+    );
+
+
+    document
+    .getElementById(
+    "notificationBadge"
+    )
+    .textContent =
+
+    "0";
+
+
+}
+);
+
+
+document
+.getElementById(
+"clearNotifications"
+)
+.addEventListener(
+"click",
+() => {
+
+
+    document
+    .getElementById(
+    "notificationList"
+    )
+    .innerHTML =
+
+    `<div class="empty-state">
+    No new notifications.
+    </div>`;
+
+
+}
+);
+
+
+/* ==================================================
+   MOBILE SIDEBAR
+   ================================================== */
+
+
+const sidebar =
+
+document
+.getElementById(
+"sidebar"
+);
+
+
+document
+.getElementById(
+"mobileMenuButton"
+)
+.addEventListener(
+"click",
+() => {
+
+
+    sidebar
+    .classList
+    .add(
+    "mobile-open"
+    );
+
+
+}
+);
+
+
+document
+.getElementById(
+"closeSidebar"
+)
+.addEventListener(
+"click",
+() => {
+
+
+    sidebar
+    .classList
+    .remove(
+    "mobile-open"
+    );
+
+
+}
+);
+
+
+document
+.querySelectorAll(
+".nav-link"
+)
+.forEach(
+link => {
+
+
+    link
+    .addEventListener(
+    "click",
+    () => {
+
+
+        document
+        .querySelectorAll(
+        ".nav-link"
+        )
+        .forEach(
+        item => {
+
+
+            item
+            .classList
+            .remove(
+            "active"
+            );
+
+
+        }
+        );
+
+
+        link
+        .classList
+        .add(
+        "active"
+        );
+
+
+        sidebar
+        .classList
+        .remove(
+        "mobile-open"
+        );
+
+
+    }
+    );
+
+
+}
+);
+
+
+/* ==================================================
+   TOAST SYSTEM
+   ================================================== */
+
+
+function showToast(
+message,
+type = "success"
+){
+
+
+    if(
+        !notificationsEnabled &&
+        type !== "warning"
+    ){
+
+        return;
+
+    }
+
+
+    const toast =
+
+    document
+    .createElement(
+    "div"
+    );
+
+
+    toast.className =
+
+    "toast " +
+    type;
+
+
+    toast.innerHTML =
+
+    `<span>
+    ${
+
+    type ===
+    "warning"
+
+    ?
+
+    "⚠"
+
+    :
+
+    "✓"
+
+    }
+    </span>
+
+    <p>
+    ${message}
+    </p>`;
+
+
+    document
+    .getElementById(
+    "toastContainer"
+    )
+    .appendChild(
+    toast
+    );
+
+
+    setTimeout(
+    () => {
+
+
+        toast
+        .classList
+        .add(
+        "show"
+        );
+
+
+    },
+    20
+    );
+
+
+    setTimeout(
+    () => {
+
+
+        toast
+        .classList
+        .remove(
+        "show"
+        );
+
+
+        setTimeout(
+        () => {
+
+
+            toast
+            .remove();
+
+
+        },
+        300
+        );
+
+
+    },
+    3200
+    );
+
+
+}
+
+
+/* ==================================================
+   SERVICE WORKER
+   ================================================== */
+
+
+if(
+    "serviceWorker"
+    in navigator
+){
+
+
+    window
+    .addEventListener(
+    "load",
+    () => {
+
+
+        navigator
+        .serviceWorker
+        .register(
+        "service-worker.js"
+        )
+        .catch(
+        () => {}
+        );
+
+
+    }
+    );
+
+
+}
+
+
 </script>
-    
+
+
 </body>
 
 </html>
