@@ -1,4 +1,4 @@
-const CACHE_NAME = "YTCC-v3";
+const CACHE_NAME = "YTCC-v4";
 
 const filesToCache = [
     "index.html",
