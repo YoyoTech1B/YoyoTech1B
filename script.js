@@ -140,10 +140,18 @@ setTimeout(spawnAttack,1000);
 };
 /* ==================================================
    YTCC APP INSTALL BUTTON
+   AUTO HIDE AFTER INSTALL
 ================================================== */
 
 
-let installPrompt;
+let installPrompt = null;
+
+
+const installButton =
+document.getElementById(
+    "installYTCCButton"
+);
+
 
 
 window.addEventListener(
@@ -159,16 +167,10 @@ window.addEventListener(
     installPrompt = event;
 
 
-    const button =
-    document.getElementById(
-        "installYTCCButton"
-    );
+    if(installButton){
 
-
-    if(button){
-
-        button.style.display="block";
-
+        installButton.style.display =
+        "block";
 
     }
 
@@ -179,10 +181,9 @@ window.addEventListener(
 
 
 
-document.getElementById(
-"installYTCCButton"
-)
-?.addEventListener(
+
+
+installButton?.addEventListener(
 
 "click",
 
@@ -203,18 +204,60 @@ async ()=>{
 
 
 
-    if(result.outcome==="accepted"){
+    if(result.outcome === "accepted"){
 
 
         console.log(
-        "YTCC INSTALLED"
+            "YTCC INSTALLED"
         );
+
+
+        installButton.style.display =
+        "none";
 
 
     }
 
 
-    installPrompt=null;
+
+    installPrompt = null;
+
+
+});
+
+
+
+
+
+
+
+
+/* ==================================================
+   HIDE BUTTON IF ALREADY INSTALLED
+================================================== */
+
+
+window.addEventListener(
+
+"appinstalled",
+
+()=>{
+
+
+    console.log(
+        "YTCC INSTALL COMPLETE"
+    );
+
+
+
+    if(installButton){
+
+
+        installButton.style.display =
+        "none";
+
+
+    }
 
 
 });
