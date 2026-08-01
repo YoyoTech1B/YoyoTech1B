@@ -3,28 +3,47 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>
-        YOYOTECH Command Control Center
-    </title>
+<meta name="theme-color" content="#001a33">
 
-    <link
-    rel="stylesheet"
-    href="style.css">
+<meta name="description" content="YOYOTECH Command Control Center — Command Core Update">
 
-    <link
-    rel="icon"
-    type="image/png"
-    href="favicon.png">
+<title>YTCC 2.0 — Command Core</title>
+
+
+<!-- FAVICON -->
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+
+<!-- PWA MANIFEST -->
+
+<link rel="manifest" href="manifest.json">
+
+
+<!-- CSS -->
+
+<link rel="stylesheet" href="style.css">
+
+
+<!-- FONT -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 
 </head>
 
+
 <body>
+
+
 
 <!-- ==================================================
      BOOT SCREEN
@@ -5778,10 +5797,14 @@ profile => {
 
 
         localStorage
-.setItem(
-"ytcc-command-profile",
-profileName
-);
+        .setItem(
+
+        "ytcc-command-profile",
+
+        profileName
+
+        );
+
 
         showToast(
 
@@ -5813,12 +5836,16 @@ profileName
 
 }
 );
+
+
 const savedCommandProfile =
 
 localStorage
 .getItem(
 "ytcc-command-profile"
 );
+
+
 if(
     savedCommandProfile
 ){
@@ -12161,7 +12188,7 @@ setInterval(
 
 <script>
 
-const appStartTime = Date.now();
+
 /* ==================================================
    YTCC PART 8
    ADVANCED COMMAND CENTER SYSTEM
@@ -13690,6 +13717,15 @@ if(
 
 }
 
+
+const savedCommandProfile =
+
+localStorage
+.getItem(
+"ytcc-command-profile"
+);
+
+
 if(
     savedCommandProfile
 ){
@@ -14017,7 +14053,6 @@ setInterval(
     "sessionLengthValue"
     );
 
-const appStartTime = Date.now();
 
     if(
         !sessionElement
@@ -14582,11 +14617,405 @@ updateExtendedPerformance();
 
 
 </script>
-<script>
+
+
+<*-- ==================================================
+     END OF PART 8
+     ================================================== --*>
+/* ==================================================
+   YTCC OFFLINE UPGRADE
+   PART 9
+   SECTION 1
+   OFFLINE CORE SYSTEM
+   ================================================== */
+
 
 /* ==================================================
-   END OF PART 8
+   OFFLINE MODE CONTROLLER
    ================================================== */
+
+
+const ytccOfflineCore = {
+
+
+    version:
+    "YTCC-OFFLINE-CORE-V1",
+
+
+    status:
+    "INITIALIZING",
+
+
+    started:
+    new Date()
+    .toLocaleString(),
+
+
+    offline:
+    !navigator.onLine,
+
+
+    lastSync:
+    null
+
+
+};
+
+
+
+
+
+/* ==================================================
+   SAVE OFFLINE CORE STATE
+   ================================================== */
+
+
+function saveOfflineCore(){
+
+
+    localStorage
+    .setItem(
+
+        "YTCC_OFFLINE_CORE",
+
+        JSON.stringify(
+            ytccOfflineCore
+        )
+
+    );
+
+
+}
+
+
+
+
+
+/* ==================================================
+   LOAD OFFLINE CORE STATE
+   ================================================== */
+
+
+function loadOfflineCore(){
+
+
+    const savedCore =
+
+    localStorage
+    .getItem(
+        "YTCC_OFFLINE_CORE"
+    );
+
+
+
+    if(
+        savedCore
+    ){
+
+
+        const oldCore =
+
+        JSON
+        .parse(
+            savedCore
+        );
+
+
+
+        ytccOfflineCore.status =
+
+        oldCore.status;
+
+
+
+        ytccOfflineCore.lastSync =
+
+        oldCore.lastSync;
+
+
+
+    }
+
+
+}
+
+
+
+
+loadOfflineCore();
+
+
+
+
+
+/* ==================================================
+   NETWORK STATUS CHECK
+   ================================================== */
+
+
+function checkYTCCNetwork(){
+
+
+    ytccOfflineCore.offline =
+
+    !navigator.onLine;
+
+
+
+    if(
+        navigator.onLine
+    ){
+
+
+        ytccOfflineCore.status =
+
+        "ONLINE";
+
+
+        ytccOfflineCore.lastSync =
+
+        new Date()
+        .toLocaleString();
+
+
+
+    }
+    else{
+
+
+        ytccOfflineCore.status =
+
+        "OFFLINE MODE";
+
+
+    }
+
+
+
+    saveOfflineCore();
+
+
+}
+
+
+
+
+
+
+
+/* ==================================================
+   ONLINE EVENT
+   ================================================== */
+
+
+window
+.addEventListener(
+
+"online",
+
+()=>{
+
+
+    checkYTCCNetwork();
+
+
+
+    if(
+        typeof showToast ===
+        "function"
+    ){
+
+
+        showToast(
+
+        "YTCC connection restored",
+
+        "success"
+
+        );
+
+
+    }
+
+
+}
+
+);
+
+
+
+
+
+
+/* ==================================================
+   OFFLINE EVENT
+   ================================================== */
+
+
+window
+.addEventListener(
+
+"offline",
+
+()=>{
+
+
+    checkYTCCNetwork();
+
+
+
+    if(
+        typeof showToast ===
+        "function"
+    ){
+
+
+        showToast(
+
+        "YTCC switched to offline mode",
+
+        "warning"
+
+        );
+
+
+    }
+
+
+}
+
+);
+
+
+
+
+
+
+/* ==================================================
+   INITIAL NETWORK CHECK
+   ================================================== */
+
+
+checkYTCCNetwork();
+
+
+
+
+
+
+/* ==================================================
+   OFFLINE STATUS DISPLAY
+   ================================================== */
+
+
+function updateOfflineDisplay(){
+
+
+    const statusBox =
+
+    document
+    .getElementById(
+
+    "networkStatus"
+
+    );
+
+
+
+    if(
+        statusBox
+    ){
+
+
+        if(
+            navigator.onLine
+        ){
+
+
+            statusBox
+            .innerHTML =
+
+            "🟢 NETWORK CONNECTED";
+
+
+        }
+        else{
+
+
+            statusBox
+            .innerHTML =
+
+            "🔴 OFFLINE SYSTEM ACTIVE";
+
+
+        }
+
+
+    }
+
+
+}
+
+
+
+
+
+updateOfflineDisplay();
+
+
+
+window
+.addEventListener(
+
+"online",
+
+updateOfflineDisplay
+
+);
+
+
+
+window
+.addEventListener(
+
+"offline",
+
+updateOfflineDisplay
+
+);
+
+
+
+
+
+/* ==================================================
+   OFFLINE CORE READY
+   ================================================== */
+
+
+ytccOfflineCore.status =
+
+navigator.onLine
+
+?
+
+"ONLINE READY"
+
+:
+
+"OFFLINE READY";
+
+
+
+saveOfflineCore();
+
+
+
+console.log(
+
+"YTCC Offline Core System Loaded"
+
+);
 /* ==================================================
    YTCC OFFLINE UPGRADE
    PART 9
@@ -15193,7 +15622,6 @@ console.log(
 "YTCC Offline Part 9 Core Loaded"
 
 );
-
 /* ==================================================
    YTCC OFFLINE UPGRADE
    PART 9
@@ -15872,7 +16300,7 @@ console.log(
 /* ==================================================
    END OF PART 9
    ================================================== */
-/* ==================================================
+    /* ==================================================
    YTCC OFFLINE UPGRADE
    PART 10
    AI COMMAND ASSISTANT CORE
@@ -16573,7 +17001,7 @@ function runYTCCMacro(name){
    PART 10 PROMPT 1 COMPLETE
    CONTINUE WITH PROMPT 2
    ================================================== */
-/* ==================================================
+    /* ==================================================
    YTCC OFFLINE UPGRADE
    PART 10
    ADVANCED SYSTEM CONTROL
@@ -17450,6 +17878,3 @@ console.log(
 /* ==================================================
    END OF PART 10
    ================================================== */
-</script>
-</body>
-</html>
