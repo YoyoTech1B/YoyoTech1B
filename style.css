@@ -6127,3 +6127,998 @@ START GAME
 
 
 </section>
+/* ==================================================
+YTCC ACHIEVEMENT SYSTEM
+================================================== */
+
+.achievement-grid{
+
+```
+display:grid;
+
+
+grid-template-columns:
+
+repeat(
+
+    auto-fit,
+
+    minmax(
+
+        250px,
+
+        1fr
+
+    )
+
+);
+
+
+gap:18px;
+
+
+margin-top:28px;
+```
+
+}
+
+.achievement-card{
+
+```
+position:relative;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+gap:18px;
+
+
+min-height:145px;
+
+
+padding:22px;
+
+
+overflow:hidden;
+
+
+border:
+
+1px solid
+
+rgba(
+
+    0,
+
+    170,
+
+    255,
+
+    .16
+
+);
+
+
+border-radius:20px;
+
+
+background:
+
+linear-gradient(
+
+    145deg,
+
+    rgba(
+
+        8,
+
+        25,
+
+        47,
+
+        .92
+
+    ),
+
+    rgba(
+
+        3,
+
+        12,
+
+        25,
+
+        .88
+
+    )
+
+);
+
+
+box-shadow:
+
+0 15px 35px
+
+rgba(
+
+    0,
+
+    0,
+
+    0,
+
+    .22
+
+);
+
+
+opacity:.62;
+
+
+filter:
+
+grayscale(
+
+    .75
+
+);
+
+
+transition:
+
+transform .3s ease,
+
+border-color .3s ease,
+
+box-shadow .3s ease,
+
+opacity .3s ease,
+
+filter .3s ease;
+```
+
+}
+
+.achievement-card::before{
+
+```
+content:"";
+
+
+position:absolute;
+
+
+top:0;
+
+
+left:0;
+
+
+width:4px;
+
+
+height:100%;
+
+
+background:
+
+rgba(
+
+    0,
+
+    170,
+
+    255,
+
+    .3
+
+);
+```
+
+}
+
+.achievement-card:hover{
+
+```
+transform:
+
+translateY(
+
+    -5px
+
+);
+
+
+border-color:
+
+rgba(
+
+    0,
+
+    170,
+
+    255,
+
+    .4
+
+);
+```
+
+}
+
+.achievement-icon{
+
+```
+flex-shrink:0;
+
+
+width:68px;
+
+
+height:68px;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+justify-content:center;
+
+
+border:
+
+1px solid
+
+rgba(
+
+    0,
+
+    170,
+
+    255,
+
+    .2
+
+);
+
+
+border-radius:18px;
+
+
+background:
+
+rgba(
+
+    0,
+
+    170,
+
+    255,
+
+    .08
+
+);
+
+
+color:
+
+#7db8d5;
+
+
+font-size:30px;
+```
+
+}
+
+.achievement-information{
+
+```
+min-width:0;
+```
+
+}
+
+.achievement-label{
+
+```
+display:inline-flex;
+
+
+align-items:center;
+
+
+min-height:24px;
+
+
+padding:
+
+4px 10px;
+
+
+margin-bottom:8px;
+
+
+border:
+
+1px solid
+
+rgba(
+
+    255,
+
+    255,
+
+    255,
+
+    .08
+
+);
+
+
+border-radius:20px;
+
+
+color:
+
+#7f94a5;
+
+
+background:
+
+rgba(
+
+    255,
+
+    255,
+
+    255,
+
+    .04
+
+);
+
+
+font-size:10px;
+
+
+font-weight:800;
+
+
+letter-spacing:1.5px;
+```
+
+}
+
+.achievement-information h3{
+
+```
+margin:0 0 7px;
+
+
+color:
+
+#d9eaff;
+
+
+font-size:17px;
+
+
+letter-spacing:1px;
+```
+
+}
+
+.achievement-information p{
+
+```
+margin:0;
+
+
+color:
+
+#7890a3;
+
+
+font-size:13px;
+
+
+line-height:1.55;
+```
+
+}
+
+/* ==================================================
+UNLOCKED ACHIEVEMENT
+================================================== */
+
+.achievement-card.unlocked{
+
+```
+opacity:1;
+
+
+filter:
+
+grayscale(
+
+    0
+
+);
+
+
+border-color:
+
+rgba(
+
+    0,
+
+    229,
+
+    160,
+
+    .38
+
+);
+
+
+background:
+
+linear-gradient(
+
+    145deg,
+
+    rgba(
+
+        0,
+
+        229,
+
+        160,
+
+        .11
+
+    ),
+
+    rgba(
+
+        0,
+
+        120,
+
+        255,
+
+        .08
+
+    )
+
+);
+
+
+box-shadow:
+
+0 18px 40px
+
+rgba(
+
+    0,
+
+    229,
+
+    160,
+
+    .08
+
+);
+```
+
+}
+
+.achievement-card.unlocked::before{
+
+```
+background:
+
+linear-gradient(
+
+    180deg,
+
+    #00e5a0,
+
+    #00aaff
+
+);
+
+
+box-shadow:
+
+0 0 18px
+
+rgba(
+
+    0,
+
+    229,
+
+    160,
+
+    .7
+
+);
+```
+
+}
+
+.achievement-card.unlocked .achievement-icon{
+
+```
+color:
+
+#ffffff;
+
+
+border-color:
+
+rgba(
+
+    0,
+
+    229,
+
+    160,
+
+    .45
+
+);
+
+
+background:
+
+linear-gradient(
+
+    135deg,
+
+    rgba(
+
+        0,
+
+        229,
+
+        160,
+
+        .25
+
+    ),
+
+    rgba(
+
+        0,
+
+        170,
+
+        255,
+
+        .22
+
+    )
+
+);
+
+
+box-shadow:
+
+0 0 25px
+
+rgba(
+
+    0,
+
+    229,
+
+    160,
+
+    .16
+
+);
+```
+
+}
+
+.achievement-card.unlocked .achievement-label{
+
+```
+color:
+
+#00261b;
+
+
+border-color:
+
+transparent;
+
+
+background:
+
+#00e5a0;
+```
+
+}
+
+.achievement-card.unlocked .achievement-information h3{
+
+```
+color:
+
+#ffffff;
+```
+
+}
+
+.achievement-card.unlocked .achievement-information p{
+
+```
+color:
+
+#a8c5d3;
+```
+
+}
+
+/* ==================================================
+ACHIEVEMENT POPUP
+================================================== */
+
+.achievement-popup{
+
+```
+position:fixed;
+
+
+right:25px;
+
+
+bottom:25px;
+
+
+z-index:999999;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+gap:15px;
+
+
+width:
+
+min(
+
+    390px,
+
+    calc(
+
+        100% - 30px
+
+    )
+
+);
+
+
+padding:17px 20px;
+
+
+border:
+
+1px solid
+
+rgba(
+
+    0,
+
+    229,
+
+    160,
+
+    .4
+
+);
+
+
+border-radius:18px;
+
+
+background:
+
+rgba(
+
+    4,
+
+    18,
+
+    31,
+
+    .96
+
+);
+
+
+backdrop-filter:
+
+blur(
+
+    18px
+
+);
+
+
+box-shadow:
+
+0 20px 55px
+
+rgba(
+
+    0,
+
+    0,
+
+    0,
+
+    .45
+
+);
+
+
+transform:
+
+translateX(
+
+    130%
+
+);
+
+
+opacity:0;
+
+
+pointer-events:none;
+
+
+transition:
+
+transform .45s
+
+cubic-bezier(
+
+    .2,
+
+    .8,
+
+    .2,
+
+    1
+
+),
+
+opacity .35s ease;
+```
+
+}
+
+.achievement-popup.show{
+
+```
+transform:
+
+translateX(
+
+    0
+
+);
+
+
+opacity:1;
+```
+
+}
+
+.achievement-popup-icon{
+
+```
+width:54px;
+
+
+height:54px;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+justify-content:center;
+
+
+flex-shrink:0;
+
+
+border-radius:16px;
+
+
+background:
+
+rgba(
+
+    0,
+
+    229,
+
+    160,
+
+    .13
+
+);
+
+
+font-size:27px;
+
+
+box-shadow:
+
+inset 0 0 18px
+
+rgba(
+
+    0,
+
+    229,
+
+    160,
+
+    .08
+
+);
+```
+
+}
+
+.achievement-popup span{
+
+```
+display:block;
+
+
+margin-bottom:5px;
+
+
+color:
+
+#00e5a0;
+
+
+font-size:10px;
+
+
+font-weight:900;
+
+
+letter-spacing:2px;
+```
+
+}
+
+.achievement-popup strong{
+
+```
+display:block;
+
+
+color:
+
+#ffffff;
+
+
+font-size:16px;
+
+
+letter-spacing:1px;
+```
+
+}
+
+/* ==================================================
+MOBILE ACHIEVEMENTS
+================================================== */
+
+@media(
+
+```
+max-width:600px
+```
+
+){
+
+```
+.achievement-grid{
+
+
+    grid-template-columns:
+
+    1fr;
+
+
+    gap:14px;
+
+
+}
+
+
+.achievement-card{
+
+
+    min-height:125px;
+
+
+    padding:18px;
+
+
+}
+
+
+.achievement-icon{
+
+
+    width:58px;
+
+
+    height:58px;
+
+
+    font-size:25px;
+
+
+    border-radius:16px;
+
+
+}
+
+
+.achievement-information h3{
+
+
+    font-size:15px;
+
+
+}
+
+
+.achievement-information p{
+
+
+    font-size:12px;
+
+
+}
+
+
+.achievement-popup{
+
+
+    right:15px;
+
+
+    bottom:15px;
+
+
+}
+```
+
+}
