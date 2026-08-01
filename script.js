@@ -261,3 +261,260 @@ window.addEventListener(
 
 
 });
+/* ==================================================
+   YTCC BOOT ANIMATION ENGINE
+================================================== */
+
+
+window.addEventListener(
+
+"load",
+
+function(){
+
+
+    const bootScreen =
+
+    document.getElementById(
+
+        "bootScreen"
+
+    );
+
+
+    const bootProgress =
+
+    document.getElementById(
+
+        "bootProgress"
+
+    );
+
+
+    const bootMessage =
+
+    document.getElementById(
+
+        "bootMessage"
+
+    );
+
+
+    const bootStatus =
+
+    document.getElementById(
+
+        "bootStatus"
+
+    );
+
+
+    const bootChecks =
+
+    document.querySelectorAll(
+
+        ".boot-check"
+
+    );
+
+
+    if(
+
+        !bootScreen
+
+    ){
+
+
+        return;
+
+
+    }
+
+
+    const bootSteps = [
+
+
+        {
+
+            progress:"20%",
+
+
+            message:
+
+            "INITIALIZING COMMAND CORE..."
+
+
+        },
+
+
+        {
+
+            progress:"42%",
+
+
+            message:
+
+            "CONNECTING NETWORK SYSTEMS..."
+
+
+        },
+
+
+        {
+
+            progress:"64%",
+
+
+            message:
+
+            "VERIFYING SECURITY PROTOCOLS..."
+
+
+        },
+
+
+        {
+
+            progress:"84%",
+
+
+            message:
+
+            "ACTIVATING OFFLINE ENGINE..."
+
+
+        },
+
+
+        {
+
+            progress:"100%",
+
+
+            message:
+
+            "COMMAND CENTER READY..."
+
+
+        }
+
+
+    ];
+
+
+    let currentStep = 0;
+
+
+    function runBootStep(){
+
+
+        if(
+
+            currentStep >=
+
+            bootSteps.length
+
+        ){
+
+
+            bootStatus.textContent =
+
+            "SYSTEM ONLINE";
+
+
+            setTimeout(
+
+                function(){
+
+
+                    bootScreen.classList.add(
+
+                        "boot-finished"
+
+                    );
+
+
+                },
+
+
+                900
+
+            );
+
+
+            return;
+
+
+        }
+
+
+        const step =
+
+        bootSteps[
+
+            currentStep
+
+        ];
+
+
+        bootProgress.style.width =
+
+        step.progress;
+
+
+        bootMessage.textContent =
+
+        step.message;
+
+
+        if(
+
+            bootChecks[
+
+                currentStep
+
+            ]
+
+        ){
+
+
+            bootChecks[
+
+                currentStep
+
+            ].classList.add(
+
+                "active"
+
+            );
+
+
+        }
+
+
+        currentStep++;
+
+
+        setTimeout(
+
+            runBootStep,
+
+            650
+
+        );
+
+
+    }
+
+
+    setTimeout(
+
+        runBootStep,
+
+        300
+
+    );
+
+
+}
+);
