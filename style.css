@@ -7313,3 +7313,120 @@ max-width:600px
 
 
 }
+
+/* ==================================================
+   YTCC ACHIEVEMENTS FULL VISIBILITY FIX
+================================================== */
+
+
+#achievements,
+
+
+.achievements-section{
+
+
+    width:90% !important;
+
+
+    max-width:1400px !important;
+
+
+    margin:
+
+    50px auto !important;
+
+
+    padding:
+
+    30px !important;
+
+
+
+    position:relative !important;
+
+
+    left:auto !important;
+
+
+    right:auto !important;
+
+
+    top:auto !important;
+
+
+    bottom:auto !important;
+
+
+    transform:none !important;
+
+
+    display:block !important;
+
+
+    visibility:visible !important;
+
+
+    opacity:1 !important;
+
+
+    overflow:visible !important;
+
+
+    clear:both !important;
+
+
+    z-index:20 !important;
+
+
+}
+
+
+
+
+
+#achievements h2,
+
+
+.achievements-section h2{
+
+
+    display:block !important;
+
+
+    width:100% !important;
+
+
+    margin-left:0 !important;
+
+
+    padding-left:0 !important;
+
+
+    transform:none !important;
+
+
+    white-space:normal !important;
+
+
+}
+
+
+
+
+
+#achievements .section-heading,
+
+
+.achievements-section .section-heading{
+
+
+    width:100% !important;
+
+
+    margin-left:0 !important;
+
+
+    transform:none !important;
+
+
+}
