@@ -9,7 +9,10 @@
    CACHE CONFIGURATION
    ================================================== */
 
-const CACHE_NAME = "YTCC-OFFLINE-V11";
+
+const CACHE_NAME =
+
+"YTCC-OFFLINE-V12";
 
 
 
@@ -462,5 +465,23 @@ event => {
 
 
 }
+
+);
+
+
+
+
+
+
+
+/* ==================================================
+   YTCC SERVICE WORKER ONLINE
+   ================================================== */
+
+
+console
+.log(
+
+"YTCC SERVICE WORKER ACTIVE"
 
 );
