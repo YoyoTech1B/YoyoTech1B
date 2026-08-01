@@ -138,3 +138,83 @@ setTimeout(spawnAttack,1000);
 
 
 };
+/* ==================================================
+   YTCC APP INSTALL BUTTON
+================================================== */
+
+
+let installPrompt;
+
+
+window.addEventListener(
+
+"beforeinstallprompt",
+
+(event)=>{
+
+
+    event.preventDefault();
+
+
+    installPrompt = event;
+
+
+    const button =
+    document.getElementById(
+        "installYTCCButton"
+    );
+
+
+    if(button){
+
+        button.style.display="block";
+
+
+    }
+
+
+});
+
+
+
+
+
+document.getElementById(
+"installYTCCButton"
+)
+?.addEventListener(
+
+"click",
+
+async ()=>{
+
+
+    if(!installPrompt)
+    return;
+
+
+
+    installPrompt.prompt();
+
+
+
+    const result =
+    await installPrompt.userChoice;
+
+
+
+    if(result.outcome==="accepted"){
+
+
+        console.log(
+        "YTCC INSTALLED"
+        );
+
+
+    }
+
+
+    installPrompt=null;
+
+
+});
