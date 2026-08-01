@@ -10437,7 +10437,75 @@ console.log(
      FINAL HTML END
 ================================================== -->
 
+<script>
 
+/* ==================================================
+   YTCC SERVICE WORKER REGISTRATION
+================================================== */
+
+
+if("serviceWorker" in navigator){
+
+
+    window.addEventListener(
+
+        "load",
+
+        function(){
+
+
+            navigator.serviceWorker.register(
+
+                "./service-worker.js"
+
+            )
+
+            .then(
+
+                function(registration){
+
+
+                    console.log(
+
+                        "YTCC OFFLINE ENGINE ACTIVE",
+
+                        registration.scope
+
+                    );
+
+
+                }
+
+            )
+
+
+            .catch(
+
+                function(error){
+
+
+                    console.log(
+
+                        "YTCC SERVICE WORKER ERROR",
+
+                        error
+
+                    );
+
+
+                }
+
+            );
+
+
+        }
+
+    );
+
+
+}
+
+</script>
 </body>
 
 </html>
