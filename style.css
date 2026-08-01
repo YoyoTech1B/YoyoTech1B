@@ -1,60 +1,60 @@
 /* ==================================================
-   YTCC COMMAND CONTROL CENTER
-   OFFLINE UPGRADE STYLE SYSTEM
-   PART 1
-   ================================================== */
+   YTCC STYLE.CSS
+   YOYOTECH COMMAND CONTROL CENTER
+   OFFLINE UPGRADE
+   PART 1/12
+================================================== */
+
 
 
 /* ==================================================
    ROOT VARIABLES
-   ================================================== */
+================================================== */
 
 
-:root {
+:root{
 
-    --bg-main:
-    #020617;
 
-    --bg-panel:
-    rgba(15, 23, 42, 0.75);
+    --bg-main:#020617;
 
-    --bg-card:
-    rgba(30, 41, 59, 0.65);
+    --bg-secondary:#071426;
 
-    --blue:
-    #00aaff;
+    --panel:#0b1f38;
 
-    --blue-light:
-    #38bdf8;
+    --panel-light:#102b4c;
 
-    --cyan:
-    #22d3ee;
 
-    --green:
-    #22c55e;
+    --primary:#00aaff;
 
-    --red:
-    #ef4444;
+    --primary-dark:#0066ff;
 
-    --yellow:
-    #facc15;
 
-    --text:
-    #f8fafc;
+    --success:#00ff9d;
 
-    --text-muted:
-    #94a3b8;
+    --warning:#ffc107;
 
-    --border:
-    rgba(56,189,248,0.35);
+    --danger:#ff375f;
+
+
+    --text:#ffffff;
+
+    --text-soft:#9fb3c8;
+
+
+    --border:rgba(0,170,255,0.25);
+
 
     --shadow:
-    0 0 30px rgba(0,170,255,0.25);
+    0 0 30px rgba(0,170,255,0.15);
 
-    --radius:
-    18px;
+
+
+    --radius:18px;
+
 
 }
+
+
 
 
 
@@ -63,51 +63,81 @@
 
 /* ==================================================
    GLOBAL RESET
-   ================================================== */
+================================================== */
 
 
-* {
+*{
 
-    margin:
-    0;
 
-    padding:
-    0;
+    margin:0;
 
-    box-sizing:
-    border-box;
+    padding:0;
+
+    box-sizing:border-box;
+
+
+}
+
+
+
+
+
+html{
+
+
+    scroll-behavior:smooth;
+
+
+}
+
+
+
+
+
+
+body{
+
+
+    min-height:100vh;
+
+    background:
+
+
+    radial-gradient(
+
+        circle at top,
+
+        rgba(0,170,255,0.18),
+
+        transparent 40%
+
+    ),
+
+
+    linear-gradient(
+
+        135deg,
+
+        #020617,
+
+        #06172b
+
+    );
+
+
+    color:var(--text);
+
 
     font-family:
+
     "Inter",
     Arial,
     sans-serif;
 
-}
 
 
+    overflow-x:hidden;
 
-html {
-
-    scroll-behavior:
-    smooth;
-
-}
-
-
-
-body {
-
-    min-height:
-    100vh;
-
-    background:
-    var(--bg-main);
-
-    color:
-    var(--text);
-
-    overflow-x:
-    hidden;
 
 }
 
@@ -115,67 +145,76 @@ body {
 
 
 
-/* ==================================================
-   ANIMATED BACKGROUND
-   ================================================== */
 
 
-body::before {
 
-    content:
-    "";
+body::before{
 
-    position:
-    fixed;
 
-    inset:
-    0;
+    content:"";
+
+
+    position:fixed;
+
+
+    inset:0;
+
 
     background:
 
-    radial-gradient(
-    circle at top,
-    rgba(0,170,255,0.18),
-    transparent 40%
-    ),
+    linear-gradient(
 
-    radial-gradient(
-    circle at bottom,
-    rgba(34,211,238,0.12),
-    transparent 35%
+        90deg,
+
+        transparent,
+
+        rgba(0,170,255,0.05),
+
+        transparent
+
     );
 
+
     animation:
-    backgroundPulse 10s infinite alternate;
 
-    z-index:
-    -1;
+    scanBackground 8s linear infinite;
+
+
+
+    pointer-events:none;
+
 
 }
 
 
 
 
-@keyframes backgroundPulse {
 
 
-    from {
+@keyframes scanBackground{
 
-        opacity:
-        0.5;
+
+    0%{
+
+
+        transform:translateX(-100%);
+
 
     }
 
 
-    to {
 
-        opacity:
-        1;
+    100%{
+
+
+        transform:translateX(100%);
+
 
     }
 
 
 }
+
 
 
 
@@ -185,21 +224,96 @@ body::before {
 
 /* ==================================================
    MAIN CONTAINER
-   ================================================== */
+================================================== */
 
 
-.container {
+.dashboard-section{
 
-    width:
-    90%;
 
-    max-width:
-    1400px;
+    width:90%;
+
+
+    max-width:1400px;
+
 
     margin:
-    auto;
+
+    40px auto;
+
+
+    padding:30px;
+
+
+
+    background:
+
+    rgba(7,20,38,0.65);
+
+
+
+    backdrop-filter:
+
+    blur(18px);
+
+
+
+    border:
+
+    1px solid var(--border);
+
+
+
+    border-radius:
+
+    var(--radius);
+
+
+
+    box-shadow:
+
+    var(--shadow);
+
+
+
+    animation:
+
+    fadeIn 0.7s ease;
+
 
 }
+
+
+
+
+
+@keyframes fadeIn{
+
+
+    from{
+
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+
+    }
+
+
+
+    to{
+
+
+        opacity:1;
+
+        transform:translateY(0);
+
+
+    }
+
+
+}
+
 
 
 
@@ -208,33 +322,364 @@ body::before {
 
 
 /* ==================================================
-   GLASS EFFECT
-   ================================================== */
+   SECTION HEADER
+================================================== */
 
 
-.glass {
+.section-heading{
 
-    background:
-    var(--bg-panel);
 
-    backdrop-filter:
-    blur(20px);
+    display:flex;
 
-    -webkit-backdrop-filter:
-    blur(20px);
 
-    border:
-    1px solid var(--border);
+    justify-content:space-between;
 
-    border-radius:
-    var(--radius);
 
-    box-shadow:
-    var(--shadow);
+    align-items:center;
+
+
+    gap:20px;
+
+
+    margin-bottom:30px;
+
 
 }
 
 
+
+
+
+.section-heading h2{
+
+
+    font-size:32px;
+
+
+    letter-spacing:2px;
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+.section-heading p{
+
+
+    margin-top:8px;
+
+
+    color:var(--text-soft);
+
+
+}
+
+
+
+
+
+.section-number{
+
+
+    display:inline-flex;
+
+
+    padding:6px 12px;
+
+
+    border-radius:20px;
+
+
+    background:
+
+    rgba(0,170,255,0.15);
+
+
+
+    color:var(--primary);
+
+
+
+    font-weight:700;
+
+
+    margin-bottom:10px;
+
+
+}
+
+
+
+
+
+.section-status{
+
+
+    padding:10px 18px;
+
+
+    border-radius:30px;
+
+
+    border:
+
+    1px solid var(--border);
+
+
+
+    color:var(--success);
+
+
+    background:
+
+    rgba(0,255,157,0.08);
+
+
+    font-size:14px;
+
+
+}
+
+
+
+
+
+
+
+.status-dot{
+
+
+    display:inline-block;
+
+
+    width:10px;
+
+
+    height:10px;
+
+
+    background:var(--success);
+
+
+    border-radius:50%;
+
+
+    margin-right:8px;
+
+
+    animation:pulse 1.5s infinite;
+
+
+}
+
+
+
+
+
+@keyframes pulse{
+
+
+    0%,100%{
+
+
+        opacity:1;
+
+
+        transform:scale(1);
+
+
+    }
+
+
+
+    50%{
+
+
+        opacity:.4;
+
+
+        transform:scale(1.5);
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   BUTTON SYSTEM
+================================================== */
+
+
+button{
+
+
+    border:none;
+
+
+    cursor:pointer;
+
+
+    font-family:inherit;
+
+
+}
+
+
+
+
+
+
+.primary-action-button,
+
+
+.secondary-action-button,
+
+
+.small-action-button{
+
+
+    padding:12px 20px;
+
+
+    border-radius:12px;
+
+
+    transition:.3s;
+
+
+    font-weight:700;
+
+
+}
+
+
+
+
+
+
+.primary-action-button{
+
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        var(--primary-dark)
+
+    );
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+.primary-action-button:hover{
+
+
+    transform:translateY(-3px);
+
+
+    box-shadow:
+
+    0 0 20px rgba(0,170,255,.5);
+
+
+}
+
+
+
+
+
+
+.secondary-action-button{
+
+
+    background:
+
+    rgba(255,255,255,.08);
+
+
+    border:
+
+    1px solid var(--border);
+
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+.secondary-action-button:hover{
+
+
+    background:
+
+    rgba(0,170,255,.15);
+
+
+}
+
+
+
+
+
+.small-action-button{
+
+
+    padding:8px 14px;
+
+
+    background:
+
+    rgba(0,170,255,.15);
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+
+/* ==================================================
+   PART 1 COMPLETE
+   CONTINUE PART 2
+================================================== */
+/* ==================================================
+   YTCC STYLE.CSS
+   PART 2/12
+   HEADER + CARDS + GRID SYSTEM
+================================================== */
 
 
 
@@ -242,503 +687,68 @@ body::before {
 
 /* ==================================================
    HEADER SYSTEM
-   ================================================== */
+================================================== */
 
 
-header {
-
-    padding:
-    25px;
-
-    margin:
-    20px 0;
-
-    text-align:
-    center;
-
-}
+.ytcc-header{
 
 
-
-header h1 {
-
-    font-size:
-    42px;
-
-    color:
-    var(--blue-light);
-
-    letter-spacing:
-    3px;
-
-}
+    width:90%;
 
 
-
-header p {
-
-    color:
-    var(--text-muted);
-
-    margin-top:
-    10px;
-
-    font-size:
-    18px;
-
-}
+    max-width:1400px;
 
 
+    margin:30px auto;
 
 
+    padding:35px;
 
 
-
-/* ==================================================
-   NAVIGATION BAR
-   ================================================== */
-
-
-.navbar {
-
-    position:
-    sticky;
-
-    top:
-    15px;
-
-    z-index:
-    100;
-
-    display:
-    flex;
-
-    justify-content:
-    space-between;
-
-    align-items:
-    center;
-
-    padding:
-    15px 25px;
-
-    margin-bottom:
-    25px;
-
-}
-
-
-
-
-
-.navbar a {
-
-    color:
-    var(--text);
-
-    text-decoration:
-    none;
-
-    padding:
-    10px 18px;
-
-    border-radius:
-    12px;
-
-    transition:
-    0.3s;
-
-}
-
-
-
-.navbar a:hover {
 
     background:
-    rgba(0,170,255,0.2);
 
-    color:
-    var(--cyan);
 
-}
+    rgba(7,20,38,.75);
 
 
-
-
-
-
-/* ==================================================
-   STATUS INDICATORS
-   ================================================== */
-
-
-.status {
-
-    display:
-    inline-flex;
-
-    align-items:
-    center;
-
-    gap:
-    10px;
-
-    padding:
-    10px 18px;
-
-    border-radius:
-    50px;
-
-    background:
-    rgba(34,197,94,0.15);
-
-    color:
-    var(--green);
-
-}
-
-
-
-.status.offline {
-
-    background:
-    rgba(239,68,68,0.15);
-
-    color:
-    var(--red);
-
-}
-
-
-
-
-
-/* ==================================================
-   END OF STYLE PART 1
-   ================================================== */
-/* ==================================================
-   YTCC COMMAND CONTROL CENTER
-   OFFLINE UPGRADE STYLE SYSTEM
-   PART 2
-   DASHBOARD LAYOUT + COMMAND PANELS
-   ================================================== */
-
-
-/* ==================================================
-   MAIN APP WRAPPER
-   ================================================== */
-
-
-.app {
-
-    width:
-    100%;
-
-    min-height:
-    100vh;
-
-    padding:
-    20px;
-
-}
-
-
-
-
-
-.main-grid {
-
-    display:
-    grid;
-
-    grid-template-columns:
-    repeat(
-    12,
-    1fr
-    );
-
-    gap:
-    20px;
-
-}
-
-
-
-
-
-/* ==================================================
-   DASHBOARD SECTIONS
-   ================================================== */
-
-
-.dashboard-section {
-
-    padding:
-    25px;
-
-    margin-bottom:
-    25px;
-
-    position:
-    relative;
-
-    overflow:
-    hidden;
-
-}
-
-
-
-
-
-.dashboard-section::before {
-
-    content:
-    "";
-
-    position:
-    absolute;
-
-    top:
-    0;
-
-    left:
-    0;
-
-    width:
-    100%;
-
-    height:
-    2px;
-
-    background:
-    linear-gradient(
-    90deg,
-    transparent,
-    var(--blue),
-    transparent
-    );
-
-}
-
-
-
-
-
-/* ==================================================
-   GRID PANELS
-   ================================================== */
-
-
-.panel {
-
-    background:
-    var(--bg-panel);
-
-    border:
-    1px solid var(--border);
-
-    border-radius:
-    var(--radius);
-
-    padding:
-    25px;
 
     backdrop-filter:
-    blur(18px);
 
-    -webkit-backdrop-filter:
-    blur(18px);
+    blur(20px);
 
-    box-shadow:
-    var(--shadow);
 
-    transition:
-    0.35s ease;
 
-}
+    border:
 
+    1px solid var(--border);
 
 
-
-
-.panel:hover {
-
-    transform:
-    translateY(-5px);
-
-    border-color:
-    var(--blue-light);
-
-    box-shadow:
-    0 0 45px
-    rgba(
-    0,170,255,0.35
-    );
-
-}
-
-
-
-
-
-.panel-title {
-
-    display:
-    flex;
-
-    align-items:
-    center;
-
-    justify-content:
-    space-between;
-
-    margin-bottom:
-    20px;
-
-}
-
-
-
-
-
-.panel-title h2 {
-
-    font-size:
-    22px;
-
-    color:
-    var(--blue-light);
-
-    letter-spacing:
-    1px;
-
-}
-
-
-
-
-
-.panel-title span {
-
-    color:
-    var(--text-muted);
-
-    font-size:
-    13px;
-
-}
-
-
-
-
-
-/* ==================================================
-   DASHBOARD COLUMN SYSTEM
-   ================================================== */
-
-
-.col-12 {
-
-    grid-column:
-    span 12;
-
-}
-
-
-
-.col-8 {
-
-    grid-column:
-    span 8;
-
-}
-
-
-
-.col-6 {
-
-    grid-column:
-    span 6;
-
-}
-
-
-
-.col-4 {
-
-    grid-column:
-    span 4;
-
-}
-
-
-
-.col-3 {
-
-    grid-column:
-    span 3;
-
-}
-
-
-
-
-
-
-/* ==================================================
-   SYSTEM OVERVIEW CARDS
-   ================================================== */
-
-
-.system-cards {
-
-    display:
-    grid;
-
-    grid-template-columns:
-    repeat(
-    auto-fit,
-    minmax(
-    220px,
-    1fr
-    )
-    );
-
-    gap:
-    20px;
-
-}
-
-
-
-
-
-.system-card {
-
-    padding:
-    22px;
-
-    background:
-    var(--bg-card);
 
     border-radius:
+
     var(--radius);
 
-    border:
-    1px solid
-    rgba(
-    56,189,248,0.2
-    );
 
-    position:
-    relative;
 
-    overflow:
-    hidden;
+    box-shadow:
 
-    transition:
-    0.3s;
+    var(--shadow);
+
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+    gap:30px;
+
+
 
 }
 
@@ -746,12 +756,18 @@ header p {
 
 
 
-.system-card:hover {
 
-    transform:
-    scale(
-    1.03
-    );
+.header-brand h1{
+
+
+    font-size:42px;
+
+
+    letter-spacing:5px;
+
+
+    color:white;
+
 
 }
 
@@ -759,16 +775,11 @@ header p {
 
 
 
-.system-card h3 {
+.header-brand span{
 
-    color:
-    var(--text-muted);
 
-    font-size:
-    14px;
+    color:var(--primary);
 
-    margin-bottom:
-    12px;
 
 }
 
@@ -776,16 +787,17 @@ header p {
 
 
 
-.system-card .value {
+.header-brand p{
 
-    font-size:
-    32px;
 
-    font-weight:
-    800;
+    margin-top:10px;
 
-    color:
-    var(--blue-light);
+
+    color:var(--text-soft);
+
+
+    letter-spacing:2px;
+
 
 }
 
@@ -793,140 +805,55 @@ header p {
 
 
 
-.system-card::after {
+.header-status{
 
-    content:
-    "";
 
-    position:
-    absolute;
+    display:flex;
 
-    width:
-    120px;
 
-    height:
-    120px;
+    flex-direction:column;
 
-    right:
-    -50px;
 
-    bottom:
-    -50px;
+    gap:12px;
 
-    border-radius:
-    50%;
+
+}
+
+
+
+
+
+
+.system-badge{
+
+
+    padding:12px 22px;
+
+
+    border-radius:30px;
+
 
     background:
-    rgba(
-    0,170,255,0.15
-    );
 
-}
+    rgba(0,255,157,.1);
 
 
-
-
-
-/* ==================================================
-   COMMAND CONTROL AREA
-   ================================================== */
-
-
-.command-center {
-
-    display:
-    grid;
-
-    grid-template-columns:
-    repeat(
-    auto-fit,
-    minmax(
-    250px,
-    1fr
-    )
-    );
-
-    gap:
-    18px;
-
-}
-
-
-
-
-
-.command-card {
-
-    padding:
-    20px;
-
-    background:
-    rgba(
-    15,23,42,0.85
-    );
-
-    border-radius:
-    16px;
 
     border:
-    1px solid
-    rgba(
-    34,211,238,0.25
-    );
 
-    cursor:
-    pointer;
+    1px solid rgba(0,255,157,.3);
 
-    transition:
-    0.3s;
+
+
+    color:var(--success);
+
+
+    font-weight:700;
+
 
 }
 
 
-
-
-
-.command-card:hover {
-
-    background:
-    rgba(
-    0,170,255,0.15
-    );
-
-    transform:
-    translateY(
-    -6px
-    );
-
-}
-
-
-
-
-
-.command-card h3 {
-
-    color:
-    var(--cyan);
-
-    margin-bottom:
-    10px;
-
-}
-
-
-
-
-
-.command-card p {
-
-    color:
-    var(--text-muted);
-
-    font-size:
-    14px;
-
-}
 
 
 
@@ -935,26 +862,65 @@ header p {
 
 
 /* ==================================================
-   STATUS GRID
-   ================================================== */
+   GRID SYSTEM
+================================================== */
 
 
-.status-grid {
+.monitor-grid,
 
-    display:
-    grid;
+
+.utility-grid,
+
+
+.offline-grid,
+
+
+.security-grid,
+
+
+.ai-grid,
+
+
+.automation-grid,
+
+
+.engine-grid,
+
+
+.profile-grid,
+
+
+.settings-grid,
+
+
+.analytics-grid,
+
+
+.data-grid,
+
+
+.advanced-grid,
+
+
+.summary-grid{
+
+
+    display:grid;
+
 
     grid-template-columns:
+
     repeat(
-    auto-fit,
-    minmax(
-    180px,
-    1fr
-    )
+
+        auto-fit,
+
+        minmax(260px,1fr)
+
     );
 
-    gap:
-    15px;
+
+    gap:25px;
+
 
 }
 
@@ -962,186 +928,93 @@ header p {
 
 
 
-.status-box {
 
-    padding:
-    18px;
 
-    border-radius:
-    15px;
+
+/* ==================================================
+   GENERAL CARD STYLE
+================================================== */
+
+
+.monitor-card,
+
+
+.utility-card,
+
+
+.offline-card,
+
+
+.security-card,
+
+
+.ai-card,
+
+
+.automation-card,
+
+
+.engine-card,
+
+
+.profile-card,
+
+
+.settings-card,
+
+
+.analytics-card,
+
+
+.data-card,
+
+
+.advanced-card,
+
+
+.summary-card{
+
 
     background:
-    rgba(
-    15,23,42,0.7
-    );
 
-    border:
-    1px solid
-    var(--border);
 
-}
-
-
-
-
-
-.status-box strong {
-
-    display:
-    block;
-
-    font-size:
-    26px;
-
-    margin-top:
-    8px;
-
-    color:
-    var(--blue-light);
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   FLOATING ANIMATION
-   ================================================== */
-
-
-.float {
-
-    animation:
-    floating 5s infinite ease-in-out;
-
-}
-
-
-
-
-
-@keyframes floating {
-
-
-    0% {
-
-        transform:
-        translateY(0);
-
-    }
-
-
-    50% {
-
-        transform:
-        translateY(-10px);
-
-    }
-
-
-    100% {
-
-        transform:
-        translateY(0);
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   END OF STYLE PART 2
-   ================================================== */
-/* ==================================================
-   YTCC COMMAND CONTROL CENTER
-   OFFLINE UPGRADE STYLE SYSTEM
-   PART 3
-   COMMAND CARDS + CONTROL INTERFACE
-   ================================================== */
-
-
-/* ==================================================
-   QUICK CONTROL GRID
-   ================================================== */
-
-
-.quick-controls {
-
-    display:
-    grid;
-
-    grid-template-columns:
-    repeat(
-    auto-fit,
-    minmax(
-    200px,
-    1fr
-    )
-    );
-
-    gap:
-    18px;
-
-    margin-top:
-    20px;
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   CONTROL BUTTON CARDS
-   ================================================== */
-
-
-.control-card {
-
-    position:
-    relative;
-
-    padding:
-    25px;
-
-    min-height:
-    150px;
-
-    background:
     linear-gradient(
-    145deg,
-    rgba(15,23,42,0.9),
-    rgba(30,41,59,0.75)
+
+        145deg,
+
+        rgba(16,43,76,.8),
+
+        rgba(7,20,38,.8)
+
     );
+
+
 
     border:
-    1px solid
-    rgba(
-    56,189,248,0.25
-    );
+
+    1px solid var(--border);
+
+
 
     border-radius:
-    20px;
 
-    cursor:
-    pointer;
+    var(--radius);
 
-    overflow:
-    hidden;
 
-    transition:
-    0.35s ease;
+
+    padding:25px;
+
+
+
+    position:relative;
+
+
+    overflow:hidden;
+
+
+
+    transition:.35s;
+
 
 }
 
@@ -1149,20 +1022,116 @@ header p {
 
 
 
-.control-card:hover {
+
+
+.monitor-card::before,
+
+
+.utility-card::before,
+
+
+.offline-card::before,
+
+
+.security-card::before,
+
+
+.ai-card::before,
+
+
+.engine-card::before{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    top:0;
+
+
+    left:0;
+
+
+    width:100%;
+
+
+    height:3px;
+
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        var(--primary),
+
+        transparent
+
+    );
+
+
+}
+
+
+
+
+
+
+
+.monitor-card:hover,
+
+
+.utility-card:hover,
+
+
+.offline-card:hover,
+
+
+.security-card:hover,
+
+
+.ai-card:hover,
+
+
+.engine-card:hover,
+
+
+.profile-card:hover,
+
+
+.settings-card:hover,
+
+
+.analytics-card:hover,
+
+
+.data-card:hover,
+
+
+.advanced-card:hover{
+
 
     transform:
-    translateY(-8px)
-    scale(1.02);
+
+    translateY(-8px);
+
+
 
     border-color:
-    var(--blue-light);
+
+    rgba(0,170,255,.7);
+
+
 
     box-shadow:
-    0 0 35px
-    rgba(
-    0,170,255,0.35
-    );
+
+    0 15px 40px rgba(0,170,255,.2);
+
 
 }
 
@@ -1170,33 +1139,222 @@ header p {
 
 
 
-.control-card::before {
 
-    content:
-    "";
 
-    position:
-    absolute;
 
-    width:
-    180px;
+/* ==================================================
+   CARD HEADERS
+================================================== */
 
-    height:
-    180px;
 
-    top:
-    -90px;
+.monitor-top,
 
-    right:
-    -90px;
+
+.utility-card-header,
+
+
+.offline-card-header,
+
+
+.security-header,
+
+
+.ai-header,
+
+
+.engine-header,
+
+
+.profile-header,
+
+
+.data-header,
+
+
+.analytics-header{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:18px;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+
+
+.monitor-label{
+
+
+    color:var(--text-soft);
+
+
+    font-size:13px;
+
+
+    letter-spacing:2px;
+
+
+}
+
+
+
+
+
+.monitor-top strong{
+
+
+    display:block;
+
+
+    font-size:35px;
+
+
+    margin-top:8px;
+
+
+}
+
+
+
+
+
+
+
+
+.monitor-icon,
+
+
+.utility-icon,
+
+
+.security-icon,
+
+
+.ai-icon,
+
+
+.engine-icon,
+
+
+.analytics-icon,
+
+
+.data-icon{
+
+
+    width:55px;
+
+
+    height:55px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    border-radius:16px;
+
 
     background:
-    rgba(
-    34,211,238,0.15
+
+
+    rgba(0,170,255,.15);
+
+
+
+    color:var(--primary);
+
+
+    font-size:25px;
+
+
+    flex-shrink:0;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   PROGRESS BARS
+================================================== */
+
+
+.progress-track{
+
+
+    width:100%;
+
+
+    height:10px;
+
+
+    background:
+
+    rgba(255,255,255,.08);
+
+
+    border-radius:20px;
+
+
+    overflow:hidden;
+
+
+    margin:18px 0;
+
+
+}
+
+
+
+
+
+.progress-fill{
+
+
+    height:100%;
+
+
+    background:
+
+
+    linear-gradient(
+
+        90deg,
+
+        var(--primary),
+
+        var(--success)
+
     );
 
-    border-radius:
-    50%;
+
+
+    border-radius:20px;
+
+
+    transition:width .5s ease;
+
 
 }
 
@@ -1204,19 +1362,25 @@ header p {
 
 
 
-.control-card h3 {
 
-    position:
-    relative;
 
-    color:
-    var(--cyan);
 
-    font-size:
-    20px;
+/* ==================================================
+   UTILITY OUTPUTS
+================================================== */
 
-    margin-bottom:
-    12px;
+
+.utility-output-row{
+
+
+    display:flex;
+
+
+    gap:10px;
+
+
+    margin:20px 0;
+
 
 }
 
@@ -1224,16 +1388,29 @@ header p {
 
 
 
-.control-card p {
+.utility-output{
 
-    position:
-    relative;
 
-    color:
-    var(--text-muted);
+    flex:1;
 
-    font-size:
-    14px;
+
+    padding:12px;
+
+
+    border-radius:10px;
+
+
+    background:
+
+    rgba(0,0,0,.3);
+
+
+
+    color:var(--success);
+
+
+    font-family:monospace;
+
 
 }
 
@@ -1241,16 +1418,70 @@ header p {
 
 
 
-.control-icon {
 
-    font-size:
-    40px;
 
-    margin-bottom:
-    15px;
+.timer-display,
 
-    color:
-    var(--blue-light);
+
+.random-display{
+
+
+    text-align:center;
+
+
+    font-size:35px;
+
+
+    font-weight:800;
+
+
+    padding:20px;
+
+
+    color:var(--primary);
+
+
+    font-family:monospace;
+
+
+}
+
+
+
+
+
+.command-notes{
+
+
+    width:100%;
+
+
+    min-height:120px;
+
+
+    background:
+
+    rgba(0,0,0,.3);
+
+
+
+    border:
+
+    1px solid var(--border);
+
+
+
+    color:white;
+
+
+    padding:15px;
+
+
+    border-radius:12px;
+
+
+    resize:none;
+
 
 }
 
@@ -1261,519 +1492,52 @@ header p {
 
 
 /* ==================================================
-   COMMAND BUTTON SYSTEM
-   ================================================== */
+   PART 2 COMPLETE
+   CONTINUE PART 3
+================================================== */
+/* ==================================================
+   YTCC STYLE.CSS
+   PART 3/12
+   TERMINAL + COMMAND INTERFACE SYSTEM
+================================================== */
 
 
-.ytcc-button {
 
-    display:
-    inline-flex;
 
-    align-items:
-    center;
 
-    justify-content:
-    center;
+/* ==================================================
+   TERMINAL CONTAINER
+================================================== */
 
-    gap:
-    10px;
 
-    padding:
-    14px 25px;
+.terminal-container{
 
-    border:
-    none;
-
-    border-radius:
-    14px;
 
     background:
-    linear-gradient(
-    135deg,
-    var(--blue),
-    var(--cyan)
-    );
 
-    color:
-    white;
-
-    font-size:
-    15px;
-
-    font-weight:
-    700;
-
-    cursor:
-    pointer;
-
-    transition:
-    0.3s;
-
-}
+    rgba(0,0,0,.35);
 
 
 
+    border:
+
+    1px solid var(--border);
 
 
-.ytcc-button:hover {
 
-    transform:
-    translateY(-3px);
+    border-radius:
+
+    var(--radius);
+
+
+
+    overflow:hidden;
+
 
     box-shadow:
-    0 0 25px
-    rgba(
-    0,170,255,0.45
-    );
 
-}
+    inset 0 0 40px rgba(0,170,255,.05);
 
-
-
-
-
-.ytcc-button:active {
-
-    transform:
-    scale(
-    0.95
-    );
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   BUTTON VARIANTS
-   ================================================== */
-
-
-.button-success {
-
-    background:
-    linear-gradient(
-    135deg,
-    #16a34a,
-    #22c55e
-    );
-
-}
-
-
-
-.button-danger {
-
-    background:
-    linear-gradient(
-    135deg,
-    #dc2626,
-    #ef4444
-    );
-
-}
-
-
-
-.button-warning {
-
-    background:
-    linear-gradient(
-    135deg,
-    #ca8a04,
-    #facc15
-    );
-
-}
-
-
-
-.button-dark {
-
-    background:
-    rgba(
-    15,23,42,0.9
-    );
-
-    border:
-    1px solid
-    var(--border);
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   COMMAND PANEL
-   ================================================== */
-
-
-.command-panel {
-
-    padding:
-    30px;
-
-    margin-top:
-    25px;
-
-}
-
-
-
-
-
-.command-header {
-
-    display:
-    flex;
-
-    justify-content:
-    space-between;
-
-    align-items:
-    center;
-
-    margin-bottom:
-    20px;
-
-}
-
-
-
-
-
-.command-header h2 {
-
-    color:
-    var(--blue-light);
-
-    letter-spacing:
-    2px;
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   INPUT SYSTEM
-   ================================================== */
-
-
-.ytcc-input {
-
-    width:
-    100%;
-
-    padding:
-    16px 20px;
-
-    background:
-    rgba(
-    2,6,23,0.8
-    );
-
-    color:
-    var(--text);
-
-    border:
-    1px solid
-    var(--border);
-
-    border-radius:
-    14px;
-
-    outline:
-    none;
-
-    font-size:
-    16px;
-
-    transition:
-    0.3s;
-
-}
-
-
-
-
-
-.ytcc-input:focus {
-
-    border-color:
-    var(--blue-light);
-
-    box-shadow:
-    0 0 20px
-    rgba(
-    0,170,255,0.3
-    );
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   COMMAND OUTPUT WINDOW
-   ================================================== */
-
-
-.command-output {
-
-    margin-top:
-    20px;
-
-    min-height:
-    200px;
-
-    padding:
-    20px;
-
-    background:
-    #020617;
-
-    border-radius:
-    15px;
-
-    border:
-    1px solid
-    rgba(
-    34,211,238,0.25
-    );
-
-    color:
-    #38bdf8;
-
-    font-family:
-    "JetBrains Mono",
-    monospace;
-
-    overflow:
-    auto;
-
-}
-
-
-
-
-
-.command-line {
-
-    margin-bottom:
-    10px;
-
-    animation:
-    fadeCommand
-    0.4s ease;
-
-}
-
-
-
-
-
-@keyframes fadeCommand {
-
-
-    from {
-
-        opacity:
-        0;
-
-        transform:
-        translateX(-15px);
-
-    }
-
-
-    to {
-
-        opacity:
-        1;
-
-        transform:
-        translateX(0);
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   SYSTEM POWER BAR
-   ================================================== */
-
-
-.power-container {
-
-    margin-top:
-    20px;
-
-}
-
-
-
-
-
-.power-bar {
-
-    width:
-    100%;
-
-    height:
-    14px;
-
-    background:
-    rgba(
-    15,23,42,0.9
-    );
-
-    border-radius:
-    50px;
-
-    overflow:
-    hidden;
-
-}
-
-
-
-
-
-.power-fill {
-
-    height:
-    100%;
-
-    width:
-    100%;
-
-    background:
-    linear-gradient(
-    90deg,
-    #22c55e,
-    #22d3ee
-    );
-
-    animation:
-    powerPulse
-    3s infinite;
-
-}
-
-
-
-
-
-
-@keyframes powerPulse {
-
-
-    0% {
-
-        opacity:
-        0.7;
-
-    }
-
-
-    50% {
-
-        opacity:
-        1;
-
-    }
-
-
-    100% {
-
-        opacity:
-        0.7;
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   END OF STYLE PART 3
-   ================================================== */
-/* ==================================================
-   YTCC COMMAND CONTROL CENTER
-   OFFLINE UPGRADE STYLE SYSTEM
-   PART 4
-   TERMINAL + COMMAND INTERFACE
-   ================================================== */
-
-
-/* ==================================================
-   TERMINAL MAIN WINDOW
-   ================================================== */
-
-
-.terminal {
-
-    width:
-    100%;
-
-    min-height:
-    450px;
-
-    background:
-    rgba(
-    2,6,23,0.95
-    );
-
-    border:
-    1px solid
-    rgba(
-    56,189,248,0.35
-    );
-
-    border-radius:
-    22px;
-
-    overflow:
-    hidden;
-
-    box-shadow:
-    0 0 45px
-    rgba(
-    0,170,255,0.25
-    );
-
-    display:
-    flex;
-
-    flex-direction:
-    column;
 
 }
 
@@ -1785,33 +1549,35 @@ header p {
 
 /* ==================================================
    TERMINAL HEADER
-   ================================================== */
+================================================== */
 
 
-.terminal-header {
+.terminal-header{
 
-    display:
-    flex;
 
-    align-items:
-    center;
+    display:flex;
 
-    justify-content:
-    space-between;
 
-    padding:
-    18px 25px;
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+    padding:18px 22px;
+
+
 
     background:
-    rgba(
-    15,23,42,0.9
-    );
+
+    rgba(0,170,255,.08);
+
+
 
     border-bottom:
-    1px solid
-    rgba(
-    56,189,248,0.25
-    );
+
+    1px solid var(--border);
+
 
 }
 
@@ -1819,25 +1585,27 @@ header p {
 
 
 
-.terminal-title {
+.terminal-title{
 
-    display:
-    flex;
 
-    align-items:
-    center;
+    display:flex;
 
-    gap:
-    12px;
 
-    color:
-    var(--blue-light);
+    align-items:center;
 
-    font-size:
-    18px;
 
-    font-weight:
-    700;
+    gap:10px;
+
+
+
+    color:white;
+
+
+    font-weight:800;
+
+
+    letter-spacing:2px;
+
 
 }
 
@@ -1845,13 +1613,23 @@ header p {
 
 
 
-.terminal-lights {
+.terminal-dot{
 
-    display:
-    flex;
 
-    gap:
-    8px;
+    width:12px;
+
+
+    height:12px;
+
+
+    border-radius:50%;
+
+
+    background:var(--success);
+
+
+    animation:pulse 1.5s infinite;
+
 
 }
 
@@ -1859,45 +1637,65 @@ header p {
 
 
 
-.terminal-light {
 
-    width:
-    12px;
 
-    height:
-    12px;
+.terminal-actions{
 
-    border-radius:
-    50%;
+
+    display:flex;
+
+
+    gap:10px;
+
 
 }
 
 
 
-.terminal-light.red {
+
+
+.terminal-button{
+
+
+    padding:8px 16px;
+
+
+    border-radius:10px;
+
 
     background:
-    #ef4444;
+
+    rgba(0,170,255,.15);
+
+
+
+    border:
+
+    1px solid var(--border);
+
+
+
+    color:white;
+
 
 }
 
 
 
-.terminal-light.yellow {
+
+
+
+
+.terminal-button:hover{
+
 
     background:
-    #facc15;
+
+    rgba(0,170,255,.3);
+
 
 }
 
-
-
-.terminal-light.green {
-
-    background:
-    #22c55e;
-
-}
 
 
 
@@ -1906,73 +1704,82 @@ header p {
 
 
 /* ==================================================
-   TERMINAL BODY
-   ================================================== */
+   TERMINAL OUTPUT
+================================================== */
 
 
-.terminal-body {
+.terminal-output{
 
-    flex:
-    1;
 
-    padding:
-    25px;
+    min-height:280px;
+
+
+    max-height:400px;
+
+
+    overflow-y:auto;
+
+
+
+    padding:25px;
+
+
 
     font-family:
-    "JetBrains Mono",
+
     "Courier New",
     monospace;
 
-    color:
-    #38bdf8;
-
-    overflow-y:
-    auto;
-
-}
 
 
+    background:
+
+    rgba(0,0,0,.45);
 
 
-
-.terminal-line {
-
-    margin-bottom:
-    12px;
-
-    line-height:
-    1.6;
-
-}
-
-
-
-
-
-.terminal-line.system {
 
     color:
-    #22c55e;
+
+    #b7f7ff;
+
 
 }
 
 
 
-.terminal-line.warning {
 
-    color:
-    #facc15;
+
+
+
+.terminal-line{
+
+
+    display:flex;
+
+
+    gap:15px;
+
+
+    margin-bottom:12px;
+
+
+    animation:fadeIn .3s ease;
+
 
 }
 
 
 
-.terminal-line.error {
 
-    color:
-    #ef4444;
+
+.terminal-time{
+
+
+    color:var(--success);
+
 
 }
+
 
 
 
@@ -1981,34 +1788,31 @@ header p {
 
 
 /* ==================================================
-   TERMINAL INPUT AREA
-   ================================================== */
+   TERMINAL INPUT
+================================================== */
 
 
-.terminal-input-area {
+.terminal-input-area{
 
-    display:
-    flex;
 
-    align-items:
-    center;
+    display:flex;
 
-    gap:
-    12px;
 
-    padding:
-    18px 25px;
+    align-items:center;
+
+
+    gap:15px;
+
+
+    padding:20px;
+
+
 
     background:
-    rgba(
-    15,23,42,0.85
-    );
 
-    border-top:
-    1px solid
-    rgba(
-    56,189,248,0.2
-    );
+    rgba(0,170,255,.05);
+
+
 
 }
 
@@ -2016,19 +1820,17 @@ header p {
 
 
 
-.terminal-prefix {
+.terminal-symbol{
 
-    color:
-    var(--green);
 
-    font-family:
-    monospace;
+    color:var(--success);
 
-    font-weight:
-    800;
 
-    font-size:
-    18px;
+    font-size:25px;
+
+
+    font-weight:bold;
+
 
 }
 
@@ -2036,31 +1838,58 @@ header p {
 
 
 
-.terminal-input {
+.terminal-input{
 
-    flex:
-    1;
+
+    flex:1;
+
+
+    padding:15px;
+
 
     background:
-    transparent;
+
+    rgba(0,0,0,.4);
+
+
 
     border:
-    none;
 
-    outline:
-    none;
+    1px solid var(--border);
 
-    color:
-    var(--text);
 
-    font-family:
-    "JetBrains Mono",
-    monospace;
 
-    font-size:
-    16px;
+    border-radius:12px;
+
+
+
+    color:white;
+
+
+    outline:none;
+
 
 }
+
+
+
+
+
+.terminal-input:focus{
+
+
+    border-color:
+
+    var(--primary);
+
+
+    box-shadow:
+
+    0 0 15px rgba(0,170,255,.3);
+
+
+}
+
 
 
 
@@ -2069,20 +1898,29 @@ header p {
 
 
 /* ==================================================
-   COMMAND HISTORY PANEL
-   ================================================== */
+   COMMAND SHORTCUTS
+================================================== */
 
 
-.command-history {
+.shortcut-grid{
 
-    max-height:
-    350px;
 
-    overflow-y:
-    auto;
+    display:grid;
 
-    padding:
-    15px;
+
+    grid-template-columns:
+
+    repeat(
+
+        auto-fit,
+
+        minmax(220px,1fr)
+
+    );
+
+
+    gap:20px;
+
 
 }
 
@@ -2090,39 +1928,35 @@ header p {
 
 
 
-.history-item {
 
-    display:
-    flex;
+.shortcut-card{
 
-    justify-content:
-    space-between;
 
-    align-items:
-    center;
+    padding:25px;
 
-    padding:
-    14px;
-
-    margin-bottom:
-    10px;
 
     background:
-    rgba(
-    30,41,59,0.7
-    );
 
-    border-radius:
-    12px;
+    rgba(7,20,38,.8);
+
+
 
     border:
-    1px solid
-    rgba(
-    56,189,248,0.15
-    );
 
-    transition:
-    0.3s;
+    1px solid var(--border);
+
+
+
+    border-radius:18px;
+
+
+
+    text-align:center;
+
+
+
+    transition:.3s;
+
 
 }
 
@@ -2130,387 +1964,17 @@ header p {
 
 
 
-.history-item:hover {
+.shortcut-card:hover{
 
-    background:
-    rgba(
-    0,170,255,0.15
-    );
 
     transform:
-    translateX(
-    5px
-    );
 
-}
+    translateY(-6px);
 
-
-
-
-
-.history-command {
-
-    color:
-    var(--cyan);
-
-    font-family:
-    monospace;
-
-}
-
-
-
-
-
-.history-time {
-
-    color:
-    var(--text-muted);
-
-    font-size:
-    12px;
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   AI COMMAND BOX
-   ================================================== */
-
-
-.ai-command-box {
-
-    padding:
-    25px;
-
-    border-radius:
-    20px;
 
     background:
-    linear-gradient(
-    145deg,
-    rgba(
-    0,170,255,0.12
-    ),
-    rgba(
-    34,211,238,0.05
-    )
-    );
 
-    border:
-    1px solid
-    rgba(
-    34,211,238,0.3
-    );
-
-}
-
-
-
-
-
-.ai-header {
-
-    display:
-    flex;
-
-    align-items:
-    center;
-
-    gap:
-    15px;
-
-    margin-bottom:
-    15px;
-
-}
-
-
-
-
-
-.ai-header h3 {
-
-    color:
-    var(--cyan);
-
-}
-
-
-
-
-
-.ai-status {
-
-    padding:
-    6px 12px;
-
-    border-radius:
-    50px;
-
-    background:
-    rgba(
-    34,197,94,0.15
-    );
-
-    color:
-    var(--green);
-
-    font-size:
-    12px;
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   COMMAND SUGGESTIONS
-   ================================================== */
-
-
-.command-suggestions {
-
-    display:
-    flex;
-
-    flex-wrap:
-    wrap;
-
-    gap:
-    10px;
-
-    margin-top:
-    15px;
-
-}
-
-
-
-
-
-.suggestion {
-
-    padding:
-    10px 15px;
-
-    background:
-    rgba(
-    56,189,248,0.12
-    );
-
-    color:
-    var(--blue-light);
-
-    border:
-    1px solid
-    rgba(
-    56,189,248,0.3
-    );
-
-    border-radius:
-    12px;
-
-    cursor:
-    pointer;
-
-    transition:
-    0.3s;
-
-}
-
-
-
-
-
-.suggestion:hover {
-
-    background:
-    rgba(
-    56,189,248,0.25
-    );
-
-    transform:
-    translateY(
-    -3px
-    );
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   TERMINAL SCROLLBAR
-   ================================================== */
-
-
-.terminal-body::-webkit-scrollbar,
-.command-history::-webkit-scrollbar {
-
-    width:
-    8px;
-
-}
-
-
-
-.terminal-body::-webkit-scrollbar-thumb,
-.command-history::-webkit-scrollbar-thumb {
-
-    background:
-    rgba(
-    56,189,248,0.4
-    );
-
-    border-radius:
-    20px;
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   END OF STYLE PART 4
-   ================================================== */
-/* ==================================================
-   YTCC COMMAND CONTROL CENTER
-   OFFLINE UPGRADE STYLE SYSTEM
-   PART 5
-   AI ASSISTANT INTERFACE + INTELLIGENCE UI
-   ================================================== */
-
-
-/* ==================================================
-   AI MAIN CONTAINER
-   ================================================== */
-
-
-.ai-assistant-panel {
-
-    position:
-    relative;
-
-    padding:
-    30px;
-
-    background:
-    linear-gradient(
-    145deg,
-    rgba(15,23,42,0.9),
-    rgba(2,6,23,0.85)
-    );
-
-    border:
-    1px solid
-    rgba(
-    34,211,238,0.35
-    );
-
-    border-radius:
-    24px;
-
-    overflow:
-    hidden;
-
-}
-
-
-
-
-
-.ai-assistant-panel::before {
-
-    content:
-    "";
-
-    position:
-    absolute;
-
-    width:
-    250px;
-
-    height:
-    250px;
-
-    top:
-    -120px;
-
-    right:
-    -120px;
-
-    background:
-    rgba(
-    34,211,238,0.15
-    );
-
-    border-radius:
-    50%;
-
-    animation:
-    aiGlow 5s infinite;
-
-}
-
-
-
-
-
-@keyframes aiGlow {
-
-
-    0% {
-
-        transform:
-        scale(
-        1
-        );
-
-        opacity:
-        0.5;
-
-    }
-
-
-    50% {
-
-        transform:
-        scale(
-        1.2
-        );
-
-        opacity:
-        1;
-
-    }
-
-
-    100% {
-
-        transform:
-        scale(
-        1
-        );
-
-        opacity:
-        0.5;
-
-    }
+    rgba(0,170,255,.12);
 
 
 }
@@ -2521,124 +1985,47 @@ header p {
 
 
 
-/* ==================================================
-   AI HEADER
-   ================================================== */
+.shortcut-icon{
 
 
-.ai-title {
-
-    display:
-    flex;
-
-    align-items:
-    center;
-
-    justify-content:
-    space-between;
-
-    margin-bottom:
-    25px;
-
-}
+    width:60px;
 
 
+    height:60px;
 
-
-
-.ai-title h2 {
-
-    color:
-    var(--cyan);
-
-    font-size:
-    28px;
-
-    letter-spacing:
-    2px;
-
-}
-
-
-
-
-
-.ai-version {
-
-    padding:
-    8px 15px;
-
-    border-radius:
-    50px;
-
-    background:
-    rgba(
-    0,170,255,0.15
-    );
-
-    color:
-    var(--blue-light);
-
-    font-size:
-    13px;
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   AI AVATAR CORE
-   ================================================== */
-
-
-.ai-core {
-
-    width:
-    120px;
-
-    height:
-    120px;
 
     margin:
-    0 auto 25px;
 
-    border-radius:
-    50%;
+    0 auto 15px;
 
-    display:
-    flex;
 
-    align-items:
-    center;
 
-    justify-content:
-    center;
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+
+    border-radius:50%;
+
+
 
     background:
-    radial-gradient(
-    circle,
-    var(--cyan),
-    var(--blue)
-    );
 
-    color:
-    white;
+    rgba(0,170,255,.15);
 
-    font-size:
-    45px;
 
-    box-shadow:
-    0 0 50px
-    rgba(
-    34,211,238,0.6
-    );
 
-    animation:
-    aiPulse 3s infinite;
+    color:var(--primary);
+
+
+
+    font-size:28px;
+
 
 }
 
@@ -2646,40 +2033,66 @@ header p {
 
 
 
-@keyframes aiPulse {
 
 
-    0% {
-
-        box-shadow:
-        0 0 20px
-        rgba(
-        34,211,238,0.3
-        );
-
-    }
+.shortcut-card h3{
 
 
-    50% {
-
-        box-shadow:
-        0 0 70px
-        rgba(
-        34,211,238,0.8
-        );
-
-    }
+    margin-bottom:10px;
 
 
-    100% {
+}
 
-        box-shadow:
-        0 0 20px
-        rgba(
-        34,211,238,0.3
-        );
 
-    }
+
+
+
+.shortcut-card p{
+
+
+    color:var(--text-soft);
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+
+
+.shortcut-button{
+
+
+    width:100%;
+
+
+    padding:12px;
+
+
+    border-radius:12px;
+
+
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        var(--primary-dark)
+
+    );
+
+
+
+    color:white;
+
+
+    font-weight:bold;
 
 
 }
@@ -2691,78 +2104,32 @@ header p {
 
 
 /* ==================================================
-   AI CHAT AREA
-   ================================================== */
+   COMMAND RESULT PANEL
+================================================== */
 
 
-.ai-chat {
+.result-panel{
 
-    display:
-    flex;
 
-    flex-direction:
-    column;
+    background:
 
-    gap:
-    15px;
-
-}
+    rgba(7,20,38,.8);
 
 
 
+    border:
+
+    1px solid var(--border);
 
 
-.ai-message {
-
-    padding:
-    18px 22px;
 
     border-radius:
-    18px;
 
-    max-width:
-    85%;
-
-    line-height:
-    1.6;
-
-    animation:
-    messageAppear
-    0.4s ease;
-
-}
+    var(--radius);
 
 
 
-
-
-@keyframes messageAppear {
-
-
-    from {
-
-        opacity:
-        0;
-
-        transform:
-        translateY(
-        15px
-        );
-
-    }
-
-
-    to {
-
-        opacity:
-        1;
-
-        transform:
-        translateY(
-        0
-        );
-
-    }
+    padding:25px;
 
 
 }
@@ -2771,24 +2138,82 @@ header p {
 
 
 
-.ai-message.bot {
 
-    align-self:
-    flex-start;
+
+.panel-header{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+
+
+.panel-label{
+
+
+    color:var(--primary);
+
+
+    font-size:13px;
+
+
+    letter-spacing:2px;
+
+
+}
+
+
+
+
+
+.panel-header h3{
+
+
+    margin-top:5px;
+
+
+    font-size:24px;
+
+
+}
+
+
+
+
+
+.live-label{
+
+
+    padding:8px 15px;
+
+
+    border-radius:20px;
+
 
     background:
-    rgba(
-    56,189,248,0.12
-    );
 
-    border:
-    1px solid
-    rgba(
-    56,189,248,0.25
-    );
+    rgba(0,255,157,.12);
 
-    color:
-    var(--blue-light);
+
+
+    color:var(--success);
+
+
+    font-size:13px;
+
 
 }
 
@@ -2796,26 +2221,39 @@ header p {
 
 
 
-.ai-message.user {
 
-    align-self:
-    flex-end;
+
+
+.result-text{
+
+
+    min-height:120px;
+
+
+    padding:20px;
+
+
+    border-radius:15px;
+
+
 
     background:
-    rgba(
-    34,211,238,0.18
-    );
 
-    border:
-    1px solid
-    rgba(
-    34,211,238,0.35
-    );
+    rgba(0,0,0,.3);
+
+
 
     color:
-    white;
+
+    #d7faff;
+
+
+
+    font-family:monospace;
+
 
 }
+
 
 
 
@@ -2824,20 +2262,29 @@ header p {
 
 
 /* ==================================================
-   AI INPUT SYSTEM
-   ================================================== */
+   PART 3 COMPLETE
+   CONTINUE PART 4
+================================================== */
+/* ==================================================
+   YTCC STYLE.CSS
+   PART 4/12
+   OFFLINE SYSTEM + LOCAL MEMORY STYLING
+================================================== */
 
 
-.ai-input-container {
 
-    display:
-    flex;
 
-    gap:
-    12px;
 
-    margin-top:
-    20px;
+/* ==================================================
+   OFFLINE CARDS
+================================================== */
+
+
+.offline-card{
+
+
+    min-height:320px;
+
 
 }
 
@@ -2845,33 +2292,85 @@ header p {
 
 
 
-.ai-input {
+.offline-card-header{
 
-    flex:
-    1;
 
-    padding:
-    16px 20px;
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:18px;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+.offline-card h3{
+
+
+    font-size:22px;
+
+
+}
+
+
+
+
+
+.offline-card p{
+
+
+    color:var(--text-soft);
+
+
+    margin-top:6px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   OFFLINE STATUS BOX
+================================================== */
+
+
+.offline-status-box{
+
+
+    padding:25px;
+
+
+    border-radius:16px;
+
 
     background:
-    rgba(
-    2,6,23,0.8
-    );
 
-    color:
-    var(--text);
+    rgba(0,0,0,.3);
+
+
 
     border:
-    1px solid
-    rgba(
-    34,211,238,0.3
-    );
 
-    border-radius:
-    15px;
+    1px solid var(--border);
 
-    outline:
-    none;
+
+
+    margin-bottom:20px;
+
 
 }
 
@@ -2879,16 +2378,378 @@ header p {
 
 
 
-.ai-input:focus {
+
+.offline-online{
+
+
+    display:inline-block;
+
+
+    padding:8px 18px;
+
+
+    border-radius:20px;
+
+
+    background:
+
+    rgba(0,255,157,.15);
+
+
+
+    color:var(--success);
+
+
+    font-weight:800;
+
+
+    letter-spacing:1px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   CACHE INFORMATION
+================================================== */
+
+
+.cache-info{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:15px;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+.cache-info div{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    padding:15px;
+
+
+    border-radius:12px;
+
+
+
+    background:
+
+    rgba(255,255,255,.05);
+
+
+}
+
+
+
+
+
+.cache-info span{
+
+
+    color:var(--text-soft);
+
+
+}
+
+
+
+
+
+.cache-info strong{
+
+
+    color:var(--primary);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   DATABASE STATS
+================================================== */
+
+
+.database-stats{
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(3,1fr);
+
+
+
+    gap:12px;
+
+
+    margin:25px 0;
+
+
+}
+
+
+
+
+
+.database-item{
+
+
+    text-align:center;
+
+
+    padding:18px 10px;
+
+
+    border-radius:14px;
+
+
+
+    background:
+
+    rgba(0,170,255,.08);
+
+
+}
+
+
+
+
+
+.database-item span{
+
+
+    display:block;
+
+
+    color:var(--text-soft);
+
+
+    font-size:12px;
+
+
+}
+
+
+
+
+
+.database-item strong{
+
+
+    display:block;
+
+
+    margin-top:8px;
+
+
+    font-size:25px;
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   DEVICE INFORMATION
+================================================== */
+
+
+.device-info{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:12px;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+.device-info div{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    padding:12px;
+
+
+    border-radius:10px;
+
+
+    background:
+
+    rgba(0,0,0,.25);
+
+
+}
+
+
+
+
+
+.device-info span{
+
+
+    color:var(--text-soft);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   LOCAL COMMAND MEMORY
+================================================== */
+
+
+.memory-panel{
+
+
+    background:
+
+    rgba(0,0,0,.25);
+
+
+
+    border:
+
+    1px solid var(--border);
+
+
+
+    padding:25px;
+
+
+    border-radius:20px;
+
+
+}
+
+
+
+
+
+.memory-input{
+
+
+    display:flex;
+
+
+    gap:15px;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+.command-input{
+
+
+    width:100%;
+
+
+    padding:14px;
+
+
+    background:
+
+    rgba(0,0,0,.35);
+
+
+
+    border:
+
+    1px solid var(--border);
+
+
+
+    color:white;
+
+
+    border-radius:12px;
+
+
+    outline:none;
+
+
+}
+
+
+
+
+
+.command-input:focus{
+
 
     border-color:
-    var(--cyan);
 
-    box-shadow:
-    0 0 25px
-    rgba(
-    34,211,238,0.25
-    );
+    var(--primary);
+
 
 }
 
@@ -2898,43 +2759,78 @@ header p {
 
 
 
-/* ==================================================
-   AI BUTTON
-   ================================================== */
+.memory-list{
 
 
-.ai-send {
+    min-height:160px;
 
-    width:
-    55px;
 
-    height:
-    55px;
+    max-height:300px;
 
-    border-radius:
-    50%;
+
+    overflow-y:auto;
+
+
+}
+
+
+
+
+
+.memory-empty{
+
+
+    text-align:center;
+
+
+    padding:40px;
+
+
+    color:var(--text-soft);
+
 
     border:
-    none;
+
+    1px dashed var(--border);
+
+
+
+    border-radius:15px;
+
+
+}
+
+
+
+
+
+.memory-item{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+
+    padding:15px;
+
+
+    margin-bottom:10px;
+
 
     background:
-    linear-gradient(
-    135deg,
-    var(--blue),
-    var(--cyan)
-    );
 
-    color:
-    white;
+    rgba(0,170,255,.08);
 
-    cursor:
-    pointer;
 
-    font-size:
-    20px;
 
-    transition:
-    0.3s;
+    border-radius:12px;
+
 
 }
 
@@ -2942,17 +2838,16 @@ header p {
 
 
 
-.ai-send:hover {
+.memory-item:hover{
 
-    transform:
-    rotate(
-    10deg
-    )
-    scale(
-    1.1
-    );
+
+    background:
+
+    rgba(0,170,255,.15);
+
 
 }
+
 
 
 
@@ -2961,2079 +2856,72 @@ header p {
 
 
 /* ==================================================
-   AI DATA CARDS
-   ================================================== */
+   NOTIFICATION SYSTEM
+================================================== */
 
 
-.ai-data-grid {
+.ytcc-notification{
 
-    display:
-    grid;
 
-    grid-template-columns:
-    repeat(
-    auto-fit,
-    minmax(
-    180px,
-    1fr
-    )
-    );
+    position:fixed;
 
-    gap:
-    18px;
 
-    margin-top:
-    25px;
+    bottom:30px;
 
-}
 
+    right:30px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:15px;
 
 
 
+    padding:18px 25px;
 
-.ai-data-card {
 
-    padding:
-    20px;
 
     background:
-    rgba(
-    15,23,42,0.8
-    );
 
-    border-radius:
-    18px;
+    rgba(7,20,38,.9);
 
-    border:
-    1px solid
-    rgba(
-    56,189,248,0.2
-    );
 
-}
-
-
-
-
-
-.ai-data-card h4 {
-
-    color:
-    var(--text-muted);
-
-    margin-bottom:
-    10px;
-
-}
-
-
-
-
-
-.ai-data-card strong {
-
-    color:
-    var(--cyan);
-
-    font-size:
-    28px;
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   AI STATUS LIGHTS
-   ================================================== */
-
-
-.ai-indicator {
-
-    display:
-    inline-flex;
-
-    align-items:
-    center;
-
-    gap:
-    8px;
-
-}
-
-
-
-
-
-.ai-dot {
-
-    width:
-    10px;
-
-    height:
-    10px;
-
-    border-radius:
-    50%;
-
-    background:
-    var(--green);
-
-    animation:
-    blinkAI
-    2s infinite;
-
-}
-
-
-
-
-
-@keyframes blinkAI {
-
-
-    0% {
-
-        opacity:
-        0.4;
-
-    }
-
-
-    50% {
-
-        opacity:
-        1;
-
-    }
-
-
-    100% {
-
-        opacity:
-        0.4;
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   END OF STYLE PART 5
-   ================================================== */
-/* ==================================================
-   YTCC COMMAND CONTROL CENTER
-   OFFLINE UPGRADE STYLE SYSTEM
-   PART 6
-   SYSTEM MONITORING + PERFORMANCE UI
-   ================================================== */
-
-
-/* ==================================================
-   MONITOR DASHBOARD
-   ================================================== */
-
-
-.monitor-dashboard {
-
-    display:
-    grid;
-
-    grid-template-columns:
-    repeat(
-    auto-fit,
-    minmax(
-    250px,
-    1fr
-    )
-    );
-
-    gap:
-    20px;
-
-    margin-top:
-    25px;
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   PERFORMANCE CARDS
-   ================================================== */
-
-
-.performance-card {
-
-    position:
-    relative;
-
-    padding:
-    25px;
-
-    background:
-    rgba(
-    15,23,42,0.8
-    );
-
-    border:
-    1px solid
-    rgba(
-    56,189,248,0.25
-    );
-
-    border-radius:
-    20px;
-
-    overflow:
-    hidden;
-
-    transition:
-    0.35s;
-
-}
-
-
-
-
-
-.performance-card:hover {
-
-    transform:
-    translateY(
-    -7px
-    );
-
-    box-shadow:
-    0 0 35px
-    rgba(
-    0,170,255,0.3
-    );
-
-}
-
-
-
-
-
-.performance-card h3 {
-
-    color:
-    var(--text-muted);
-
-    font-size:
-    15px;
-
-    margin-bottom:
-    15px;
-
-}
-
-
-
-
-
-.performance-value {
-
-    font-size:
-    36px;
-
-    font-weight:
-    800;
-
-    color:
-    var(--blue-light);
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   SYSTEM HEALTH PANEL
-   ================================================== */
-
-
-.health-panel {
-
-    padding:
-    30px;
-
-    background:
-    linear-gradient(
-    145deg,
-    rgba(2,6,23,0.95),
-    rgba(15,23,42,0.8)
-    );
-
-    border-radius:
-    22px;
-
-    border:
-    1px solid
-    rgba(
-    34,197,94,0.25
-    );
-
-}
-
-
-
-
-
-.health-status {
-
-    display:
-    flex;
-
-    align-items:
-    center;
-
-    justify-content:
-    space-between;
-
-}
-
-
-
-
-
-.health-online {
-
-    color:
-    var(--green);
-
-}
-
-
-
-.health-warning {
-
-    color:
-    var(--yellow);
-
-}
-
-
-
-.health-danger {
-
-    color:
-    var(--red);
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   SYSTEM METERS
-   ================================================== */
-
-
-.system-meter {
-
-    margin-top:
-    20px;
-
-}
-
-
-
-
-
-.meter-header {
-
-    display:
-    flex;
-
-    justify-content:
-    space-between;
-
-    margin-bottom:
-    8px;
-
-}
-
-
-
-
-
-.meter-header span:first-child {
-
-    color:
-    var(--text);
-
-}
-
-
-
-
-
-.meter-header span:last-child {
-
-    color:
-    var(--blue-light);
-
-}
-
-
-
-
-
-
-
-.meter {
-
-    height:
-    14px;
-
-    width:
-    100%;
-
-    background:
-    rgba(
-    15,23,42,0.9
-    );
-
-    border-radius:
-    50px;
-
-    overflow:
-    hidden;
-
-}
-
-
-
-
-
-.meter-fill {
-
-    height:
-    100%;
-
-    border-radius:
-    inherit;
-
-    background:
-    linear-gradient(
-    90deg,
-    var(--blue),
-    var(--cyan)
-    );
-
-    transition:
-    width
-    0.5s;
-
-}
-
-
-
-
-
-
-
-.meter-fill.cpu {
-
-    background:
-    linear-gradient(
-    90deg,
-    #38bdf8,
-    #0ea5e9
-    );
-
-}
-
-
-
-
-
-.meter-fill.memory {
-
-    background:
-    linear-gradient(
-    90deg,
-    #22d3ee,
-    #06b6d4
-    );
-
-}
-
-
-
-
-
-.meter-fill.battery {
-
-    background:
-    linear-gradient(
-    90deg,
-    #22c55e,
-    #84cc16
-    );
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   LIVE STATISTICS GRID
-   ================================================== */
-
-
-.live-statistics {
-
-    display:
-    grid;
-
-    grid-template-columns:
-    repeat(
-    auto-fit,
-    minmax(
-    150px,
-    1fr
-    )
-    );
-
-    gap:
-    15px;
-
-}
-
-
-
-
-
-.stat-box {
-
-    padding:
-    20px;
-
-    text-align:
-    center;
-
-    background:
-    rgba(
-    30,41,59,0.6
-    );
-
-    border-radius:
-    18px;
-
-    border:
-    1px solid
-    rgba(
-    56,189,248,0.2
-    );
-
-}
-
-
-
-
-
-.stat-box .number {
-
-    display:
-    block;
-
-    font-size:
-    30px;
-
-    font-weight:
-    800;
-
-    color:
-    var(--cyan);
-
-}
-
-
-
-
-
-.stat-box .label {
-
-    margin-top:
-    8px;
-
-    color:
-    var(--text-muted);
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   ACTIVITY GRAPH AREA
-   ================================================== */
-
-
-.activity-graph {
-
-    height:
-    260px;
-
-    display:
-    flex;
-
-    align-items:
-    flex-end;
-
-    gap:
-    10px;
-
-    padding:
-    25px;
-
-    background:
-    rgba(
-    2,6,23,0.8
-    );
-
-    border-radius:
-    20px;
-
-    overflow:
-    hidden;
-
-}
-
-
-
-
-
-.graph-bar {
-
-    flex:
-    1;
-
-    min-height:
-    20px;
-
-    background:
-    linear-gradient(
-    180deg,
-    var(--cyan),
-    var(--blue)
-    );
-
-    border-radius:
-    10px 10px 0 0;
-
-    animation:
-    graphMove
-    2s infinite alternate;
-
-}
-
-
-
-
-
-
-
-@keyframes graphMove {
-
-
-    from {
-
-        opacity:
-        0.6;
-
-    }
-
-
-    to {
-
-        opacity:
-        1;
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   DEVICE INFORMATION PANEL
-   ================================================== */
-
-
-.device-panel {
-
-    display:
-    grid;
-
-    grid-template-columns:
-    repeat(
-    auto-fit,
-    minmax(
-    200px,
-    1fr
-    )
-    );
-
-    gap:
-    15px;
-
-}
-
-
-
-
-
-.device-item {
-
-    padding:
-    18px;
-
-    background:
-    rgba(
-    15,23,42,0.75
-    );
-
-    border-radius:
-    15px;
-
-}
-
-
-
-
-
-.device-item strong {
-
-    display:
-    block;
-
-    color:
-    var(--cyan);
-
-    margin-bottom:
-    8px;
-
-}
-
-
-
-
-
-.device-item span {
-
-    color:
-    var(--text-muted);
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   DIAGNOSTIC PANEL
-   ================================================== */
-
-
-.diagnostic-panel {
-
-    padding:
-    25px;
-
-    border-radius:
-    20px;
-
-    background:
-    rgba(
-    2,6,23,0.9
-    );
-
-}
-
-
-
-
-
-.diagnostic-item {
-
-    display:
-    flex;
-
-    justify-content:
-    space-between;
-
-    padding:
-    12px;
-
-    border-bottom:
-    1px solid
-    rgba(
-    56,189,248,0.1
-    );
-
-}
-
-
-
-
-
-.diagnostic-item:last-child {
-
-    border-bottom:
-    none;
-
-}
-
-
-
-
-
-.diagnostic-success {
-
-    color:
-    var(--green);
-
-}
-
-
-
-
-
-.diagnostic-fail {
-
-    color:
-    var(--red);
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   END OF STYLE PART 6
-   ================================================== */
-/* ==================================================
-   YTCC COMMAND CONTROL CENTER
-   OFFLINE UPGRADE STYLE SYSTEM
-   PART 7
-   LOGS + NOTIFICATIONS + EVENT SYSTEM
-   ================================================== */
-
-
-/* ==================================================
-   SYSTEM ACTIVITY LOG
-   ================================================== */
-
-
-.activity-log {
-
-    width:
-    100%;
-
-    max-height:
-    500px;
-
-    overflow-y:
-    auto;
-
-    padding:
-    20px;
-
-    background:
-    rgba(
-    2,6,23,0.85
-    );
-
-    border-radius:
-    20px;
-
-    border:
-    1px solid
-    rgba(
-    56,189,248,0.25
-    );
-
-}
-
-
-
-
-
-.log-entry {
-
-    display:
-    flex;
-
-    align-items:
-    center;
-
-    gap:
-    15px;
-
-    padding:
-    15px;
-
-    margin-bottom:
-    12px;
-
-    background:
-    rgba(
-    15,23,42,0.8
-    );
-
-    border-radius:
-    14px;
-
-    border-left:
-    4px solid
-    var(--blue);
-
-    animation:
-    logAppear
-    0.4s ease;
-
-}
-
-
-
-
-
-@keyframes logAppear {
-
-
-    from {
-
-        opacity:
-        0;
-
-        transform:
-        translateX(
-        -20px
-        );
-
-    }
-
-
-    to {
-
-        opacity:
-        1;
-
-        transform:
-        translateX(
-        0
-        );
-
-    }
-
-
-}
-
-
-
-
-
-.log-entry.success {
-
-    border-left-color:
-    var(--green);
-
-}
-
-
-
-.log-entry.warning {
-
-    border-left-color:
-    var(--yellow);
-
-}
-
-
-
-.log-entry.error {
-
-    border-left-color:
-    var(--red);
-
-}
-
-
-
-
-
-.log-icon {
-
-    width:
-    40px;
-
-    height:
-    40px;
-
-    display:
-    flex;
-
-    justify-content:
-    center;
-
-    align-items:
-    center;
-
-    border-radius:
-    50%;
-
-    background:
-    rgba(
-    56,189,248,0.15
-    );
-
-    color:
-    var(--cyan);
-
-}
-
-
-
-
-
-.log-content {
-
-    flex:
-    1;
-
-}
-
-
-
-
-
-.log-title {
-
-    color:
-    var(--text);
-
-    font-weight:
-    700;
-
-}
-
-
-
-
-
-.log-time {
-
-    color:
-    var(--text-muted);
-
-    font-size:
-    12px;
-
-    margin-top:
-    5px;
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   NOTIFICATION CENTER
-   ================================================== */
-
-
-.notification-center {
-
-    position:
-    fixed;
-
-    top:
-    25px;
-
-    right:
-    25px;
-
-    width:
-    360px;
-
-    z-index:
-    9999;
-
-    display:
-    flex;
-
-    flex-direction:
-    column;
-
-    gap:
-    15px;
-
-}
-
-
-
-
-
-.notification {
-
-    padding:
-    18px;
-
-    background:
-    rgba(
-    15,23,42,0.95
-    );
 
     backdrop-filter:
-    blur(20px);
 
-    border:
-    1px solid
-    rgba(
-    56,189,248,0.3
-    );
-
-    border-radius:
-    18px;
-
-    box-shadow:
-    0 0 30px
-    rgba(
-    0,170,255,0.25
-    );
-
-    display:
-    flex;
-
-    gap:
-    15px;
-
-    align-items:
-    center;
-
-    animation:
-    notificationIn
-    0.4s ease;
-
-}
-
-
-
-
-
-@keyframes notificationIn {
-
-
-    from {
-
-        opacity:
-        0;
-
-        transform:
-        translateX(
-        80px
-        );
-
-    }
-
-
-    to {
-
-        opacity:
-        1;
-
-        transform:
-        translateX(
-        0
-        );
-
-    }
-
-
-}
-
-
-
-
-
-.notification.success {
-
-    border-left:
-    5px solid
-    var(--green);
-
-}
-
-
-
-
-
-.notification.warning {
-
-    border-left:
-    5px solid
-    var(--yellow);
-
-}
-
-
-
-
-
-.notification.error {
-
-    border-left:
-    5px solid
-    var(--red);
-
-}
-
-
-
-
-
-.notification-icon {
-
-    font-size:
-    25px;
-
-}
-
-
-
-
-
-.notification-text {
-
-    flex:
-    1;
-
-}
-
-
-
-
-
-.notification-text h4 {
-
-    color:
-    var(--text);
-
-    margin-bottom:
-    5px;
-
-}
-
-
-
-
-
-.notification-text p {
-
-    color:
-    var(--text-muted);
-
-    font-size:
-    14px;
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   EVENT TIMELINE
-   ================================================== */
-
-
-.timeline {
-
-    position:
-    relative;
-
-    padding-left:
-    40px;
-
-}
-
-
-
-
-
-.timeline::before {
-
-    content:
-    "";
-
-    position:
-    absolute;
-
-    left:
-    15px;
-
-    top:
-    0;
-
-    bottom:
-    0;
-
-    width:
-    2px;
-
-    background:
-    rgba(
-    56,189,248,0.3
-    );
-
-}
-
-
-
-
-
-.timeline-item {
-
-    position:
-    relative;
-
-    margin-bottom:
-    25px;
-
-}
-
-
-
-
-
-.timeline-item::before {
-
-    content:
-    "";
-
-    position:
-    absolute;
-
-    left:
-    -31px;
-
-    top:
-    8px;
-
-    width:
-    16px;
-
-    height:
-    16px;
-
-    border-radius:
-    50%;
-
-    background:
-    var(--cyan);
-
-    box-shadow:
-    0 0 15px
-    var(--cyan);
-
-}
-
-
-
-
-
-.timeline-card {
-
-    padding:
-    18px;
-
-    background:
-    rgba(
-    15,23,42,0.8
-    );
-
-    border-radius:
-    16px;
-
-    border:
-    1px solid
-    rgba(
-    56,189,248,0.2
-    );
-
-}
-
-
-
-
-
-.timeline-card h3 {
-
-    color:
-    var(--blue-light);
-
-    margin-bottom:
-    8px;
-
-}
-
-
-
-
-
-.timeline-card p {
-
-    color:
-    var(--text-muted);
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   LOG FILTER BUTTONS
-   ================================================== */
-
-
-.log-filters {
-
-    display:
-    flex;
-
-    flex-wrap:
-    wrap;
-
-    gap:
-    10px;
-
-    margin-bottom:
-    20px;
-
-}
-
-
-
-
-
-.filter-button {
-
-    padding:
-    10px 18px;
-
-    border-radius:
-    50px;
-
-    background:
-    rgba(
-    56,189,248,0.1
-    );
-
-    color:
-    var(--blue-light);
-
-    border:
-    1px solid
-    rgba(
-    56,189,248,0.3
-    );
-
-    cursor:
-    pointer;
-
-    transition:
-    0.3s;
-
-}
-
-
-
-
-
-.filter-button:hover {
-
-    background:
-    rgba(
-    56,189,248,0.25
-    );
-
-    transform:
-    translateY(
-    -3px
-    );
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   LOG SEARCH BAR
-   ================================================== */
-
-
-.log-search {
-
-    width:
-    100%;
-
-    padding:
-    15px 20px;
-
-    background:
-    rgba(
-    2,6,23,0.8
-    );
-
-    border:
-    1px solid
-    rgba(
-    56,189,248,0.25
-    );
-
-    color:
-    var(--text);
-
-    border-radius:
-    15px;
-
-    outline:
-    none;
-
-    margin-bottom:
-    20px;
-
-}
-
-
-
-
-
-.log-search:focus {
-
-    border-color:
-    var(--cyan);
-
-    box-shadow:
-    0 0 20px
-    rgba(
-    34,211,238,0.25
-    );
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   END OF STYLE PART 7
-   ================================================== */
-/* ==================================================
-   YTCC COMMAND CONTROL CENTER
-   OFFLINE UPGRADE STYLE SYSTEM
-   PART 8
-   OFFLINE MODE UI + PWA SYSTEM INTERFACE
-   ================================================== */
-
-
-/* ==================================================
-   OFFLINE MODE OVERLAY
-   ================================================== */
-
-
-.offline-overlay {
-
-    position:
-    fixed;
-
-    inset:
-    0;
-
-    display:
-    none;
-
-    align-items:
-    center;
-
-    justify-content:
-    center;
-
-    background:
-    rgba(
-    2,6,23,0.85
-    );
-
-    backdrop-filter:
     blur(15px);
 
-    z-index:
-    10000;
 
-}
-
-
-
-
-
-.offline-overlay.active {
-
-    display:
-    flex;
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   OFFLINE CARD
-   ================================================== */
-
-
-.offline-card {
-
-    width:
-    90%;
-
-    max-width:
-    500px;
-
-    padding:
-    35px;
-
-    text-align:
-    center;
-
-    background:
-    rgba(
-    15,23,42,0.95
-    );
 
     border:
-    1px solid
-    rgba(
-    239,68,68,0.35
-    );
 
-    border-radius:
-    25px;
+    1px solid var(--border);
 
-    box-shadow:
-    0 0 50px
-    rgba(
-    239,68,68,0.25
-    );
 
-    animation:
-    offlineAppear
-    0.5s ease;
 
-}
+    border-radius:15px;
 
 
 
+    color:white;
 
-
-@keyframes offlineAppear {
-
-
-    from {
-
-        opacity:
-        0;
-
-        transform:
-        scale(
-        0.8
-        );
-
-    }
-
-
-    to {
-
-        opacity:
-        1;
-
-        transform:
-        scale(
-        1
-        );
-
-    }
-
-
-}
-
-
-
-
-
-.offline-card h2 {
-
-    color:
-    var(--red);
-
-    font-size:
-    32px;
-
-    margin-bottom:
-    15px;
-
-}
-
-
-
-
-
-.offline-card p {
-
-    color:
-    var(--text-muted);
-
-    line-height:
-    1.6;
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   NETWORK STATUS PANEL
-   ================================================== */
-
-
-.network-panel {
-
-    display:
-    flex;
-
-    align-items:
-    center;
-
-    justify-content:
-    space-between;
-
-    padding:
-    20px;
-
-    background:
-    rgba(
-    15,23,42,0.85
-    );
-
-    border-radius:
-    18px;
-
-    border:
-    1px solid
-    rgba(
-    56,189,248,0.25
-    );
-
-}
-
-
-
-
-
-.network-status {
-
-    display:
-    flex;
-
-    align-items:
-    center;
-
-    gap:
-    12px;
-
-}
-
-
-
-
-
-.network-dot {
-
-    width:
-    15px;
-
-    height:
-    15px;
-
-    border-radius:
-    50%;
-
-    background:
-    var(--green);
-
-    animation:
-    networkPulse
-    2s infinite;
-
-}
-
-
-
-
-
-.network-dot.offline {
-
-    background:
-    var(--red);
-
-}
-
-
-
-
-
-
-
-@keyframes networkPulse {
-
-
-    0% {
-
-        transform:
-        scale(
-        1
-        );
-
-        opacity:
-        0.5;
-
-    }
-
-
-    50% {
-
-        transform:
-        scale(
-        1.4
-        );
-
-        opacity:
-        1;
-
-    }
-
-
-    100% {
-
-        transform:
-        scale(
-        1
-        );
-
-        opacity:
-        0.5;
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   OFFLINE DATA STORAGE PANEL
-   ================================================== */
-
-
-.storage-panel {
-
-    padding:
-    25px;
-
-}
-
-
-
-
-
-.storage-item {
-
-    display:
-    flex;
-
-    justify-content:
-    space-between;
-
-    align-items:
-    center;
-
-    padding:
-    15px;
-
-    margin-bottom:
-    12px;
-
-    background:
-    rgba(
-    30,41,59,0.7
-    );
-
-    border-radius:
-    14px;
-
-}
-
-
-
-
-
-.storage-item span {
-
-    color:
-    var(--text-muted);
-
-}
-
-
-
-
-
-.storage-item strong {
-
-    color:
-    var(--cyan);
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   BACKUP SYSTEM UI
-   ================================================== */
-
-
-.backup-panel {
-
-    display:
-    grid;
-
-    grid-template-columns:
-    repeat(
-    auto-fit,
-    minmax(
-    220px,
-    1fr
-    )
-    );
-
-    gap:
-    18px;
-
-}
-
-
-
-
-
-.backup-card {
-
-    padding:
-    22px;
-
-    background:
-    rgba(
-    15,23,42,0.85
-    );
-
-    border-radius:
-    18px;
-
-    border:
-    1px solid
-    rgba(
-    34,197,94,0.25
-    );
-
-    transition:
-    0.3s;
-
-}
-
-
-
-
-
-.backup-card:hover {
 
     transform:
-    translateY(
-    -5px
-    );
+
+    translateY(150px);
+
+
+
+    transition:.4s;
+
+
+    z-index:999;
+
 
 }
 
@@ -5041,138 +2929,33 @@ header p {
 
 
 
-.backup-card h3 {
+.ytcc-notification.show{
 
-    color:
-    var(--green);
-
-}
-
-
-
-
-
-.backup-card p {
-
-    color:
-    var(--text-muted);
-
-    margin-top:
-    10px;
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   PWA INSTALL PANEL
-   ================================================== */
-
-
-.install-panel {
-
-    padding:
-    30px;
-
-    text-align:
-    center;
-
-    background:
-    linear-gradient(
-    145deg,
-    rgba(
-    0,170,255,0.15
-    ),
-    rgba(
-    34,211,238,0.05
-    )
-    );
-
-    border-radius:
-    25px;
-
-}
-
-
-
-
-
-.install-panel h2 {
-
-    color:
-    var(--blue-light);
-
-    margin-bottom:
-    15px;
-
-}
-
-
-
-
-
-.install-panel p {
-
-    color:
-    var(--text-muted);
-
-    margin-bottom:
-    25px;
-
-}
-
-
-
-
-
-.install-button {
-
-    padding:
-    15px 30px;
-
-    border-radius:
-    50px;
-
-    background:
-    linear-gradient(
-    135deg,
-    var(--blue),
-    var(--cyan)
-    );
-
-    color:
-    white;
-
-    border:
-    none;
-
-    cursor:
-    pointer;
-
-    font-weight:
-    700;
-
-    transition:
-    0.3s;
-
-}
-
-
-
-
-
-.install-button:hover {
 
     transform:
-    scale(
-    1.05
-    );
+
+    translateY(0);
+
 
 }
+
+
+
+
+
+
+
+#notificationIcon{
+
+
+    color:var(--success);
+
+
+    font-size:22px;
+
+
+}
+
 
 
 
@@ -5181,40 +2964,29 @@ header p {
 
 
 /* ==================================================
-   OFFLINE BADGE
-   ================================================== */
+   PART 4 COMPLETE
+   CONTINUE PART 5
+================================================== */
+/* ==================================================
+   YTCC STYLE.CSS
+   PART 5/12
+   SECURITY CENTER + SYSTEM LOCK
+================================================== */
 
 
-.offline-badge {
 
-    display:
-    inline-flex;
 
-    align-items:
-    center;
 
-    gap:
-    8px;
+/* ==================================================
+   SECURITY CENTER
+================================================== */
 
-    padding:
-    8px 15px;
 
-    border-radius:
-    50px;
+.security-card{
 
-    background:
-    rgba(
-    239,68,68,0.15
-    );
 
-    color:
-    var(--red);
+    min-height:300px;
 
-    font-size:
-    13px;
-
-    font-weight:
-    700;
 
 }
 
@@ -5222,17 +2994,50 @@ header p {
 
 
 
-.online-badge {
+.security-header{
 
-    background:
-    rgba(
-    34,197,94,0.15
-    );
 
-    color:
-    var(--green);
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:18px;
+
+
+    margin-bottom:25px;
+
 
 }
+
+
+
+
+
+.security-header h3{
+
+
+    font-size:22px;
+
+
+}
+
+
+
+
+
+.security-header p{
+
+
+    color:var(--text-soft);
+
+
+    margin-top:5px;
+
+
+}
+
 
 
 
@@ -5241,51 +3046,34 @@ header p {
 
 
 /* ==================================================
-   CACHE STATUS CARDS
-   ================================================== */
+   SECURITY STATUS
+================================================== */
 
 
-.cache-grid {
-
-    display:
-    grid;
-
-    grid-template-columns:
-    repeat(
-    auto-fit,
-    minmax(
-    200px,
-    1fr
-    )
-    );
-
-    gap:
-    15px;
-
-}
+.security-status-box{
 
 
+    padding:25px;
 
 
+    border-radius:16px;
 
-.cache-card {
 
-    padding:
-    20px;
 
     background:
-    rgba(
-    2,6,23,0.75
-    );
 
-    border-radius:
-    16px;
+    rgba(0,0,0,.35);
+
+
 
     border:
-    1px solid
-    rgba(
-    56,189,248,0.2
-    );
+
+    1px solid var(--border);
+
+
+
+    margin-bottom:20px;
+
 
 }
 
@@ -5293,132 +3081,2496 @@ header p {
 
 
 
-.cache-card h4 {
-
-    color:
-    var(--cyan);
-
-}
+.security-active{
 
 
+    display:inline-block;
 
 
-
-.cache-card span {
-
-    display:
-    block;
-
-    margin-top:
-    8px;
-
-    color:
-    var(--text-muted);
-
-}
+    padding:8px 20px;
 
 
+    border-radius:30px;
 
-
-
-
-
-/* ==================================================
-   END OF STYLE PART 8
-   ================================================== */
-/* ==================================================
-   YTCC COMMAND CONTROL CENTER
-   OFFLINE UPGRADE STYLE SYSTEM
-   PART 9
-   PWA APP DESIGN + MOBILE EXPERIENCE
-   ================================================== */
-
-
-/* ==================================================
-   APP LIKE MOBILE CONTAINER
-   ================================================== */
-
-
-.mobile-app {
-
-    width:
-    100%;
-
-    min-height:
-    100vh;
-
-    position:
-    relative;
-
-    overflow:
-    hidden;
-
-}
-
-
-
-
-
-.app-screen {
-
-    width:
-    100%;
-
-    min-height:
-    100vh;
-
-    padding:
-    20px;
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   MOBILE TOP BAR
-   ================================================== */
-
-
-.mobile-topbar {
-
-    position:
-    sticky;
-
-    top:
-    0;
-
-    z-index:
-    500;
-
-    display:
-    flex;
-
-    align-items:
-    center;
-
-    justify-content:
-    space-between;
-
-    padding:
-    15px 20px;
 
     background:
-    rgba(
-    2,6,23,0.85
+
+    rgba(0,255,157,.15);
+
+
+
+    color:var(--success);
+
+
+    font-weight:800;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   SECURITY METERS
+================================================== */
+
+
+.security-meter{
+
+
+    margin:25px 0;
+
+
+}
+
+
+
+
+
+.meter-label{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    margin-bottom:12px;
+
+
+}
+
+
+
+
+
+.meter-label span{
+
+
+    color:var(--text-soft);
+
+
+}
+
+
+
+
+
+.meter-label strong{
+
+
+    color:var(--primary);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   ACCESS CONTROL
+================================================== */
+
+
+.access-list{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:12px;
+
+
+}
+
+
+
+
+
+.access-item{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    padding:15px;
+
+
+    border-radius:12px;
+
+
+    background:
+
+    rgba(255,255,255,.05);
+
+
+}
+
+
+
+
+
+.access-item span{
+
+
+    color:var(--text-soft);
+
+
+}
+
+
+
+
+
+.access-item strong{
+
+
+    color:var(--success);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   SECURITY LOG
+================================================== */
+
+
+.security-log{
+
+
+    max-height:180px;
+
+
+    overflow-y:auto;
+
+
+}
+
+
+
+
+
+.security-log-entry{
+
+
+    padding:12px;
+
+
+    margin-bottom:10px;
+
+
+    border-radius:10px;
+
+
+    background:
+
+    rgba(0,255,157,.08);
+
+
+
+    color:#baffdf;
+
+
+    font-family:monospace;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   SYSTEM LOCK
+================================================== */
+
+
+.lock-panel{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+    gap:30px;
+
+
+    padding:30px;
+
+
+
+    background:
+
+    rgba(0,0,0,.3);
+
+
+
+    border-radius:20px;
+
+
+    border:
+
+    1px solid var(--border);
+
+
+}
+
+
+
+
+
+.lock-display{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:20px;
+
+
+}
+
+
+
+
+
+.lock-icon{
+
+
+    width:80px;
+
+
+    height:80px;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    border-radius:50%;
+
+
+
+    background:
+
+    rgba(0,170,255,.15);
+
+
+
+    font-size:40px;
+
+
+}
+
+
+
+
+
+
+
+.lock-display h3{
+
+
+    font-size:28px;
+
+
+}
+
+
+
+
+
+.lock-display p{
+
+
+    color:var(--text-soft);
+
+
+    margin-top:8px;
+
+
+}
+
+
+
+
+
+.lock-actions{
+
+
+    display:flex;
+
+
+    gap:15px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   ALERT PANEL
+================================================== */
+
+
+.alert-panel{
+
+
+    padding:25px;
+
+
+    background:
+
+    rgba(7,20,38,.8);
+
+
+
+    border:
+
+    1px solid var(--border);
+
+
+
+    border-radius:20px;
+
+
+}
+
+
+
+
+
+.alert-list{
+
+
+    min-height:120px;
+
+
+}
+
+
+
+
+
+.alert-empty{
+
+
+    text-align:center;
+
+
+    padding:35px;
+
+
+    color:var(--text-soft);
+
+
+    border-radius:15px;
+
+
+    border:
+
+    1px dashed var(--border);
+
+
+}
+
+
+
+
+
+
+
+.alert-item{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:15px;
+
+
+    padding:15px;
+
+
+    background:
+
+    rgba(255,55,95,.1);
+
+
+
+    border:
+
+    1px solid rgba(255,55,95,.3);
+
+
+
+    border-radius:12px;
+
+
+    margin-bottom:10px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   DANGER BUTTON
+================================================== */
+
+
+.danger-action-button{
+
+
+    padding:12px 20px;
+
+
+    border-radius:12px;
+
+
+    background:
+
+    rgba(255,55,95,.15);
+
+
+
+    border:
+
+    1px solid rgba(255,55,95,.5);
+
+
+
+    color:white;
+
+
+    font-weight:700;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+
+.danger-action-button:hover{
+
+
+    background:
+
+    rgba(255,55,95,.35);
+
+
+    transform:
+
+    translateY(-3px);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   PART 5 COMPLETE
+   CONTINUE PART 6
+================================================== */
+/* ==================================================
+   YTCC STYLE.CSS
+   PART 6/12
+   AI ASSISTANT + AUTOMATION CENTER
+================================================== */
+
+
+
+
+
+/* ==================================================
+   AI CORE SYSTEM
+================================================== */
+
+
+.ai-card{
+
+
+    min-height:320px;
+
+
+}
+
+
+
+
+
+.ai-header{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:18px;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+.ai-header h3{
+
+
+    font-size:22px;
+
+
+}
+
+
+
+
+
+.ai-header p{
+
+
+    color:var(--text-soft);
+
+
+    margin-top:5px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   AI STATUS
+================================================== */
+
+
+.ai-status-box{
+
+
+    padding:25px;
+
+
+    background:
+
+    rgba(0,0,0,.3);
+
+
+
+    border:
+
+    1px solid var(--border);
+
+
+
+    border-radius:15px;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+
+
+.ai-active{
+
+
+    display:inline-block;
+
+
+    padding:8px 18px;
+
+
+    border-radius:20px;
+
+
+    background:
+
+    rgba(0,255,157,.15);
+
+
+
+    color:var(--success);
+
+
+    font-weight:800;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   AI CHAT
+================================================== */
+
+
+.ai-chat-card{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+}
+
+
+
+
+
+.ai-chat-output{
+
+
+    flex:1;
+
+
+    min-height:220px;
+
+
+    max-height:350px;
+
+
+    overflow-y:auto;
+
+
+    padding:20px;
+
+
+    border-radius:15px;
+
+
+    background:
+
+    rgba(0,0,0,.35);
+
+
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+
+
+.ai-message{
+
+
+    padding:12px 15px;
+
+
+    margin-bottom:12px;
+
+
+    border-radius:12px;
+
+
+    font-family:monospace;
+
+
+}
+
+
+
+
+
+.system-message{
+
+
+    background:
+
+    rgba(0,170,255,.12);
+
+
+
+    color:#c9f4ff;
+
+
+}
+
+
+
+
+
+
+
+.user-message{
+
+
+    background:
+
+    rgba(0,255,157,.12);
+
+
+
+    color:#d5ffe9;
+
+
+    text-align:right;
+
+
+}
+
+
+
+
+
+
+
+.ai-input-area{
+
+
+    display:flex;
+
+
+    gap:12px;
+
+
+}
+
+
+
+
+
+
+
+.ai-input{
+
+
+    flex:1;
+
+
+    padding:14px;
+
+
+    background:
+
+    rgba(0,0,0,.4);
+
+
+
+    border:
+
+    1px solid var(--border);
+
+
+
+    border-radius:12px;
+
+
+    color:white;
+
+
+    outline:none;
+
+
+}
+
+
+
+
+
+
+
+.ai-input:focus{
+
+
+    border-color:
+
+    var(--primary);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   SMART ACTIONS
+================================================== */
+
+
+.smart-actions{
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(2,1fr);
+
+
+
+    gap:12px;
+
+
+}
+
+
+
+
+
+.smart-action-button{
+
+
+    padding:15px;
+
+
+    border-radius:12px;
+
+
+    background:
+
+    rgba(0,170,255,.12);
+
+
+
+    border:
+
+    1px solid var(--border);
+
+
+
+    color:white;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+
+.smart-action-button:hover{
+
+
+    background:
+
+    rgba(0,170,255,.3);
+
+
+
+    transform:
+
+    translateY(-3px);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   AUTOMATION CENTER
+================================================== */
+
+
+.automation-card{
+
+
+    text-align:center;
+
+
+    min-height:280px;
+
+
+}
+
+
+
+
+
+.automation-icon{
+
+
+    width:70px;
+
+
+    height:70px;
+
+
+    margin:
+
+    0 auto 20px;
+
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+
+    border-radius:50%;
+
+
+
+    background:
+
+    rgba(0,170,255,.15);
+
+
+
+    color:var(--primary);
+
+
+
+    font-size:30px;
+
+
+}
+
+
+
+
+
+.automation-card h3{
+
+
+    margin-bottom:10px;
+
+
+}
+
+
+
+
+
+.automation-card p{
+
+
+    color:var(--text-soft);
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   SWITCH TOGGLE
+================================================== */
+
+
+.switch{
+
+
+    position:relative;
+
+
+    display:inline-block;
+
+
+    width:55px;
+
+
+    height:28px;
+
+
+}
+
+
+
+
+
+.switch input{
+
+
+    opacity:0;
+
+
+    width:0;
+
+
+    height:0;
+
+
+}
+
+
+
+
+
+.slider{
+
+
+    position:absolute;
+
+
+    cursor:pointer;
+
+
+    inset:0;
+
+
+
+    background:
+
+    rgba(255,255,255,.15);
+
+
+
+    border-radius:30px;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+
+.slider::before{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    width:22px;
+
+
+    height:22px;
+
+
+    left:3px;
+
+
+    bottom:3px;
+
+
+    background:white;
+
+
+    border-radius:50%;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+
+.switch input:checked + .slider{
+
+
+    background:
+
+    var(--primary);
+
+
+}
+
+
+
+
+
+.switch input:checked + .slider::before{
+
+
+    transform:
+
+    translateX(27px);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   AI LOG
+================================================== */
+
+
+.ai-log-list{
+
+
+    max-height:250px;
+
+
+    overflow-y:auto;
+
+
+}
+
+
+
+
+
+.ai-log-entry{
+
+
+    padding:14px;
+
+
+    margin-bottom:10px;
+
+
+    border-radius:12px;
+
+
+    background:
+
+    rgba(0,170,255,.08);
+
+
+
+    color:#c8edff;
+
+
+    font-family:monospace;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   TOOL STATUS
+================================================== */
+
+
+.tool-status{
+
+
+    display:inline-block;
+
+
+    margin-top:15px;
+
+
+    color:var(--success);
+
+
+    font-size:13px;
+
+
+    letter-spacing:1px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   PART 6 COMPLETE
+   CONTINUE PART 7
+================================================== */
+/* ==================================================
+   YTCC STYLE.CSS
+   PART 7/12
+   OFFLINE ENGINE + PWA CONTROL SYSTEM
+================================================== */
+
+
+
+
+
+/* ==================================================
+   OFFLINE ENGINE CARDS
+================================================== */
+
+
+.engine-card{
+
+
+    min-height:320px;
+
+
+}
+
+
+
+
+
+.engine-header{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:18px;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+.engine-header h3{
+
+
+    font-size:22px;
+
+
+}
+
+
+
+
+
+.engine-header p{
+
+
+    color:var(--text-soft);
+
+
+    margin-top:5px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   ENGINE STATUS BOX
+================================================== */
+
+
+.engine-status-box{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:14px;
+
+
+    padding:20px;
+
+
+    background:
+
+    rgba(0,0,0,.3);
+
+
+
+    border-radius:15px;
+
+
+    border:
+
+    1px solid var(--border);
+
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+
+
+.engine-status-box div{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    padding:12px;
+
+
+    background:
+
+    rgba(255,255,255,.04);
+
+
+
+    border-radius:10px;
+
+
+}
+
+
+
+
+
+.engine-status-box span{
+
+
+    color:var(--text-soft);
+
+
+}
+
+
+
+
+
+.engine-status-box strong{
+
+
+    color:var(--success);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   SERVICE WORKER STATUS
+================================================== */
+
+
+.worker-status{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:12px;
+
+
+    margin:20px 0;
+
+
+}
+
+
+
+
+
+.worker-item{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    padding:15px;
+
+
+    border-radius:12px;
+
+
+    background:
+
+    rgba(0,170,255,.08);
+
+
+}
+
+
+
+
+
+.worker-item span{
+
+
+    color:var(--text-soft);
+
+
+}
+
+
+
+
+
+.worker-item strong{
+
+
+    color:var(--primary);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   PWA STATUS
+================================================== */
+
+
+.pwa-status{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:15px;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+.pwa-status div{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    padding:15px;
+
+
+    border-radius:12px;
+
+
+    background:
+
+    rgba(0,0,0,.25);
+
+
+}
+
+
+
+
+
+.pwa-status span{
+
+
+    color:var(--text-soft);
+
+
+}
+
+
+
+
+
+.pwa-status strong{
+
+
+    color:var(--success);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   STORAGE METER
+================================================== */
+
+
+.storage-meter{
+
+
+    margin:30px 0;
+
+
+}
+
+
+
+
+
+
+
+/* ==================================================
+   INSTALLATION CENTER
+================================================== */
+
+
+.install-panel{
+
+
+    padding:35px;
+
+
+    border-radius:22px;
+
+
+    background:
+
+    linear-gradient(
+
+        145deg,
+
+        rgba(0,170,255,.12),
+
+        rgba(7,20,38,.8)
+
     );
 
-    backdrop-filter:
-    blur(20px);
+
+
+    border:
+
+    1px solid var(--border);
+
+
+}
+
+
+
+
+
+.install-info{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:25px;
+
+
+    margin-bottom:30px;
+
+
+}
+
+
+
+
+
+.install-icon{
+
+
+    width:90px;
+
+
+    height:90px;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+
+    border-radius:25px;
+
+
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        var(--primary-dark)
+
+    );
+
+
+
+    font-size:35px;
+
+
+    font-weight:900;
+
+
+}
+
+
+
+
+
+
+
+.install-info h3{
+
+
+    font-size:28px;
+
+
+}
+
+
+
+
+
+.install-info p{
+
+
+    color:var(--text-soft);
+
+
+    margin-top:8px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   INSTALL FEATURES
+================================================== */
+
+
+.install-features{
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(4,1fr);
+
+
+
+    gap:15px;
+
+
+    margin-bottom:30px;
+
+
+}
+
+
+
+
+
+.install-features div{
+
+
+    padding:15px;
+
+
+    text-align:center;
+
+
+    border-radius:12px;
+
+
+    background:
+
+    rgba(0,255,157,.08);
+
+
+
+    color:var(--success);
+
+
+    border:
+
+    1px solid rgba(0,255,157,.2);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   EVENT LIST
+================================================== */
+
+
+.event-list{
+
+
+    max-height:250px;
+
+
+    overflow-y:auto;
+
+
+}
+
+
+
+
+
+.event-entry{
+
+
+    padding:15px;
+
+
+    margin-bottom:10px;
+
+
+    border-radius:12px;
+
+
+    background:
+
+    rgba(0,170,255,.08);
+
+
+
+    font-family:monospace;
+
+
+    color:#c8edff;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   PART 7 COMPLETE
+   CONTINUE PART 8
+================================================== */
+/* ==================================================
+   YTCC STYLE.CSS
+   PART 8/12
+   PROFILE CENTER + DASHBOARD CUSTOMIZATION
+================================================== */
+
+
+
+
+
+/* ==================================================
+   PROFILE CENTER
+================================================== */
+
+
+.profile-card{
+
+
+    min-height:320px;
+
+
+}
+
+
+
+
+
+.profile-header{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:20px;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+.profile-avatar{
+
+
+    width:85px;
+
+
+    height:85px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+
+    border-radius:50%;
+
+
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        var(--primary-dark)
+
+    );
+
+
+
+    color:white;
+
+
+    font-size:30px;
+
+
+    font-weight:900;
+
+
+}
+
+
+
+
+
+
+
+.profile-header h3{
+
+
+    font-size:25px;
+
+
+}
+
+
+
+
+
+.profile-header p{
+
+
+    color:var(--text-soft);
+
+
+    margin-top:5px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   PROFILE DETAILS
+================================================== */
+
+
+.profile-details{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:12px;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+.profile-detail-item{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    padding:15px;
+
+
+    background:
+
+    rgba(255,255,255,.05);
+
+
+
+    border-radius:12px;
+
+
+}
+
+
+
+
+
+.profile-detail-item span{
+
+
+    color:var(--text-soft);
+
+
+}
+
+
+
+
+
+.profile-detail-item strong{
+
+
+    color:var(--success);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   PROFILE INPUTS
+================================================== */
+
+
+.profile-inputs{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:15px;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+
+
+
+
+.profile-inputs .command-input{
+
+
+    width:100%;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   PROFILE STATISTICS
+================================================== */
+
+
+.profile-stats{
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(3,1fr);
+
+
+
+    gap:15px;
+
+
+}
+
+
+
+
+
+.profile-stats div{
+
+
+    padding:20px 10px;
+
+
+    text-align:center;
+
+
+    border-radius:14px;
+
+
+    background:
+
+    rgba(0,170,255,.08);
+
+
+}
+
+
+
+
+
+.profile-stats span{
+
+
+    display:block;
+
+
+    color:var(--text-soft);
+
+
+    font-size:12px;
+
+
+}
+
+
+
+
+
+.profile-stats strong{
+
+
+    display:block;
+
+
+    margin-top:8px;
+
+
+    font-size:24px;
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   SECURITY OPTION
+================================================== */
+
+
+.security-option{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+    padding:20px;
+
+
+    background:
+
+    rgba(0,0,0,.25);
+
+
+
+    border-radius:15px;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+
+
+
+
+/* ==================================================
+   SETTINGS SECTION
+================================================== */
+
+
+.settings-card{
+
+
+    min-height:280px;
+
+
+}
+
+
+
+
+
+.settings-icon{
+
+
+    width:65px;
+
+
+    height:65px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    margin-bottom:20px;
+
+
+    border-radius:18px;
+
+
+    background:
+
+    rgba(0,170,255,.15);
+
+
+
+    color:var(--primary);
+
+
+    font-size:28px;
+
+
+}
+
+
+
+
+
+.settings-card h3{
+
+
+    font-size:22px;
+
+
+    margin-bottom:10px;
+
+
+}
+
+
+
+
+
+.settings-card p{
+
+
+    color:var(--text-soft);
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   THEME BUTTONS
+================================================== */
+
+
+.theme-buttons{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:12px;
+
+
+}
+
+
+
+
+
+.theme-button{
+
+
+    padding:14px;
+
+
+    border-radius:12px;
+
+
+    background:
+
+    rgba(0,170,255,.12);
+
+
+
+    color:white;
+
+
+    border:
+
+    1px solid var(--border);
+
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+
+.theme-button:hover{
+
+
+    background:
+
+    rgba(0,170,255,.3);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   SETTING ROWS
+================================================== */
+
+
+.setting-row{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+    padding:15px 0;
+
 
     border-bottom:
-    1px solid
-    rgba(
-    56,189,248,0.2
-    );
+
+    1px solid rgba(255,255,255,.08);
+
 
 }
 
@@ -5426,86 +5578,14 @@ header p {
 
 
 
-.mobile-logo {
+.setting-row span{
 
-    display:
-    flex;
 
-    align-items:
-    center;
+    color:white;
 
-    gap:
-    10px;
 
 }
 
-
-
-
-
-.mobile-logo img {
-
-    width:
-    42px;
-
-    height:
-    42px;
-
-    border-radius:
-    12px;
-
-}
-
-
-
-
-
-.mobile-logo h1 {
-
-    font-size:
-    18px;
-
-    color:
-    var(--blue-light);
-
-}
-
-
-
-
-
-.mobile-menu-button {
-
-    width:
-    45px;
-
-    height:
-    45px;
-
-    border-radius:
-    50%;
-
-    display:
-    flex;
-
-    justify-content:
-    center;
-
-    align-items:
-    center;
-
-    background:
-    rgba(
-    56,189,248,0.15
-    );
-
-    color:
-    var(--cyan);
-
-    cursor:
-    pointer;
-
-}
 
 
 
@@ -5514,60 +5594,139 @@ header p {
 
 
 /* ==================================================
-   MOBILE NAVIGATION
-   ================================================== */
+   PART 8 COMPLETE
+   CONTINUE PART 9
+================================================== */
+/* ==================================================
+   YTCC STYLE.CSS
+   PART 9/12
+   ANALYTICS CENTER + SYSTEM HISTORY
+================================================== */
 
 
-.mobile-nav {
 
-    position:
-    fixed;
 
-    bottom:
-    15px;
 
-    left:
-    50%;
+/* ==================================================
+   ANALYTICS CARDS
+================================================== */
 
-    transform:
-    translateX(
-    -50%
-    );
 
-    width:
-    90%;
+.analytics-card{
 
-    max-width:
-    500px;
 
-    display:
-    flex;
+    min-height:320px;
 
-    justify-content:
-    space-around;
 
-    padding:
-    15px;
+}
+
+
+
+
+
+.analytics-header{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:18px;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+.analytics-header h3{
+
+
+    font-size:22px;
+
+
+}
+
+
+
+
+
+.analytics-header p{
+
+
+    color:var(--text-soft);
+
+
+    margin-top:5px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   SCORE CIRCLE
+================================================== */
+
+
+.score-circle{
+
+
+    width:170px;
+
+
+    height:170px;
+
+
+    margin:25px auto;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    flex-direction:column;
+
+
+
+    border-radius:50%;
+
+
 
     background:
-    rgba(
-    15,23,42,0.9
+
+    radial-gradient(
+
+        circle,
+
+        rgba(0,170,255,.25),
+
+        rgba(0,170,255,.05)
+
     );
 
-    backdrop-filter:
-    blur(20px);
+
 
     border:
-    1px solid
-    rgba(
-    56,189,248,0.3
-    );
 
-    border-radius:
-    25px;
+    5px solid var(--primary);
 
-    z-index:
-    900;
 
 }
 
@@ -5575,31 +5734,16 @@ header p {
 
 
 
-.mobile-nav-item {
 
-    display:
-    flex;
 
-    flex-direction:
-    column;
+.score-circle strong{
 
-    align-items:
-    center;
 
-    gap:
-    5px;
+    font-size:55px;
 
-    color:
-    var(--text-muted);
 
-    font-size:
-    12px;
+    color:white;
 
-    cursor:
-    pointer;
-
-    transition:
-    0.3s;
 
 }
 
@@ -5607,17 +5751,29 @@ header p {
 
 
 
-.mobile-nav-item:hover {
+.score-circle span{
 
-    color:
-    var(--cyan);
 
-    transform:
-    translateY(
-    -5px
-    );
+    color:var(--primary);
+
+
+    font-size:20px;
+
 
 }
+
+
+
+
+
+.score-description{
+
+
+    text-align:center;
+
+
+}
+
 
 
 
@@ -5626,23 +5782,1290 @@ header p {
 
 
 /* ==================================================
-   MOBILE DASHBOARD CARDS
-   ================================================== */
+   USAGE STATISTICS
+================================================== */
 
 
-.mobile-card-grid {
+.usage-list{
 
-    display:
-    grid;
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:15px;
+
+
+}
+
+
+
+
+
+.usage-item{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    padding:18px;
+
+
+    border-radius:14px;
+
+
+    background:
+
+    rgba(0,170,255,.08);
+
+
+}
+
+
+
+
+
+.usage-item span{
+
+
+    color:var(--text-soft);
+
+
+}
+
+
+
+
+
+.usage-item strong{
+
+
+    color:var(--success);
+
+
+    font-size:20px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   PERFORMANCE GRAPH
+================================================== */
+
+
+.performance-graph{
+
+
+    height:200px;
+
+
+    position:relative;
+
+
+    overflow:hidden;
+
+
+    border-radius:15px;
+
+
+
+    background:
+
+    linear-gradient(
+
+        180deg,
+
+        rgba(0,170,255,.12),
+
+        transparent
+
+    );
+
+
+
+    border:
+
+    1px solid var(--border);
+
+
+}
+
+
+
+
+
+.performance-graph::before{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    inset:0;
+
+
+    background:
+
+    repeating-linear-gradient(
+
+        0deg,
+
+        transparent,
+
+        transparent 39px,
+
+        rgba(255,255,255,.05) 40px
+
+    );
+
+
+}
+
+
+
+
+
+.graph-line{
+
+
+    position:absolute;
+
+
+    width:90%;
+
+
+    height:3px;
+
+
+    top:50%;
+
+
+    left:5%;
+
+
+    background:
+
+    var(--primary);
+
+
+
+    transform:
+
+    rotate(-8deg);
+
+
+    box-shadow:
+
+    0 0 20px var(--primary);
+
+
+}
+
+
+
+
+
+
+
+
+.graph-point{
+
+
+    position:absolute;
+
+
+    width:14px;
+
+
+    height:14px;
+
+
+    border-radius:50%;
+
+
+    background:
+
+    var(--success);
+
+
+}
+
+
+
+
+
+.graph-point:nth-child(2){
+
+
+    left:15%;
+
+
+    top:60%;
+
+
+}
+
+
+
+
+
+.graph-point:nth-child(3){
+
+
+    left:40%;
+
+
+    top:45%;
+
+
+}
+
+
+
+
+
+.graph-point:nth-child(4){
+
+
+    left:65%;
+
+
+    top:55%;
+
+
+}
+
+
+
+
+
+.graph-point:nth-child(5){
+
+
+    left:85%;
+
+
+    top:30%;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   RESOURCE MONITOR
+================================================== */
+
+
+.resource-bars{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:20px;
+
+
+}
+
+
+
+
+
+.resource-item span{
+
+
+    display:block;
+
+
+    margin-bottom:8px;
+
+
+    color:var(--text-soft);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   HISTORY CENTER
+================================================== */
+
+
+.history-panel{
+
+
+    padding:25px;
+
+
+    background:
+
+    rgba(0,0,0,.25);
+
+
+
+    border-radius:20px;
+
+
+    border:
+
+    1px solid var(--border);
+
+
+}
+
+
+
+
+
+.history-controls{
+
+
+    display:flex;
+
+
+    justify-content:flex-end;
+
+
+    gap:15px;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+.history-list{
+
+
+    max-height:350px;
+
+
+    overflow-y:auto;
+
+
+}
+
+
+
+
+
+.history-entry{
+
+
+    display:flex;
+
+
+    gap:15px;
+
+
+    padding:15px;
+
+
+    margin-bottom:10px;
+
+
+    border-radius:12px;
+
+
+    background:
+
+    rgba(0,170,255,.08);
+
+
+
+    font-family:monospace;
+
+
+}
+
+
+
+
+
+.history-entry span{
+
+
+    color:var(--success);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   EVENT TRACKER
+================================================== */
+
+
+.event-panel{
+
+
+    padding:25px;
+
+
+    background:
+
+    rgba(7,20,38,.8);
+
+
+
+    border-radius:20px;
+
+
+    border:
+
+    1px solid var(--border);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   PART 9 COMPLETE
+   CONTINUE PART 10
+================================================== */
+/* ==================================================
+   YTCC STYLE.CSS
+   PART 10/12
+   BACKUP SYSTEM + DATA MANAGEMENT CENTER
+================================================== */
+
+
+
+
+
+/* ==================================================
+   DATA MANAGEMENT CARDS
+================================================== */
+
+
+.data-card{
+
+
+    min-height:320px;
+
+
+}
+
+
+
+
+
+.data-header{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:18px;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+.data-header h3{
+
+
+    font-size:22px;
+
+
+}
+
+
+
+
+
+.data-header p{
+
+
+    color:var(--text-soft);
+
+
+    margin-top:5px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   BACKUP STATUS
+================================================== */
+
+
+.backup-status{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:15px;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+.backup-status div{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+    padding:15px;
+
+
+    border-radius:12px;
+
+
+
+    background:
+
+    rgba(0,0,0,.25);
+
+
+}
+
+
+
+
+
+.backup-status span{
+
+
+    color:var(--text-soft);
+
+
+}
+
+
+
+
+
+.backup-status strong{
+
+
+    color:var(--primary);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   DATA BUTTONS
+================================================== */
+
+
+.data-buttons{
+
+
+    display:flex;
+
+
+    gap:12px;
+
+
+    flex-wrap:wrap;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   EXPORT CENTER
+================================================== */
+
+
+.export-options{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:12px;
+
+
+}
+
+
+
+
+
+.export-button{
+
+
+    width:100%;
+
+
+    padding:14px;
+
+
+    border-radius:12px;
+
+
+    background:
+
+    rgba(0,170,255,.12);
+
+
+
+    color:white;
+
+
+    border:
+
+    1px solid var(--border);
+
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+
+.export-button:hover{
+
+
+    background:
+
+    rgba(0,170,255,.3);
+
+
+    transform:
+
+    translateX(5px);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   CLEANER SYSTEM
+================================================== */
+
+
+.clean-options{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:12px;
+
+
+}
+
+
+
+
+
+.clean-item{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+    padding:15px;
+
+
+    background:
+
+    rgba(255,255,255,.05);
+
+
+
+    border-radius:12px;
+
+
+}
+
+
+
+
+
+.clean-item span{
+
+
+    color:var(--text-soft);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   DATABASE MONITOR
+================================================== */
+
+
+.database-monitor{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:12px;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+.database-line{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    padding:14px;
+
+
+    border-radius:10px;
+
+
+    background:
+
+    rgba(0,0,0,.3);
+
+
+}
+
+
+
+
+
+.database-line span{
+
+
+    color:var(--text-soft);
+
+
+}
+
+
+
+
+
+.database-line strong{
+
+
+    color:var(--success);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   BACKUP HISTORY
+================================================== */
+
+
+.backup-history-panel{
+
+
+    padding:25px;
+
+
+    background:
+
+    rgba(0,0,0,.25);
+
+
+
+    border-radius:20px;
+
+
+    border:
+
+    1px solid var(--border);
+
+
+}
+
+
+
+
+
+.backup-history-list{
+
+
+    max-height:300px;
+
+
+    overflow-y:auto;
+
+
+}
+
+
+
+
+
+.backup-entry{
+
+
+    padding:15px;
+
+
+    margin-bottom:12px;
+
+
+    border-radius:12px;
+
+
+    background:
+
+    rgba(0,170,255,.08);
+
+
+
+    font-family:monospace;
+
+
+}
+
+
+
+
+
+.backup-entry span{
+
+
+    color:var(--success);
+
+
+    margin-right:10px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   STORAGE ALERTS
+================================================== */
+
+
+.storage-alert{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:15px;
+
+
+    padding:18px;
+
+
+    border-radius:15px;
+
+
+    background:
+
+    rgba(255,193,7,.1);
+
+
+
+    border:
+
+    1px solid rgba(255,193,7,.3);
+
+
+}
+
+
+
+
+
+
+
+.storage-alert strong{
+
+
+    color:var(--warning);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   PART 10 COMPLETE
+   CONTINUE PART 11
+================================================== */
+/* ==================================================
+   YTCC STYLE.CSS
+   PART 11/12
+   ADVANCED CONTROL PANEL + MASTER CONTROLS
+================================================== */
+
+
+
+
+
+/* ==================================================
+   ADVANCED CONTROL CARDS
+================================================== */
+
+
+.advanced-card{
+
+
+    min-height:300px;
+
+
+}
+
+
+
+
+
+.advanced-icon{
+
+
+    width:70px;
+
+
+    height:70px;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    margin-bottom:20px;
+
+
+    border-radius:20px;
+
+
+    background:
+
+    rgba(0,170,255,.15);
+
+
+
+    color:var(--primary);
+
+
+    font-size:32px;
+
+
+}
+
+
+
+
+
+
+
+.advanced-card h3{
+
+
+    font-size:24px;
+
+
+    margin-bottom:10px;
+
+
+}
+
+
+
+
+
+.advanced-card p{
+
+
+    color:var(--text-soft);
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   POWER CONTROL
+================================================== */
+
+
+.power-buttons{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:12px;
+
+
+}
+
+
+
+
+
+
+
+.power-buttons button{
+
+
+    width:100%;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   MODULE CONTROLS
+================================================== */
+
+
+.module-controls{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:18px;
+
+
+}
+
+
+
+
+
+.module-control-row{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+    padding:15px;
+
+
+    background:
+
+    rgba(255,255,255,.05);
+
+
+
+    border-radius:12px;
+
+
+}
+
+
+
+
+
+.module-control-row span{
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   QUICK OPERATIONS
+================================================== */
+
+
+.quick-operation-grid{
+
+
+    display:grid;
+
 
     grid-template-columns:
-    repeat(
-    2,
-    1fr
-    );
 
-    gap:
-    15px;
+    repeat(2,1fr);
+
+
+
+    gap:12px;
+
 
 }
 
@@ -5650,24 +7073,32 @@ header p {
 
 
 
-.mobile-card {
+.quick-operation-button{
 
-    padding:
-    18px;
+
+    padding:18px 10px;
+
+
+    border-radius:14px;
+
 
     background:
-    rgba(
-    15,23,42,0.8
-    );
 
-    border-radius:
-    18px;
+    rgba(0,170,255,.12);
+
+
 
     border:
-    1px solid
-    rgba(
-    56,189,248,0.2
-    );
+
+    1px solid var(--border);
+
+
+
+    color:white;
+
+
+    transition:.3s;
+
 
 }
 
@@ -5675,106 +7106,21 @@ header p {
 
 
 
-.mobile-card h3 {
+.quick-operation-button:hover{
 
-    font-size:
-    14px;
-
-    color:
-    var(--text-muted);
-
-}
-
-
-
-
-
-.mobile-card strong {
-
-    display:
-    block;
-
-    margin-top:
-    8px;
-
-    font-size:
-    25px;
-
-    color:
-    var(--cyan);
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   TOUCH FRIENDLY BUTTONS
-   ================================================== */
-
-
-.touch-button {
-
-    min-height:
-    55px;
-
-    padding:
-    15px 25px;
-
-    border-radius:
-    18px;
-
-    display:
-    flex;
-
-    align-items:
-    center;
-
-    justify-content:
-    center;
-
-    gap:
-    10px;
 
     background:
-    linear-gradient(
-    135deg,
-    var(--blue),
-    var(--cyan)
-    );
 
-    color:
-    white;
+    rgba(0,170,255,.3);
 
-    font-weight:
-    700;
-
-    cursor:
-    pointer;
-
-    user-select:
-    none;
-
-    transition:
-    0.25s;
-
-}
-
-
-
-
-
-.touch-button:active {
 
     transform:
-    scale(
-    0.92
-    );
+
+    translateY(-4px);
+
 
 }
+
 
 
 
@@ -5783,23 +7129,27 @@ header p {
 
 
 /* ==================================================
-   PHONE ORIENTATION SUPPORT
-   ================================================== */
+   OPERATING MODE
+================================================== */
 
 
-.landscape-mode {
+.mode-display{
 
-    width:
-    100%;
 
-    height:
-    100vh;
+    padding:20px;
 
-    display:
-    flex;
 
-    flex-direction:
-    row;
+    border-radius:15px;
+
+
+    background:
+
+    rgba(0,0,0,.35);
+
+
+
+    margin-bottom:20px;
+
 
 }
 
@@ -5807,18 +7157,29 @@ header p {
 
 
 
-.portrait-mode {
+.mode-display strong{
 
-    width:
-    100%;
 
-    display:
-    flex;
+    color:var(--success);
 
-    flex-direction:
-    column;
+
+    font-size:18px;
+
 
 }
+
+
+
+
+
+.mode-display p{
+
+
+    margin-top:10px;
+
+
+}
+
 
 
 
@@ -5827,32 +7188,30 @@ header p {
 
 
 /* ==================================================
-   MOBILE TERMINAL
-   ================================================== */
+   SUMMARY CARDS
+================================================== */
 
 
-.mobile-terminal {
+.summary-card{
 
-    height:
-    60vh;
 
-    background:
-    #020617;
+    text-align:center;
 
-    border-radius:
-    20px;
 
-    padding:
-    20px;
+    min-height:150px;
 
-    overflow-y:
-    auto;
 
-    font-family:
-    monospace;
+    display:flex;
 
-    color:
-    var(--cyan);
+
+    flex-direction:column;
+
+
+    justify-content:center;
+
+
+    gap:15px;
+
 
 }
 
@@ -5860,360 +7219,98 @@ header p {
 
 
 
-.mobile-terminal-input {
+.summary-card span{
 
-    position:
-    sticky;
 
-    bottom:
-    0;
+    color:var(--text-soft);
 
-    width:
-    100%;
 
-    padding:
-    15px;
+    letter-spacing:1px;
+
+
+    font-size:13px;
+
+
+}
+
+
+
+
+
+.summary-card strong{
+
+
+    font-size:25px;
+
+
+    color:var(--success);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   FINAL SYSTEM PANEL
+================================================== */
+
+
+.system-message-panel{
+
+
+    width:90%;
+
+
+    max-width:1400px;
+
+
+    margin:40px auto;
+
+
+    padding:30px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:25px;
+
+
+    border-radius:22px;
+
 
     background:
-    rgba(
-    2,6,23,0.95
+
+    linear-gradient(
+
+        135deg,
+
+        rgba(0,170,255,.18),
+
+        rgba(7,20,38,.9)
+
     );
 
-    color:
-    white;
+
 
     border:
-    1px solid
-    var(--border);
 
-    border-radius:
-    15px;
+    1px solid var(--border);
 
-}
 
-
-
-
-
-
-
-/* ==================================================
-   INSTALL APP ANIMATION
-   ================================================== */
-
-
-.install-animation {
-
-    animation:
-    installFloat
-    4s infinite ease-in-out;
-
-}
-
-
-
-
-
-@keyframes installFloat {
-
-
-    0% {
-
-        transform:
-        translateY(
-        0
-        );
-
-    }
-
-
-    50% {
-
-        transform:
-        translateY(
-        -12px
-        );
-
-    }
-
-
-    100% {
-
-        transform:
-        translateY(
-        0
-        );
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   APP LOADING SCREEN
-   ================================================== */
-
-
-.app-loader {
-
-    position:
-    fixed;
-
-    inset:
-    0;
-
-    display:
-    flex;
-
-    align-items:
-    center;
-
-    justify-content:
-    center;
-
-    background:
-    var(--bg-main);
-
-    z-index:
-    20000;
-
-}
-
-
-
-
-
-.loader-core {
-
-    width:
-    90px;
-
-    height:
-    90px;
-
-    border-radius:
-    50%;
-
-    border:
-    5px solid
-    rgba(
-    56,189,248,0.2
-    );
-
-    border-top-color:
-    var(--cyan);
-
-    animation:
-    loaderSpin
-    1s linear infinite;
-
-}
-
-
-
-
-
-
-
-@keyframes loaderSpin {
-
-
-    from {
-
-        transform:
-        rotate(
-        0deg
-        );
-
-    }
-
-
-    to {
-
-        transform:
-        rotate(
-        360deg
-        );
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   END OF STYLE PART 9
-   ================================================== */
-/* ==================================================
-   YTCC COMMAND CONTROL CENTER
-   OFFLINE UPGRADE STYLE SYSTEM
-   PART 10
-   ADVANCED ANIMATIONS + VISUAL EFFECTS
-   ================================================== */
-
-
-/* ==================================================
-   GLOBAL TRANSITION SYSTEM
-   ================================================== */
-
-
-* {
-
-    transition:
-    color
-    0.25s ease,
-    background
-    0.25s ease,
-    border
-    0.25s ease,
-    transform
-    0.25s ease;
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   CYBER GRID BACKGROUND
-   ================================================== */
-
-
-.cyber-background {
-
-    position:
-    fixed;
-
-    inset:
-    0;
-
-    pointer-events:
-    none;
-
-    background:
-
-    linear-gradient(
-    rgba(56,189,248,0.04)
-    1px,
-    transparent
-    1px
-    ),
-
-    linear-gradient(
-    90deg,
-    rgba(56,189,248,0.04)
-    1px,
-    transparent
-    1px
-    );
-
-    background-size:
-    50px
-    50px;
-
-    animation:
-    gridMove
-    20s linear infinite;
-
-    z-index:
-    -2;
-
-}
-
-
-
-
-
-@keyframes gridMove {
-
-
-    from {
-
-        background-position:
-        0 0;
-
-    }
-
-
-    to {
-
-        background-position:
-        50px
-        50px;
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   GLOW EFFECT SYSTEM
-   ================================================== */
-
-
-.glow-blue {
 
     box-shadow:
-    0 0 20px
-    rgba(
-    0,170,255,0.5
-    );
 
-}
+    var(--shadow);
 
-
-
-.glow-cyan {
-
-    box-shadow:
-    0 0 25px
-    rgba(
-    34,211,238,0.6
-    );
-
-}
-
-
-
-.glow-green {
-
-    box-shadow:
-    0 0 25px
-    rgba(
-    34,197,94,0.5
-    );
-
-}
-
-
-
-.glow-red {
-
-    box-shadow:
-    0 0 25px
-    rgba(
-    239,68,68,0.5
-    );
 
 }
 
@@ -6223,57 +7320,55 @@ header p {
 
 
 
-/* ==================================================
-   HOLOGRAM EFFECT
-   ================================================== */
+.system-message-icon{
 
 
-.hologram {
-
-    position:
-    relative;
-
-    overflow:
-    hidden;
-
-}
+    width:80px;
 
 
+    height:80px;
 
 
+    display:flex;
 
-.hologram::after {
 
-    content:
-    "";
+    align-items:center;
 
-    position:
-    absolute;
 
-    top:
-    -100%;
+    justify-content:center;
 
-    left:
-    0;
 
-    width:
-    100%;
+    border-radius:25px;
 
-    height:
-    100%;
 
     background:
-    linear-gradient(
-    transparent,
-    rgba(
-    56,189,248,0.25
-    ),
-    transparent
-    );
 
-    animation:
-    hologramScan
-    4s infinite;
+    var(--primary);
+
+
+
+    color:white;
+
+
+    font-size:30px;
+
+
+    font-weight:900;
+
+
+}
+
+
+
+
+
+
+
+.system-message-panel h3{
+
+
+    font-size:28px;
+
 
 }
 
@@ -6281,26 +7376,17 @@ header p {
 
 
 
-@keyframes hologramScan {
+.system-message-panel p{
 
 
-    0% {
-
-        top:
-        -100%;
-
-    }
+    color:var(--text-soft);
 
 
-    100% {
-
-        top:
-        100%;
-
-    }
+    margin-top:8px;
 
 
 }
+
 
 
 
@@ -6309,1367 +7395,60 @@ header p {
 
 
 /* ==================================================
-   DATA STREAM EFFECT
-   ================================================== */
+   MASTER COMMAND BAR
+================================================== */
 
 
-.data-stream {
-
-    overflow:
-    hidden;
-
-    position:
-    relative;
-
-}
+.master-command-bar{
 
 
+    position:fixed;
+
+
+    bottom:20px;
+
+
+    left:50%;
+
+
+    transform:
+
+    translateX(-50%);
 
 
 
-.data-stream::before {
+    display:flex;
 
-    content:
-    "";
 
-    position:
-    absolute;
+    gap:12px;
 
-    width:
-    3px;
 
-    height:
-    100%;
+    padding:15px;
+
 
     background:
-    linear-gradient(
-    transparent,
-    var(--cyan),
-    transparent
-    );
 
-    left:
-    0;
+    rgba(7,20,38,.9);
 
-    animation:
-    dataFlow
-    3s infinite;
 
-}
-
-
-
-
-
-@keyframes dataFlow {
-
-
-    from {
-
-        transform:
-        translateY(
-        -100%
-        );
-
-    }
-
-
-    to {
-
-        transform:
-        translateY(
-        100%
-        );
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   SYSTEM BOOT ANIMATION
-   ================================================== */
-
-
-.boot-animation {
-
-    animation:
-    systemBoot
-    1.2s ease;
-
-}
-
-
-
-
-
-@keyframes systemBoot {
-
-
-    0% {
-
-        opacity:
-        0;
-
-        transform:
-        scale(
-        0.8
-        );
-
-        filter:
-        blur(
-        10px
-        );
-
-    }
-
-
-    60% {
-
-        opacity:
-        1;
-
-    }
-
-
-    100% {
-
-        transform:
-        scale(
-        1
-        );
-
-        filter:
-        blur(
-        0
-        );
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   FADE ANIMATIONS
-   ================================================== */
-
-
-.fade-in {
-
-    animation:
-    fadeInYTCC
-    0.6s ease;
-
-}
-
-
-
-
-
-@keyframes fadeInYTCC {
-
-
-    from {
-
-        opacity:
-        0;
-
-        transform:
-        translateY(
-        20px
-        );
-
-    }
-
-
-    to {
-
-        opacity:
-        1;
-
-        transform:
-        translateY(
-        0
-        );
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   SLIDE ANIMATIONS
-   ================================================== */
-
-
-.slide-left {
-
-    animation:
-    slideLeftYTCC
-    0.6s ease;
-
-}
-
-
-
-
-
-@keyframes slideLeftYTCC {
-
-
-    from {
-
-        opacity:
-        0;
-
-        transform:
-        translateX(
-        -50px
-        );
-
-    }
-
-
-    to {
-
-        opacity:
-        1;
-
-        transform:
-        translateX(
-        0
-        );
-
-    }
-
-
-}
-
-
-
-
-
-.slide-right {
-
-    animation:
-    slideRightYTCC
-    0.6s ease;
-
-}
-
-
-
-
-
-@keyframes slideRightYTCC {
-
-
-    from {
-
-        opacity:
-        0;
-
-        transform:
-        translateX(
-        50px
-        );
-
-    }
-
-
-    to {
-
-        opacity:
-        1;
-
-        transform:
-        translateX(
-        0
-        );
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   NEON TEXT SYSTEM
-   ================================================== */
-
-
-.neon-text {
-
-    color:
-    var(--cyan);
-
-    text-shadow:
-
-    0 0 5px
-    rgba(
-    34,211,238,0.7
-    ),
-
-    0 0 20px
-    rgba(
-    34,211,238,0.5
-    );
-
-}
-
-
-
-
-
-.neon-blue {
-
-    color:
-    var(--blue-light);
-
-    text-shadow:
-
-    0 0 10px
-    rgba(
-    0,170,255,0.8
-    );
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   SCANNER LINE
-   ================================================== */
-
-
-.scanner {
-
-    position:
-    relative;
-
-    overflow:
-    hidden;
-
-}
-
-
-
-
-
-.scanner::before {
-
-    content:
-    "";
-
-    position:
-    absolute;
-
-    left:
-    0;
-
-    right:
-    0;
-
-    height:
-    2px;
-
-    background:
-    var(--cyan);
-
-    box-shadow:
-    0 0 15px
-    var(--cyan);
-
-    animation:
-    scannerMove
-    3s infinite;
-
-}
-
-
-
-
-
-@keyframes scannerMove {
-
-
-    0% {
-
-        top:
-        0;
-
-    }
-
-
-    100% {
-
-        top:
-        100%;
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   BUTTON ANIMATED BORDER
-   ================================================== */
-
-
-.animated-border {
-
-    position:
-    relative;
-
-    overflow:
-    hidden;
-
-}
-
-
-
-
-
-.animated-border::before {
-
-    content:
-    "";
-
-    position:
-    absolute;
-
-    inset:
-    0;
-
-    border-radius:
-    inherit;
-
-    padding:
-    2px;
-
-    background:
-    linear-gradient(
-    90deg,
-    var(--blue),
-    var(--cyan),
-    var(--blue)
-    );
-
-    background-size:
-    300%;
-
-    animation:
-    borderMove
-    4s linear infinite;
-
-}
-
-
-
-
-
-@keyframes borderMove {
-
-
-    from {
-
-        background-position:
-        0%;
-
-    }
-
-
-    to {
-
-        background-position:
-        300%;
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   END OF STYLE PART 10
-   ================================================== */
-/* ==================================================
-   YTCC COMMAND CONTROL CENTER
-   OFFLINE UPGRADE STYLE SYSTEM
-   PART 11
-   RESPONSIVE SYSTEM + TABLET + MOBILE OPTIMIZATION
-   ================================================== */
-
-
-/* ==================================================
-   LARGE SCREEN OPTIMIZATION
-   ================================================== */
-
-
-@media screen and (max-width: 1400px) {
-
-
-    .container {
-
-        width:
-        94%;
-
-    }
-
-
-
-    header h1 {
-
-        font-size:
-        38px;
-
-    }
-
-
-
-    .main-grid {
-
-        gap:
-        18px;
-
-    }
-
-
-
-    .panel {
-
-        padding:
-        22px;
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   LAPTOP RESPONSIVE MODE
-   ================================================== */
-
-
-@media screen and (max-width: 1200px) {
-
-
-    .col-8 {
-
-        grid-column:
-        span 12;
-
-    }
-
-
-
-    .col-6 {
-
-        grid-column:
-        span 12;
-
-    }
-
-
-
-    .col-4 {
-
-        grid-column:
-        span 6;
-
-    }
-
-
-
-    .col-3 {
-
-        grid-column:
-        span 6;
-
-    }
-
-
-
-
-
-    .system-cards {
-
-        grid-template-columns:
-        repeat(
-        2,
-        1fr
-        );
-
-    }
-
-
-
-    .command-center {
-
-        grid-template-columns:
-        repeat(
-        2,
-        1fr
-        );
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   TABLET MODE
-   ================================================== */
-
-
-@media screen and (max-width: 900px) {
-
-
-    body {
-
-        font-size:
-        15px;
-
-    }
-
-
-
-    .app {
-
-        padding:
-        15px;
-
-    }
-
-
-
-    header {
-
-        padding:
-        20px;
-
-    }
-
-
-
-    header h1 {
-
-        font-size:
-        30px;
-
-        letter-spacing:
-        1px;
-
-    }
-
-
-
-    header p {
-
-        font-size:
-        15px;
-
-    }
-
-
-
-
-
-    .navbar {
-
-        flex-direction:
-        column;
-
-        gap:
-        15px;
-
-        position:
-        relative;
-
-    }
-
-
-
-
-
-    .main-grid {
-
-        display:
-        flex;
-
-        flex-direction:
-        column;
-
-    }
-
-
-
-
-
-    .panel {
-
-        width:
-        100%;
-
-    }
-
-
-
-
-
-    .command-center {
-
-        grid-template-columns:
-        1fr;
-
-    }
-
-
-
-
-
-    .quick-controls {
-
-        grid-template-columns:
-        1fr;
-
-    }
-
-
-
-
-
-    .monitor-dashboard {
-
-        grid-template-columns:
-        1fr;
-
-    }
-
-
-
-
-
-    .notification-center {
-
-        width:
-        calc(
-        100% - 30px
-        );
-
-        right:
-        15px;
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   MOBILE PHONE MODE
-   ================================================== */
-
-
-@media screen and (max-width: 600px) {
-
-
-    .container {
-
-        width:
-        100%;
-
-    }
-
-
-
-    .app {
-
-        padding:
-        10px;
-
-    }
-
-
-
-
-
-    header h1 {
-
-        font-size:
-        24px;
-
-    }
-
-
-
-
-
-    header p {
-
-        font-size:
-        13px;
-
-    }
-
-
-
-
-
-    .glass,
-    .panel,
-    .dashboard-section {
-
-        border-radius:
-        15px;
-
-    }
-
-
-
-
-
-    .system-cards {
-
-        grid-template-columns:
-        1fr;
-
-    }
-
-
-
-
-
-    .mobile-card-grid {
-
-        grid-template-columns:
-        1fr;
-
-    }
-
-
-
-
-
-    .control-card {
-
-        min-height:
-        120px;
-
-        padding:
-        18px;
-
-    }
-
-
-
-
-
-    .control-card h3 {
-
-        font-size:
-        17px;
-
-    }
-
-
-
-
-
-    .terminal {
-
-        min-height:
-        350px;
-
-        border-radius:
-        15px;
-
-    }
-
-
-
-
-
-    .terminal-header {
-
-        padding:
-        15px;
-
-    }
-
-
-
-
-
-    .terminal-body {
-
-        padding:
-        15px;
-
-        font-size:
-        13px;
-
-    }
-
-
-
-
-
-    .terminal-input-area {
-
-        padding:
-        12px;
-
-    }
-
-
-
-
-
-    .terminal-input {
-
-        font-size:
-        14px;
-
-    }
-
-
-
-
-
-    .ai-core {
-
-        width:
-        90px;
-
-        height:
-        90px;
-
-        font-size:
-        35px;
-
-    }
-
-
-
-
-
-    .ai-title h2 {
-
-        font-size:
-        20px;
-
-    }
-
-
-
-
-
-    .ai-message {
-
-        max-width:
-        100%;
-
-        font-size:
-        14px;
-
-    }
-
-
-
-
-
-    .activity-log {
-
-        max-height:
-        350px;
-
-    }
-
-
-
-
-
-    .log-entry {
-
-        flex-direction:
-        column;
-
-        align-items:
-        flex-start;
-
-    }
-
-
-
-
-
-    .mobile-nav {
-
-        bottom:
-        10px;
-
-        width:
-        95%;
-
-        padding:
-        12px;
-
-    }
-
-
-
-
-
-    .mobile-nav-item {
-
-        font-size:
-        10px;
-
-    }
-
-
-
-
-
-    .touch-button {
-
-        width:
-        100%;
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   EXTRA SMALL DEVICES
-   ================================================== */
-
-
-@media screen and (max-width: 380px) {
-
-
-    header h1 {
-
-        font-size:
-        21px;
-
-    }
-
-
-
-
-
-    .system-card .value {
-
-        font-size:
-        25px;
-
-    }
-
-
-
-
-
-    .command-output {
-
-        font-size:
-        12px;
-
-    }
-
-
-
-
-
-    .ai-input-container {
-
-        flex-direction:
-        column;
-
-    }
-
-
-
-
-
-    .ai-send {
-
-        width:
-        100%;
-
-        border-radius:
-        15px;
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   TOUCH DEVICE IMPROVEMENTS
-   ================================================== */
-
-
-@media (hover:none) {
-
-
-    .control-card:hover,
-    .panel:hover,
-    .performance-card:hover {
-
-        transform:
-        none;
-
-    }
-
-
-
-
-
-    .ytcc-button:active,
-    .touch-button:active {
-
-        transform:
-        scale(
-        0.96
-        );
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   LANDSCAPE PHONE MODE
-   ================================================== */
-
-
-@media screen and (orientation: landscape)
-and (max-height: 600px) {
-
-
-    .mobile-nav {
-
-        display:
-        none;
-
-    }
-
-
-
-
-
-    .app-screen {
-
-        padding:
-        10px;
-
-    }
-
-
-
-
-
-    .terminal {
-
-        height:
-        80vh;
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   PRINT SAFETY MODE
-   ================================================== */
-
-
-@media print {
-
-
-    body {
-
-        background:
-        white;
-
-        color:
-        black;
-
-    }
-
-
-
-    .navbar,
-    .mobile-nav,
-    .notification-center {
-
-        display:
-        none;
-
-    }
-
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   END OF STYLE PART 11
-   ================================================== */
-/* ==================================================
-   YTCC COMMAND CONTROL CENTER
-   OFFLINE UPGRADE STYLE SYSTEM
-   PART 12
-   FINAL POLISH + ADVANCED EFFECTS
-   ================================================== */
-
-
-/* ==================================================
-   FINAL UI ENHANCEMENT LAYER
-   ================================================== */
-
-
-.ytcc-final {
-
-    position:
-    relative;
-
-    isolation:
-    isolate;
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   PREMIUM GLASS LAYERS
-   ================================================== */
-
-
-.premium-glass {
-
-    background:
-    rgba(
-    15,23,42,0.65
-    );
 
     backdrop-filter:
-    blur(25px)
-    saturate(150%);
 
-    -webkit-backdrop-filter:
-    blur(25px)
-    saturate(150%);
+    blur(15px);
+
+
 
     border:
-    1px solid
-    rgba(
-    255,255,255,0.12
-    );
 
-    box-shadow:
+    1px solid var(--border);
 
-    0 20px 50px
-    rgba(
-    0,0,0,0.35
-    ),
 
-    inset
-    0 0 30px
-    rgba(
-    56,189,248,0.05
-    );
+
+    border-radius:20px;
+
+
+    z-index:500;
+
 
 }
 
@@ -7679,107 +7458,27 @@ and (max-height: 600px) {
 
 
 
-/* ==================================================
-   COMMAND CORE EFFECT
-   ================================================== */
+.master-button{
 
 
-.command-core {
+    padding:12px 18px;
 
-    position:
-    relative;
 
-    width:
-    160px;
+    border-radius:12px;
 
-    height:
-    160px;
-
-    border-radius:
-    50%;
-
-    display:
-    flex;
-
-    justify-content:
-    center;
-
-    align-items:
-    center;
 
     background:
-    radial-gradient(
-    circle,
-    rgba(
-    34,211,238,0.8
-    ),
-    rgba(
-    0,170,255,0.25
-    ),
-    transparent
-    );
 
-    animation:
-    coreRotate
-    12s linear infinite;
-
-}
+    rgba(0,170,255,.15);
 
 
 
+    color:white;
 
-
-.command-core::before {
-
-    content:
-    "";
-
-    position:
-    absolute;
-
-    inset:
-    -20px;
-
-    border-radius:
-    50%;
 
     border:
-    2px solid
-    rgba(
-    34,211,238,0.4
-    );
 
-    animation:
-    corePulse
-    3s infinite;
-
-}
-
-
-
-
-
-@keyframes coreRotate {
-
-
-    from {
-
-        transform:
-        rotate(
-        0deg
-        );
-
-    }
-
-
-    to {
-
-        transform:
-        rotate(
-        360deg
-        );
-
-    }
+    1px solid var(--border);
 
 
 }
@@ -7788,127 +7487,12 @@ and (max-height: 600px) {
 
 
 
-@keyframes corePulse {
+.master-button:hover{
 
-
-    0% {
-
-        transform:
-        scale(
-        1
-        );
-
-        opacity:
-        0.7;
-
-    }
-
-
-    50% {
-
-        transform:
-        scale(
-        1.2
-        );
-
-        opacity:
-        0.2;
-
-    }
-
-
-    100% {
-
-        transform:
-        scale(
-        1
-        );
-
-        opacity:
-        0.7;
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   FLOATING PARTICLES
-   ================================================== */
-
-
-.particle {
-
-    position:
-    absolute;
-
-    width:
-    6px;
-
-    height:
-    6px;
 
     background:
-    var(--cyan);
 
-    border-radius:
-    50%;
-
-    box-shadow:
-    0 0 15px
-    var(--cyan);
-
-    animation:
-    particleFloat
-    8s infinite;
-
-}
-
-
-
-
-
-@keyframes particleFloat {
-
-
-    0% {
-
-        transform:
-        translateY(
-        0
-        );
-
-        opacity:
-        0;
-
-    }
-
-
-    30% {
-
-        opacity:
-        1;
-
-    }
-
-
-    100% {
-
-        transform:
-        translateY(
-        -300px
-        );
-
-        opacity:
-        0;
-
-    }
+    rgba(0,170,255,.35);
 
 
 }
@@ -7917,101 +7501,865 @@ and (max-height: 600px) {
 
 
 
+.master-button.danger{
 
-
-/* ==================================================
-   ADVANCED HOVER SYSTEM
-   ================================================== */
-
-
-.hover-lift {
-
-    transition:
-    0.35s ease;
-
-}
-
-
-
-
-
-.hover-lift:hover {
-
-    transform:
-    translateY(
-    -12px
-    );
-
-    box-shadow:
-    0 25px 50px
-    rgba(
-    0,170,255,0.3
-    );
-
-}
-
-
-
-
-
-.hover-scale:hover {
-
-    transform:
-    scale(
-    1.05
-    );
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   SECURITY SHIELD EFFECT
-   ================================================== */
-
-
-.security-shield {
-
-    position:
-    relative;
-
-    overflow:
-    hidden;
-
-}
-
-
-
-
-
-.security-shield::after {
-
-    content:
-    "";
-
-    position:
-    absolute;
-
-    inset:
-    0;
 
     background:
+
+    rgba(255,55,95,.2);
+
+
+
+    border-color:
+
+    rgba(255,55,95,.5);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   PART 11 COMPLETE
+   CONTINUE PART 12
+================================================== */
+/* ==================================================
+   YTCC STYLE.CSS
+   PART 12/12
+   FOOTER + RESPONSIVE + FINAL ANIMATIONS
+================================================== */
+
+
+
+
+
+/* ==================================================
+   FOOTER SYSTEM
+================================================== */
+
+
+.ytcc-footer{
+
+
+    width:90%;
+
+
+    max-width:1400px;
+
+
+    margin:50px auto 120px;
+
+
+    padding:35px;
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+    gap:25px;
+
+
+
+    background:
+
+    rgba(7,20,38,.8);
+
+
+
+    backdrop-filter:
+
+    blur(18px);
+
+
+
+    border:
+
+    1px solid var(--border);
+
+
+
+    border-radius:22px;
+
+
+
+    box-shadow:
+
+    var(--shadow);
+
+
+}
+
+
+
+
+
+
+
+.footer-brand h3{
+
+
+    font-size:30px;
+
+
+    letter-spacing:3px;
+
+
+    color:var(--primary);
+
+
+}
+
+
+
+
+
+.footer-brand p{
+
+
+    margin-top:8px;
+
+
+    color:var(--text-soft);
+
+
+}
+
+
+
+
+
+.footer-info{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:10px;
+
+
+    color:var(--text-soft);
+
+
+    font-size:14px;
+
+
+}
+
+
+
+
+
+.footer-status{
+
+
+    padding:12px 20px;
+
+
+    border-radius:30px;
+
+
+    background:
+
+    rgba(0,255,157,.1);
+
+
+
+    color:var(--success);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   ACTIVITY CHART
+================================================== */
+
+
+.activity-chart{
+
+
+    height:250px;
+
+
+    position:relative;
+
+
+    overflow:hidden;
+
+
+    border-radius:20px;
+
+
+    background:
+
+    rgba(0,0,0,.3);
+
+
+
+    border:
+
+    1px solid var(--border);
+
+
+}
+
+
+
+
+
+.chart-grid{
+
+
+    position:absolute;
+
+
+    inset:0;
+
+
+    background:
+
+    repeating-linear-gradient(
+
+        0deg,
+
+        transparent,
+
+        transparent 49px,
+
+        rgba(255,255,255,.05) 50px
+
+    );
+
+
+}
+
+
+
+
+
+.chart-line{
+
+
+    position:absolute;
+
+
+    width:90%;
+
+
+    height:4px;
+
+
+    left:5%;
+
+
+    top:55%;
+
+
+    background:
+
+    var(--primary);
+
+
+    transform:
+
+    rotate(-7deg);
+
+
+    box-shadow:
+
+    0 0 20px var(--primary);
+
+
+}
+
+
+
+
+
+
+
+.chart-labels{
+
+
+    position:absolute;
+
+
+    bottom:15px;
+
+
+    left:20px;
+
+
+    right:20px;
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    color:var(--text-soft);
+
+
+    font-size:12px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   MODULE MAP
+================================================== */
+
+
+.module-map-panel{
+
+
+    margin-top:30px;
+
+
+    padding:25px;
+
+
+    background:
+
+    rgba(0,0,0,.25);
+
+
+
+    border:
+
+    1px solid var(--border);
+
+
+
+    border-radius:20px;
+
+
+}
+
+
+
+
+
+.module-map{
+
+
+    position:relative;
+
+
+    height:300px;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+}
+
+
+
+
+
+.map-center{
+
+
+    width:90px;
+
+
+    height:90px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    border-radius:50%;
+
+
+    background:
+
     linear-gradient(
-    120deg,
-    transparent,
-    rgba(
-    34,197,94,0.2
-    ),
-    transparent
+
+        135deg,
+
+        var(--primary),
+
+        var(--primary-dark)
+
     );
+
+
+
+    font-size:30px;
+
+
+    font-weight:900;
+
+
+}
+
+
+
+
+
+
+
+.map-node{
+
+
+    position:absolute;
+
+
+    padding:12px 18px;
+
+
+    border-radius:20px;
+
+
+    background:
+
+    rgba(0,170,255,.15);
+
+
+
+    border:
+
+    1px solid var(--border);
+
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+
+
+.map-node:nth-child(2){
+
+
+    top:10%;
+
+
+    left:45%;
+
+
+}
+
+
+
+
+
+.map-node:nth-child(3){
+
+
+    top:45%;
+
+
+    right:10%;
+
+
+}
+
+
+
+
+
+.map-node:nth-child(4){
+
+
+    bottom:10%;
+
+
+    left:45%;
+
+
+}
+
+
+
+
+
+.map-node:nth-child(5){
+
+
+    top:45%;
+
+
+    left:10%;
+
+
+}
+
+
+
+
+
+.map-node:nth-child(6){
+
+
+    top:20%;
+
+
+    right:25%;
+
+
+}
+
+
+
+
+
+.map-node:nth-child(7){
+
+
+    bottom:20%;
+
+
+    right:25%;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   SMOOTH SCROLLBAR
+================================================== */
+
+
+::-webkit-scrollbar{
+
+
+    width:10px;
+
+
+}
+
+
+
+
+
+::-webkit-scrollbar-track{
+
+
+    background:
+
+    rgba(0,0,0,.2);
+
+
+}
+
+
+
+
+
+::-webkit-scrollbar-thumb{
+
+
+    background:
+
+    rgba(0,170,255,.5);
+
+
+    border-radius:20px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   MOBILE RESPONSIVE
+================================================== */
+
+
+@media(max-width:900px){
+
+
+
+    .ytcc-header,
+
+
+    .ytcc-footer,
+
+
+    .system-message-panel{
+
+
+        flex-direction:column;
+
+
+        text-align:center;
+
+
+    }
+
+
+
+
+
+    .section-heading{
+
+
+        flex-direction:column;
+
+
+        align-items:flex-start;
+
+
+    }
+
+
+
+
+
+    .database-stats,
+
+
+    .profile-stats{
+
+
+        grid-template-columns:
+
+        1fr;
+
+
+    }
+
+
+
+
+
+    .install-features{
+
+
+        grid-template-columns:
+
+        repeat(2,1fr);
+
+
+    }
+
+
+
+
+
+    .master-command-bar{
+
+
+        width:95%;
+
+
+        justify-content:center;
+
+
+        flex-wrap:wrap;
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+@media(max-width:600px){
+
+
+
+    .dashboard-section{
+
+
+        width:95%;
+
+
+        padding:20px;
+
+
+    }
+
+
+
+
+
+    .header-brand h1{
+
+
+        font-size:30px;
+
+
+    }
+
+
+
+
+
+    .section-heading h2{
+
+
+        font-size:24px;
+
+
+    }
+
+
+
+
+
+    .install-features{
+
+
+        grid-template-columns:
+
+        1fr;
+
+
+    }
+
+
+
+
+
+    .smart-actions,
+
+
+    .quick-operation-grid{
+
+
+        grid-template-columns:
+
+        1fr;
+
+
+    }
+
+
+
+
+
+    .master-button{
+
+
+        padding:10px;
+
+
+        font-size:12px;
+
+
+    }
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+/* ==================================================
+   FINAL SYSTEM ANIMATIONS
+================================================== */
+
+
+@keyframes float{
+
+
+    0%,100%{
+
+
+        transform:translateY(0);
+
+
+    }
+
+
+
+    50%{
+
+
+        transform:translateY(-10px);
+
+
+    }
+
+
+}
+
+
+
+
+
+.floating{
+
 
     animation:
-    shieldScan
-    4s infinite;
+
+    float 4s ease-in-out infinite;
+
 
 }
 
@@ -8019,25 +8367,31 @@ and (max-height: 600px) {
 
 
 
-@keyframes shieldScan {
 
 
-    from {
 
-        transform:
-        translateX(
-        -100%
-        );
+@keyframes glow{
+
+
+    0%,100%{
+
+
+        box-shadow:
+
+        0 0 10px rgba(0,170,255,.3);
+
 
     }
 
 
-    to {
 
-        transform:
-        translateX(
-        100%
-        );
+    50%{
+
+
+        box-shadow:
+
+        0 0 35px rgba(0,170,255,.8);
+
 
     }
 
@@ -8048,74 +8402,16 @@ and (max-height: 600px) {
 
 
 
+.glow{
 
 
-/* ==================================================
-   FINAL STATUS BADGES
-   ================================================== */
+    animation:
 
+    glow 2s infinite;
 
-.system-online {
-
-    color:
-    var(--green);
-
-    background:
-    rgba(
-    34,197,94,0.12
-    );
-
-    border:
-    1px solid
-    rgba(
-    34,197,94,0.35
-    );
 
 }
 
-
-
-
-
-.system-secure {
-
-    color:
-    var(--cyan);
-
-    background:
-    rgba(
-    34,211,238,0.12
-    );
-
-    border:
-    1px solid
-    rgba(
-    34,211,238,0.35
-    );
-
-}
-
-
-
-
-
-.system-critical {
-
-    color:
-    var(--red);
-
-    background:
-    rgba(
-    239,68,68,0.12
-    );
-
-    border:
-    1px solid
-    rgba(
-    239,68,68,0.35
-    );
-
-}
 
 
 
@@ -8124,180 +8420,6 @@ and (max-height: 600px) {
 
 
 /* ==================================================
-   FINAL BUTTON POLISH
-   ================================================== */
-
-
-.final-button {
-
-    position:
-    relative;
-
-    overflow:
-    hidden;
-
-    padding:
-    16px 32px;
-
-    border-radius:
-    16px;
-
-    cursor:
-    pointer;
-
-    font-weight:
-    800;
-
-}
-
-
-
-
-
-.final-button::before {
-
-    content:
-    "";
-
-    position:
-    absolute;
-
-    top:
-    0;
-
-    left:
-    -100%;
-
-    width:
-    100%;
-
-    height:
-    100%;
-
-    background:
-    linear-gradient(
-    90deg,
-    transparent,
-    rgba(
-    255,255,255,0.25
-    ),
-    transparent
-    );
-
-    transition:
-    0.5s;
-
-}
-
-
-
-
-
-.final-button:hover::before {
-
-    left:
-    100%;
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   PERFORMANCE OPTIMIZATION
-   ================================================== */
-
-
-.gpu-layer {
-
-    transform:
-    translateZ(
-    0
-    );
-
-    will-change:
-    transform,
-    opacity;
-
-}
-
-
-
-
-
-.no-select {
-
-    user-select:
-    none;
-
-}
-
-
-
-
-
-.pointer {
-
-    cursor:
-    pointer;
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   FINAL YTCC SYSTEM SIGNATURE
-   ================================================== */
-
-
-.ytcc-signature {
-
-    text-align:
-    center;
-
-    padding:
-    30px;
-
-    color:
-    var(--text-muted);
-
-    letter-spacing:
-    3px;
-
-    font-size:
-    12px;
-
-    opacity:
-    0.8;
-
-}
-
-
-
-
-
-.ytcc-signature strong {
-
-    color:
-    var(--cyan);
-
-}
-
-
-
-
-
-
-
-/* ==================================================
-   YTCC OFFLINE UPGRADE
-   STYLE SYSTEM COMPLETE
-   PART 1-12 FINISHED
-   ================================================== */
+   YTCC CSS ENGINE COMPLETE
+   VERSION 1.0
+================================================== */
