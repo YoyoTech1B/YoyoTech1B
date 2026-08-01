@@ -7122,3 +7122,75 @@ max-width:600px
 ```
 
 }
+
+/* ==================================================
+   FIX ACHIEVEMENT TEXT VISIBILITY
+================================================== */
+
+
+.achievement-card{
+
+    overflow:visible;
+
+}
+
+
+.achievement-information{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+
+.achievement-information h3{
+
+    white-space:normal;
+
+    overflow:visible;
+
+    text-overflow:clip;
+
+}
+
+
+.achievement-information p{
+
+    white-space:normal;
+
+    overflow:visible;
+
+    text-overflow:clip;
+
+}
+
+
+.achievement-label{
+
+    white-space:nowrap;
+
+}
+@media(max-width:600px){
+
+    .achievement-card{
+
+        align-items:flex-start;
+
+    }
+
+
+    .achievement-information h3{
+
+        font-size:14px;
+
+    }
+
+
+    .achievement-information p{
+
+        font-size:11px;
+
+    }
+
+}
