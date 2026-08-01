@@ -518,3 +518,695 @@ function(){
 
 }
 );
+/* ==================================================
+YTCC ACHIEVEMENT ENGINE
+================================================== */
+
+const YTCC_ACHIEVEMENT_KEY =
+
+"YTCC_ACHIEVEMENTS_V1";
+
+const ytccAchievements = {
+
+```
+firstCommand:{
+
+    card:
+
+    "achievementFirstCommand",
+
+
+    name:
+
+    "FIRST COMMAND"
+
+
+},
+
+
+systemOnline:{
+
+    card:
+
+    "achievementSystemOnline",
+
+
+    name:
+
+    "SYSTEM ONLINE"
+
+
+},
+
+
+coreDefender:{
+
+    card:
+
+    "achievementCoreDefender",
+
+
+    name:
+
+    "CORE DEFENDER"
+
+
+},
+
+
+gameOperator:{
+
+    card:
+
+    "achievementGameOperator",
+
+
+    name:
+
+    "GAME OPERATOR"
+
+
+},
+
+
+dataKeeper:{
+
+    card:
+
+    "achievementDataKeeper",
+
+
+    name:
+
+    "DATA KEEPER"
+
+
+}
+```
+
+};
+
+function getYTCCAchievements(){
+
+```
+try{
+
+
+    return JSON.parse(
+
+        localStorage.getItem(
+
+            YTCC_ACHIEVEMENT_KEY
+
+        )
+
+    ) || {};
+
+
+}
+
+
+catch(error){
+
+
+    return {};
+
+
+}
+```
+
+}
+
+function saveYTCCAchievements(
+
+achievements
+
+){
+
+```
+localStorage.setItem(
+
+    YTCC_ACHIEVEMENT_KEY,
+
+    JSON.stringify(
+
+        achievements
+
+    )
+
+);
+```
+
+}
+
+function updateAchievementCount(){
+
+```
+const saved =
+
+getYTCCAchievements();
+
+
+const unlockedCount =
+
+Object.keys(
+
+    saved
+
+).length;
+
+
+const countElement =
+
+document.getElementById(
+
+    "achievementCount"
+
+);
+
+
+if(
+
+    countElement
+
+){
+
+
+    countElement.textContent =
+
+    unlockedCount +
+
+    " / 5 UNLOCKED";
+
+
+}
+```
+
+}
+
+function showAchievementPopup(
+
+achievementName
+
+){
+
+```
+const popup =
+
+document.getElementById(
+
+    "achievementPopup"
+
+);
+
+
+const popupName =
+
+document.getElementById(
+
+    "achievementPopupName"
+
+);
+
+
+if(
+
+    !popup ||
+
+    !popupName
+
+){
+
+
+    return;
+
+
+}
+
+
+popupName.textContent =
+
+achievementName;
+
+
+popup.classList.add(
+
+    "show"
+
+);
+
+
+setTimeout(
+
+
+    function(){
+
+
+        popup.classList.remove(
+
+            "show"
+
+        );
+
+
+    },
+
+
+    4000
+
+
+);
+```
+
+}
+
+function unlockYTCCAchievement(
+
+achievementId
+
+){
+
+```
+const achievement =
+
+ytccAchievements[
+
+    achievementId
+
+];
+
+
+if(
+
+    !achievement
+
+){
+
+
+    return;
+
+
+}
+
+
+const saved =
+
+getYTCCAchievements();
+
+
+if(
+
+    saved[
+
+        achievementId
+
+    ]
+
+){
+
+
+    return;
+
+
+}
+
+
+saved[
+
+    achievementId
+
+] = true;
+
+
+saveYTCCAchievements(
+
+    saved
+
+);
+
+
+const card =
+
+document.getElementById(
+
+    achievement.card
+
+);
+
+
+if(
+
+    card
+
+){
+
+
+    card.classList.add(
+
+        "unlocked"
+
+    );
+
+
+    const label =
+
+    card.querySelector(
+
+        ".achievement-label"
+
+    );
+
+
+    if(
+
+        label
+
+    ){
+
+
+        label.textContent =
+
+        "UNLOCKED";
+
+
+    }
+
+
+}
+
+
+updateAchievementCount();
+
+
+showAchievementPopup(
+
+    achievement.name
+
+);
+```
+
+}
+
+function loadYTCCAchievements(){
+
+```
+const saved =
+
+getYTCCAchievements();
+
+
+Object.keys(
+
+    saved
+
+).forEach(
+
+
+    function(
+
+        achievementId
+
+    ){
+
+
+        const achievement =
+
+        ytccAchievements[
+
+            achievementId
+
+        ];
+
+
+        if(
+
+            !achievement
+
+        ){
+
+
+            return;
+
+
+        }
+
+
+        const card =
+
+        document.getElementById(
+
+            achievement.card
+
+        );
+
+
+        if(
+
+            card
+
+        ){
+
+
+            card.classList.add(
+
+                "unlocked"
+
+            );
+
+
+            const label =
+
+            card.querySelector(
+
+                ".achievement-label"
+
+            );
+
+
+            if(
+
+                label
+
+            ){
+
+
+                label.textContent =
+
+                "UNLOCKED";
+
+
+            }
+
+
+        }
+
+
+    }
+
+
+);
+
+
+updateAchievementCount();
+```
+
+}
+
+/* ==================================================
+START ACHIEVEMENT SYSTEM
+================================================== */
+
+document.addEventListener(
+
+"DOMContentLoaded",
+
+function(){
+
+```
+loadYTCCAchievements();
+
+
+setTimeout(
+
+
+    function(){
+
+
+        unlockYTCCAchievement(
+
+            "systemOnline"
+
+        );
+
+
+    },
+
+
+    2500
+
+
+);
+```
+
+}
+);
+
+/* ==================================================
+FIRST COMMAND TRACKER
+================================================== */
+
+document.addEventListener(
+
+"click",
+
+function(
+
+event
+
+){
+
+```
+const clickedControl =
+
+event.target.closest(
+
+
+    "button"
+
+
+);
+
+
+if(
+
+    clickedControl
+
+){
+
+
+    unlockYTCCAchievement(
+
+        "firstCommand"
+
+    );
+
+
+}
+```
+
+}
+);
+
+/* ==================================================
+MINI-GAME TRACKER
+================================================== */
+
+const ytccStartGameButton =
+
+document.getElementById(
+
+"startGameButton"
+
+);
+
+if(
+
+ytccStartGameButton
+
+){
+
+```
+ytccStartGameButton.addEventListener(
+
+"click",
+
+function(){
+
+
+    unlockYTCCAchievement(
+
+        "coreDefender"
+
+    );
+
+
+}
+
+);
+```
+
+}
+
+/* ==================================================
+SAVE NOTE TRACKER
+================================================== */
+
+const ytccSaveNoteButton =
+
+document.getElementById(
+
+"saveNoteButton"
+
+);
+
+if(
+
+ytccSaveNoteButton
+
+){
+
+```
+ytccSaveNoteButton.addEventListener(
+
+"click",
+
+function(){
+
+
+    unlockYTCCAchievement(
+
+        "dataKeeper"
+
+    );
+
+
+}
+
+);
+```
+
+}
+
+/* ==================================================
+GAME SCORE TRACKER
+================================================== */
+
+function checkYTCCGameScore(
+
+score
+
+){
+
+```
+if(
+
+    Number(
+
+        score
+
+    ) >= 100
+
+){
+
+
+    unlockYTCCAchievement(
+
+        "gameOperator"
+
+    );
+
+
+}
+```
+
+}
