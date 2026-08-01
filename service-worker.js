@@ -1,40 +1,24 @@
 /* ==================================================
-   YOYOTECH COMMAND CONTROL CENTER
-   YTCC OFFLINE UPGRADE
-   SERVICE WORKER
-   ================================================== */
+   YTCC SERVICE WORKER
+   OFFLINE COMMAND CORE ENGINE
+   VERSION 1.0
+================================================== */
 
 
-/* ==================================================
-   CACHE CONFIGURATION
-   ================================================== */
-
-
-const CACHE_NAME =
-
-"YTCC-OFFLINE-V12";
-
-
-
+const CACHE_NAME = "YTCC-OFFLINE-v13";
 
 
 const FILES_TO_CACHE = [
 
-
     "./",
-
 
     "./index.html",
 
-
     "./style.css",
-
 
     "./manifest.json",
 
-
     "./favicon.png"
-
 
 ];
 
@@ -42,40 +26,33 @@ const FILES_TO_CACHE = [
 
 
 
-
-
 /* ==================================================
-   INSTALL SYSTEM
-   ================================================== */
+   INSTALL EVENT
+================================================== */
 
 
 self.addEventListener(
-
 "install",
 
 event => {
 
 
+    console.log(
+        "YTCC SERVICE WORKER INSTALLED"
+    );
+
+
     event.waitUntil(
 
-
-        caches
-        .open(
-
-            CACHE_NAME
-
-        )
+        caches.open(CACHE_NAME)
 
         .then(
 
             cache => {
 
 
-                return cache
-                .addAll(
-
+                return cache.addAll(
                     FILES_TO_CACHE
-
                 );
 
 
@@ -87,15 +64,11 @@ event => {
     );
 
 
-
-    self
-    .skipWaiting();
+    self.skipWaiting();
 
 
+});
 
-}
-
-);
 
 
 
@@ -104,34 +77,35 @@ event => {
 
 
 /* ==================================================
-   ACTIVATE SYSTEM
-   ================================================== */
+   ACTIVATE EVENT
+================================================== */
 
 
 self.addEventListener(
-
 "activate",
 
 event => {
 
 
+    console.log(
+        "YTCC SERVICE WORKER ACTIVE"
+    );
+
+
+
     event.waitUntil(
 
-
-        caches
-        .keys()
+        caches.keys()
 
         .then(
 
             cacheNames => {
 
 
-                return Promise
-                .all(
+                return Promise.all(
 
 
-                    cacheNames
-                    .map(
+                    cacheNames.map(
 
                         cache => {
 
@@ -143,11 +117,17 @@ event => {
                             ){
 
 
-                                return caches
-                                .delete(
+                                console.log(
+
+                                    "Removing old cache:",
 
                                     cache
 
+                                );
+
+
+                                return caches.delete(
+                                    cache
                                 );
 
 
@@ -155,6 +135,7 @@ event => {
 
 
                         }
+
 
                     )
 
@@ -164,22 +145,18 @@ event => {
 
             }
 
+
         )
 
 
     );
 
 
-
-    self
-    .clients
-    .claim();
+    return self.clients.claim();
 
 
+});
 
-}
-
-);
 
 
 
@@ -188,8 +165,8 @@ event => {
 
 
 /* ==================================================
-   FETCH OFFLINE ENGINE
-   ================================================== */
+   FETCH EVENT
+================================================== */
 
 
 self.addEventListener(
@@ -200,12 +177,10 @@ event => {
 
 
 
-    event
-    .respondWith(
+    event.respondWith(
 
 
-        caches
-        .match(
+        caches.match(
 
             event.request
 
@@ -213,17 +188,13 @@ event => {
 
         .then(
 
-            cachedResponse => {
+            response => {
 
 
-                if(
-
-                    cachedResponse
-
-                ){
+                if(response){
 
 
-                    return cachedResponse;
+                    return response;
 
 
                 }
@@ -238,12 +209,11 @@ event => {
 
                 .then(
 
-                    response => {
+                    networkResponse => {
 
 
 
-                        return caches
-                        .open(
+                        return caches.open(
 
                             CACHE_NAME
 
@@ -254,19 +224,16 @@ event => {
                             cache => {
 
 
-                                cache
-                                .put(
+                                cache.put(
 
                                     event.request,
 
-                                    response
-                                    .clone()
+                                    networkResponse.clone()
 
                                 );
 
 
-
-                                return response;
+                                return networkResponse;
 
 
                             }
@@ -282,11 +249,11 @@ event => {
 
                 .catch(
 
+
                     () => {
 
 
-                        return caches
-                        .match(
+                        return caches.match(
 
                             "./index.html"
 
@@ -295,10 +262,12 @@ event => {
 
                     }
 
+
                 );
 
 
             }
+
 
         )
 
@@ -306,10 +275,8 @@ event => {
     );
 
 
+});
 
-}
-
-);
 
 
 
@@ -318,8 +285,8 @@ event => {
 
 
 /* ==================================================
-   BACKGROUND UPDATE SYSTEM
-   ================================================== */
+   MESSAGE SYSTEM
+================================================== */
 
 
 self.addEventListener(
@@ -329,26 +296,22 @@ self.addEventListener(
 event => {
 
 
+
     if(
 
-        event.data ===
-
-        "UPDATE_YTCC"
+        event.data === "UPDATE"
 
     ){
 
 
-        self
-        .skipWaiting();
-
+        self.skipWaiting();
 
 
     }
 
 
-}
 
-);
+});
 
 
 
@@ -356,132 +319,9 @@ event => {
 
 
 
-/* ==================================================
-   OFFLINE STATUS MESSAGE
-   ================================================== */
 
+console.log(
 
-self.addEventListener(
-
-"sync",
-
-event => {
-
-
-    if(
-
-        event.tag ===
-
-        "ytcc-sync"
-
-    ){
-
-
-        console
-        .log(
-
-            "YTCC offline sync completed"
-
-        );
-
-
-    }
-
-
-}
-
-);
-
-
-
-
-
-
-
-/* ==================================================
-   PUSH NOTIFICATION FOUNDATION
-   ================================================== */
-
-
-self.addEventListener(
-
-"push",
-
-event => {
-
-
-    const data =
-
-
-    event.data
-
-    ?
-
-    event.data.text()
-
-    :
-
-    "YTCC System Notification";
-
-
-
-
-
-    event
-    .waitUntil(
-
-
-        self
-        .registration
-        .showNotification(
-
-            "YOYOTECH COMMAND CENTER",
-
-            {
-
-
-                body:
-
-                data,
-
-
-                icon:
-
-                "./favicon.png",
-
-
-                badge:
-
-                "./favicon.png"
-
-
-            }
-
-
-        )
-
-
-    );
-
-
-}
-
-);
-
-
-
-
-
-
-
-/* ==================================================
-   YTCC SERVICE WORKER ONLINE
-   ================================================== */
-
-
-console
-.log(
-
-"YTCC SERVICE WORKER ACTIVE"
+"YTCC OFFLINE ENGINE READY"
 
 );
