@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yoyotech1b.github.io/YoyoTech1B/sitemap.xml
