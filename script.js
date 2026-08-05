@@ -1684,3 +1684,104 @@ if(adminLoginButton){
 
 
 }
+/* ==================================================
+   YTCC FREE PROFILE SIGNUP
+================================================== */
+
+
+const signupButton =
+document.getElementById(
+    "signupButton"
+);
+
+
+
+if(signupButton){
+
+
+    signupButton.addEventListener(
+
+        "click",
+
+        async ()=>{
+
+
+            const username =
+            document.getElementById(
+                "signupUsername"
+            ).value;
+
+
+
+            const email =
+            document.getElementById(
+                "signupEmail"
+            ).value;
+
+
+
+            const password =
+            document.getElementById(
+                "signupPassword"
+            ).value;
+
+
+
+            const status =
+            document.getElementById(
+                "signupStatus"
+            );
+
+
+
+            try{
+
+
+                const userCredential =
+                await createUserWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+
+
+                const user =
+                userCredential.user;
+
+
+
+                console.log(
+                    "ACCOUNT CREATED:",
+                    user.uid
+                );
+
+
+
+                status.textContent =
+                "ACCOUNT CREATED";
+
+
+            }
+
+
+            catch(error){
+
+
+                status.textContent =
+                "ERROR: " + error.message;
+
+
+                console.log(
+                    error
+                );
+
+
+            }
+
+
+        }
+
+    );
+
+
+}
