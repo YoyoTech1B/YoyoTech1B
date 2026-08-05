@@ -1,10 +1,11 @@
-const CACHE_NAME = "YTCC-v17";
+const CACHE_NAME = "YTCC-v18";
 
 const filesToCache = [
-    "index.html",
-    "style.css",
-    "favicon.png",
-    "manifest.json"
+    "./",
+    "./index.html",
+    "./style.css",
+    "./favicon.png",
+    "./manifest.json"
 ];
 
 self.addEventListener("install", event => {
@@ -14,9 +15,27 @@ self.addEventListener("install", event => {
     );
 });
 
+
 self.addEventListener("fetch", event => {
     event.respondWith(
         caches.match(event.request)
-        .then(response => response || fetch(event.request))
+        .then(response => {
+            return response || fetch(event.request);
+        })
+    );
+});
+
+
+self.addEventListener("activate", event => {
+    event.waitUntil(
+        caches.keys().then(keys => {
+            return Promise.all(
+                keys.map(key => {
+                    if (key !== CACHE_NAME) {
+                        return caches.delete(key);
+                    }
+                })
+            );
+        })
     );
 });
