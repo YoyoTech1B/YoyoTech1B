@@ -1,7 +1,9 @@
 /* ==================================================
    YTCC FIREBASE CONNECTION
 ================================================== */
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+
 import { 
     getFirestore,
     doc,
@@ -10,11 +12,13 @@ import {
     increment,
     setDoc
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+
 import { 
     getAuth,
     signInWithEmailAndPassword,
-    createUserWithEmailAndPassword
-   import { signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+    createUserWithEmailAndPassword,
+    signOut
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
 const firebaseConfig = {
