@@ -96,6 +96,19 @@ async function loadYTCCAnalytics(){
 
 }
 
+onAuthStateChanged(
+    auth,
+    (user)=>{
+
+        if(user){
+
+            loadYTCCProfile();
+
+        }
+
+    }
+);
+
 loadYTCCAnalytics();
 
 
