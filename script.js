@@ -1509,3 +1509,90 @@ window.addEventListener(
 
 
 });
+
+/* ==================================================
+   YTCC ADMIN LOGIN SYSTEM
+================================================== */
+
+
+const adminLoginButton =
+document.getElementById(
+    "adminLoginButton"
+);
+
+
+if(adminLoginButton){
+
+
+    adminLoginButton.addEventListener(
+        "click",
+        async ()=>{
+
+
+            const email =
+            document.getElementById(
+                "adminEmail"
+            ).value;
+
+
+            const password =
+            document.getElementById(
+                "adminPassword"
+            ).value;
+
+
+
+            const status =
+            document.getElementById(
+                "adminLoginStatus"
+            );
+
+
+            try{
+
+
+                await signInWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+
+
+                status.textContent =
+                "ACCESS GRANTED";
+
+
+                document.getElementById(
+                    "adminAnalyticsPanel"
+                ).style.display =
+                "block";
+
+
+                console.log(
+                    "YTCC ADMIN LOGIN SUCCESS"
+                );
+
+
+            }
+
+
+            catch(error){
+
+
+                status.textContent =
+                "ACCESS DENIED";
+
+
+                console.log(
+                    error.message
+                );
+
+
+            }
+
+
+        }
+    );
+
+
+}
