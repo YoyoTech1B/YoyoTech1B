@@ -3,8 +3,7 @@
 ================================================== */
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
-
+import { getFirestore, doc, getDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDP_PMEdF9C5qpbb8fQDJ17dbJ2CMrt_TU",
@@ -36,18 +35,29 @@ async function loadYTCCAnalytics(){
     );
 
 
+    await updateDoc(
+        visitsRef,
+        {
+            total: increment(1)
+        }
+    );
+
+
     const visitsSnap = await getDoc(
         visitsRef
     );
 
 
-    if(
-        visitsSnap.exists()
-    ){
+    if(visitsSnap.exists()){
+
+
+        const total =
+        visitsSnap.data().total;
+
 
         console.log(
             "Total visits:",
-            visitsSnap.data().total
+            total
         );
 
 
@@ -60,24 +70,13 @@ async function loadYTCCAnalytics(){
         if(totalElement){
 
             totalElement.textContent =
-            visitsSnap.data().total;
+            total;
 
         }
 
     }
 
-    else{
-
-        console.log(
-            "No analytics data found"
-        );
-
-    }
-
 }
-
-
-loadYTCCAnalytics();
 
 
 
