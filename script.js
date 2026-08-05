@@ -1,3 +1,5 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyDP_PMEdF9C5qpbb8fQDJ17dbJ2CMrt_TU",
   authDomain: "ytcc-analytics.firebaseapp.com",
