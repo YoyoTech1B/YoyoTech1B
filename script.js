@@ -1,8 +1,18 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
 const firebaseConfig = {
+  apiKey: "AIzaSyDP_PMEdF9C5qpbb8fQDJ17dbJ2CMrt_TU",
+  authDomain: "ytcc-analytics.firebaseapp.com",
+  projectId: "ytcc-analytics",
+  storageBucket: "ytcc-analytics.firebasestorage.app",
+  messagingSenderId: "516249060788",
+  appId: "1:516249060788:web:51d4c43b7ad171cc6dee1"
+};
+
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
 const visitsRef = doc(db, "analytics", "visits");
 
 const visitsSnap = await getDoc(visitsRef);
@@ -12,14 +22,6 @@ if (visitsSnap.exists()) {
 } else {
     console.log("No data found");
 }
-  apiKey: "AIzaSyDP_PMEdF9C5qpbb8fQDJ17dbJ2CMrt_TU",
-  authDomain: "ytcc-analytics.firebaseapp.com",
-  projectId: "ytcc-analytics",
-  storageBucket: "ytcc-analytics.firebasestorage.app",
-  messagingSenderId: "516249060788",
-  appId: "1:516249060788:web:51d4c43b7ad171dcc6dee1"
-};
-
 let score = 0;
 
 let time = 30;
