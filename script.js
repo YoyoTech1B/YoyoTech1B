@@ -78,7 +78,7 @@ async function loadYTCCAnalytics(){
 
 }
 
-
+loadYTCCAnalytics();
 
 
 
