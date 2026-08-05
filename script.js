@@ -1760,7 +1760,19 @@ if(signupButton){
                     "ACCOUNT CREATED:",
                     user.uid
                 );
-
+await setDoc(
+    doc(
+        db,
+        "profiles",
+        user.uid
+    ),
+    {
+        username: username,
+        rank: "Recruit",
+        level: 1,
+        xp: 0
+    }
+);
 
 
                 status.textContent =
