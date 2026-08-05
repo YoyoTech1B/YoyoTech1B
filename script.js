@@ -1,10 +1,15 @@
 /* ==================================================
    YTCC FIREBASE CONNECTION
 ================================================== */
-import { getFirestore, doc, getDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getFirestore, doc, getDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { 
+    getFirestore,
+    doc,
+    getDoc,
+    updateDoc,
+    increment,
+    setDoc
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 import { 
     getAuth,
     signInWithEmailAndPassword,
