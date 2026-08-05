@@ -1,3 +1,12 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyDP_PMEdF9C5qpbb8fQDJ17dbJ2CMrt_TU",
+  authDomain: "ytcc-analytics.firebaseapp.com",
+  projectId: "ytcc-analytics",
+  storageBucket: "ytcc-analytics.firebasestorage.app",
+  messagingSenderId: "516249060788",
+  appId: "1:516249060788:web:51d4c43b7ad171dcc6dee1"
+};
+
 let score = 0;
 
 let time = 30;
