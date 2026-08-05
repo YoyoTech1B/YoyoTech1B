@@ -1929,3 +1929,47 @@ auth.onAuthStateChanged(
     }
 
 );
+/* ==================================================
+   YTCC LOGOUT SYSTEM
+================================================== */
+
+
+import { signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+
+const logoutButton =
+document.getElementById(
+    "logoutButton"
+);
+
+
+
+if(logoutButton){
+
+
+    logoutButton.addEventListener(
+
+        "click",
+
+        async ()=>{
+
+
+            await signOut(auth);
+
+
+
+            console.log(
+                "YTCC USER LOGGED OUT"
+            );
+
+
+
+            location.reload();
+
+
+        }
+
+    );
+
+
+}
