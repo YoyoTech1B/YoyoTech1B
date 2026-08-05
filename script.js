@@ -1969,3 +1969,32 @@ if(logoutButton){
 
 
 }
+/* ==================================================
+   YTCC PROFILE EDIT OPEN
+================================================== */
+
+const editProfileButton =
+document.getElementById(
+    "editProfileButton"
+);
+
+
+const profileEditBox =
+document.getElementById(
+    "profileEditBox"
+);
+
+
+if(editProfileButton && profileEditBox){
+
+    editProfileButton.addEventListener(
+        "click",
+        ()=>{
+
+            profileEditBox.style.display =
+            "block";
+
+        }
+    );
+
+}
