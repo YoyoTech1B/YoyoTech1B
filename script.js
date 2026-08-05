@@ -1803,3 +1803,129 @@ await setDoc(
 
 
 }
+/* ==================================================
+   YTCC PROFILE LOADER
+================================================== */
+
+
+async function loadYTCCProfile(){
+
+
+    const user =
+    auth.currentUser;
+
+
+
+    if(!user){
+
+        return;
+
+    }
+
+
+
+    const profileRef =
+    doc(
+        db,
+        "profiles",
+        user.uid
+    );
+
+
+
+    const profileSnap =
+    await getDoc(
+        profileRef
+    );
+
+
+
+    if(profileSnap.exists()){
+
+
+        const profile =
+        profileSnap.data();
+
+
+
+        const username =
+        document.getElementById(
+            "profileUsername"
+        );
+
+
+        const rank =
+        document.getElementById(
+            "profileRank"
+        );
+
+
+        const level =
+        document.getElementById(
+            "profileLevel"
+        );
+
+
+        const xp =
+        document.getElementById(
+            "profileXP"
+        );
+
+
+
+        if(username)
+            username.textContent =
+            profile.username;
+
+
+
+        if(rank)
+            rank.textContent =
+            profile.rank;
+
+
+
+        if(level)
+            level.textContent =
+            profile.level;
+
+
+
+        if(xp)
+            xp.textContent =
+            profile.xp;
+
+
+
+        console.log(
+            "YTCC PROFILE LOADED",
+            profile
+        );
+
+
+    }
+
+
+}
+
+
+
+
+
+auth.onAuthStateChanged(
+
+    (user)=>{
+
+
+        if(user){
+
+
+            loadYTCCProfile();
+
+
+        }
+
+
+    }
+
+);
