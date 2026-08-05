@@ -3,6 +3,15 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.2/firebase
 const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const visitsRef = doc(db, "analytics", "visits");
+
+const visitsSnap = await getDoc(visitsRef);
+
+if (visitsSnap.exists()) {
+    console.log("Total visits:", visitsSnap.data().total);
+} else {
+    console.log("No data found");
+}
   apiKey: "AIzaSyDP_PMEdF9C5qpbb8fQDJ17dbJ2CMrt_TU",
   authDomain: "ytcc-analytics.firebaseapp.com",
   projectId: "ytcc-analytics",
