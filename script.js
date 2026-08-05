@@ -1596,3 +1596,87 @@ if(adminLoginButton){
 
 
 }
+
+/* ==================================================
+   YTCC PRIVATE ANALYTICS LOADER
+================================================== */
+
+
+async function loadAdminAnalytics(){
+
+    const visitsRef = doc(
+        db,
+        "analytics",
+        "visits"
+    );
+
+
+    const visitsSnap = await getDoc(
+        visitsRef
+    );
+
+
+    if(visitsSnap.exists()){
+
+
+        const total =
+        visitsSnap.data().total;
+
+
+        const adminTotal =
+        document.getElementById(
+            "adminTotalVisits"
+        );
+
+
+        if(adminTotal){
+
+            adminTotal.textContent =
+            total;
+
+        }
+
+
+        console.log(
+            "ADMIN TOTAL VISITS:",
+            total
+        );
+
+
+    }
+
+}
+
+
+
+
+
+const adminPanel =
+document.getElementById(
+    "adminAnalyticsPanel"
+);
+
+
+
+if(adminLoginButton){
+
+
+    adminLoginButton.addEventListener(
+        "click",
+        async ()=>{
+
+
+            setTimeout(()=>{
+
+
+                loadAdminAnalytics();
+
+
+            },1000);
+
+
+        }
+    );
+
+
+}
