@@ -18,7 +18,8 @@ import {
     getAuth,
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
-    signOut
+    signOut,
+    onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
 const firebaseConfig = {
@@ -1914,32 +1915,9 @@ async function loadYTCCProfile(){
 }
 
 
-
-
-
-auth.onAuthStateChanged(
-
-    (user)=>{
-
-
-        if(user){
-
-
-            loadYTCCProfile();
-
-
-        }
-
-
-    }
-
-);
 /* ==================================================
    YTCC LOGOUT SYSTEM
 ================================================== */
-
-
-import { signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
 
 const logoutButton =
