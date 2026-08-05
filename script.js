@@ -1,27 +1,93 @@
+/* ==================================================
+   YTCC FIREBASE CONNECTION
+================================================== */
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDP_PMEdF9C5qpbb8fQDJ17dbJ2CMrt_TU",
-  authDomain: "ytcc-analytics.firebaseapp.com",
-  projectId: "ytcc-analytics",
-  storageBucket: "ytcc-analytics.firebasestorage.app",
-  messagingSenderId: "516249060788",
-  appId: "1:516249060788:web:51d4c43b7ad171cc6dee1"
+    apiKey: "AIzaSyDP_PMEdF9C5qpbb8fQDJ17dbJ2CMrt_TU",
+    authDomain: "ytcc-analytics.firebaseapp.com",
+    projectId: "ytcc-analytics",
+    storageBucket: "ytcc-analytics.firebasestorage.app",
+    messagingSenderId: "516249060788",
+    appId: "1:516249060788:web:51d4c43b7ad171cc6dee1"
 };
 
+
 const app = initializeApp(firebaseConfig);
+
 const db = getFirestore(app);
 
-const visitsRef = doc(db, "analytics", "visits");
 
-const visitsSnap = await getDoc(visitsRef);
 
-if (visitsSnap.exists()) {
-    console.log("Total visits:", visitsSnap.data().total);
-} else {
-    console.log("No data found");
+/* ==================================================
+   FIRESTORE ANALYTICS READER
+================================================== */
+
+
+async function loadYTCCAnalytics(){
+
+    const visitsRef = doc(
+        db,
+        "analytics",
+        "visits"
+    );
+
+
+    const visitsSnap = await getDoc(
+        visitsRef
+    );
+
+
+    if(
+        visitsSnap.exists()
+    ){
+
+        console.log(
+            "Total visits:",
+            visitsSnap.data().total
+        );
+
+
+        const totalElement =
+        document.getElementById(
+            "totalVisits"
+        );
+
+
+        if(totalElement){
+
+            totalElement.textContent =
+            visitsSnap.data().total;
+
+        }
+
+    }
+
+    else{
+
+        console.log(
+            "No analytics data found"
+        );
+
+    }
+
 }
+
+
+loadYTCCAnalytics();
+
+
+
+
+
+/* ==================================================
+   YTCC CORE DEFENDER MINI GAME
+================================================== */
+
+
 let score = 0;
 
 let time = 30;
@@ -33,73 +99,117 @@ let timer;
 
 
 const scoreText =
-document.getElementById("gameScore");
+document.getElementById(
+    "gameScore"
+);
+
 
 const timeText =
-document.getElementById("gameTime");
+document.getElementById(
+    "gameTime"
+);
+
 
 const attackBox =
-document.getElementById("attackBox");
+document.getElementById(
+    "attackBox"
+);
+
 
 const statusText =
-document.getElementById("gameStatus");
+document.getElementById(
+    "gameStatus"
+);
 
 
 
-document.getElementById("startGameButton")
-.onclick = function(){
+const startGameButton =
+document.getElementById(
+    "startGameButton"
+);
 
 
-score = 0;
 
-time = 30;
-
-gameRunning = true;
+if(startGameButton){
 
 
-scoreText.textContent = score;
-
-timeText.textContent = time;
+    startGameButton.onclick = function(){
 
 
-statusText.textContent =
-"DEFEND THE CORE";
+        score = 0;
+
+        time = 30;
+
+        gameRunning = true;
 
 
-attackBox.textContent =
-"WAITING FOR ATTACK";
+
+        if(scoreText)
+            scoreText.textContent = score;
 
 
-timer = setInterval(()=>{
+        if(timeText)
+            timeText.textContent = time;
 
 
-time--;
 
-timeText.textContent=time;
+        if(statusText)
+            statusText.textContent =
+            "DEFEND THE CORE";
 
 
-if(time<=0){
 
-clearInterval(timer);
+        if(attackBox)
+            attackBox.textContent =
+            "WAITING FOR ATTACK";
 
-gameRunning=false;
 
-statusText.textContent=
-"GAME OVER SCORE: "+score;
 
-attackBox.textContent=
-"CORE SECURED";
+        timer = setInterval(()=>{
+
+
+            time--;
+
+
+            if(timeText)
+                timeText.textContent = time;
+
+
+
+            if(time <= 0){
+
+
+                clearInterval(timer);
+
+
+                gameRunning = false;
+
+
+                if(statusText)
+                    statusText.textContent =
+                    "GAME OVER SCORE: " + score;
+
+
+
+                if(attackBox)
+                    attackBox.textContent =
+                    "CORE SECURED";
+
+
+            }
+
+
+        },1000);
+
+
+
+        spawnAttack();
+
+
+    };
+
 
 }
-
-
-},1000);
-
-
-spawnAttack();
-
-
-};
 
 
 
@@ -108,29 +218,87 @@ spawnAttack();
 function spawnAttack(){
 
 
-if(!gameRunning)
-return;
+    if(!gameRunning)
+        return;
 
 
-attackBox.textContent=
-"⚠ SYSTEM ATTACK DETECTED";
+
+    if(attackBox){
 
 
-attackBox.classList.add(
-"attack-active"
+        attackBox.textContent =
+        "⚠ SYSTEM ATTACK DETECTED";
+
+
+        attackBox.classList.add(
+            "attack-active"
+        );
+
+
+        setTimeout(()=>{
+
+
+            attackBox.classList.remove(
+                "attack-active"
+            );
+
+
+        },800);
+
+
+    }
+
+
+}
+/* ==================================================
+   YTCC DEFEND BUTTON
+================================================== */
+
+
+const defendButton =
+document.getElementById(
+    "defendButton"
 );
 
 
 
-setTimeout(()=>{
+if(defendButton){
 
 
-attackBox.classList.remove(
-"attack-active"
-);
+    defendButton.onclick = function(){
 
 
-},800);
+        if(!gameRunning)
+            return;
+
+
+
+        score += 10;
+
+
+
+        if(scoreText)
+            scoreText.textContent =
+            score;
+
+
+
+        if(attackBox){
+
+            attackBox.textContent =
+            "✓ ATTACK BLOCKED";
+
+        }
+
+
+
+        setTimeout(
+            spawnAttack,
+            1000
+        );
+
+
+    };
 
 
 }
@@ -139,36 +307,13 @@ attackBox.classList.remove(
 
 
 
-
-document.getElementById("defendButton")
-.onclick=function(){
-
-
-if(!gameRunning)
-return;
-
-
-score+=10;
-
-
-scoreText.textContent=score;
-
-
-attackBox.textContent=
-"✓ ATTACK BLOCKED";
-
-
-setTimeout(spawnAttack,1000);
-
-
-};
 /* ==================================================
-   YTCC APP INSTALL BUTTON
-   AUTO HIDE AFTER INSTALL
+   YTCC APP INSTALL SYSTEM
 ================================================== */
 
 
 let installPrompt = null;
+
 
 
 const installButton =
@@ -180,111 +325,123 @@ document.getElementById(
 
 window.addEventListener(
 
-"beforeinstallprompt",
+    "beforeinstallprompt",
 
-(event)=>{
-
-
-    event.preventDefault();
+    (event)=>{
 
 
-    installPrompt = event;
+        event.preventDefault();
 
 
-    if(installButton){
-
-        installButton.style.display =
-        "block";
-
-    }
-
-
-});
+        installPrompt = event;
 
 
 
+        if(installButton){
 
 
+            installButton.style.display =
+            "block";
 
 
-installButton?.addEventListener(
-
-"click",
-
-async ()=>{
-
-
-    if(!installPrompt)
-    return;
-
-
-
-    installPrompt.prompt();
-
-
-
-    const result =
-    await installPrompt.userChoice;
-
-
-
-    if(result.outcome === "accepted"){
-
-
-        console.log(
-            "YTCC INSTALLED"
-        );
-
-
-        installButton.style.display =
-        "none";
+        }
 
 
     }
 
-
-
-    installPrompt = null;
-
-
-});
+);
 
 
 
 
 
+if(installButton){
+
+
+    installButton.addEventListener(
+
+        "click",
+
+        async ()=>{
+
+
+            if(!installPrompt)
+                return;
 
 
 
-/* ==================================================
-   HIDE BUTTON IF ALREADY INSTALLED
-================================================== */
+            installPrompt.prompt();
+
+
+
+            const result =
+            await installPrompt.userChoice;
+
+
+
+            if(
+                result.outcome === "accepted"
+            ){
+
+
+                console.log(
+                    "YTCC INSTALLED"
+                );
+
+
+                installButton.style.display =
+                "none";
+
+
+            }
+
+
+
+            installPrompt = null;
+
+
+        }
+
+    );
+
+
+}
+
+
+
 
 
 window.addEventListener(
 
-"appinstalled",
+    "appinstalled",
 
-()=>{
-
-
-    console.log(
-        "YTCC INSTALL COMPLETE"
-    );
+    ()=>{
 
 
+        console.log(
+            "YTCC INSTALL COMPLETE"
+        );
 
-    if(installButton){
 
 
-        installButton.style.display =
-        "none";
+        if(installButton){
+
+
+            installButton.style.display =
+            "none";
+
+
+        }
 
 
     }
 
+);
 
-});
+
+
+
+
 /* ==================================================
    YTCC BOOT ANIMATION ENGINE
 ================================================== */
@@ -294,176 +451,120 @@ window.addEventListener(
 
 "load",
 
-function(){
+()=>{
 
 
     const bootScreen =
-
     document.getElementById(
-
         "bootScreen"
-
     );
+
 
 
     const bootProgress =
-
     document.getElementById(
-
         "bootProgress"
-
     );
+
 
 
     const bootMessage =
-
     document.getElementById(
-
         "bootMessage"
-
     );
+
 
 
     const bootStatus =
-
     document.getElementById(
-
         "bootStatus"
-
     );
+
 
 
     const bootChecks =
-
     document.querySelectorAll(
-
         ".boot-check"
-
     );
 
 
-    if(
 
-        !bootScreen
-
-    ){
-
-
+    if(!bootScreen)
         return;
 
-
-    }
 
 
     const bootSteps = [
 
 
         {
-
             progress:"20%",
-
-
             message:
-
             "INITIALIZING COMMAND CORE..."
-
-
         },
 
 
         {
-
             progress:"42%",
-
-
             message:
-
             "CONNECTING NETWORK SYSTEMS..."
-
-
         },
 
 
         {
-
             progress:"64%",
-
-
             message:
-
             "VERIFYING SECURITY PROTOCOLS..."
-
-
         },
 
 
         {
-
             progress:"84%",
-
-
             message:
-
             "ACTIVATING OFFLINE ENGINE..."
-
-
         },
 
 
         {
-
             progress:"100%",
-
-
             message:
-
             "COMMAND CENTER READY..."
-
-
         }
 
 
     ];
 
 
+
     let currentStep = 0;
+
 
 
     function runBootStep(){
 
 
         if(
-
             currentStep >=
-
             bootSteps.length
-
         ){
 
 
-            bootStatus.textContent =
-
-            "SYSTEM ONLINE";
-
-
-            setTimeout(
-
-                function(){
+            if(bootStatus)
+                bootStatus.textContent =
+                "SYSTEM ONLINE";
 
 
-                    bootScreen.classList.add(
 
-                        "boot-finished"
-
-                    );
+            setTimeout(()=>{
 
 
-                },
+                bootScreen.classList.add(
+                    "boot-finished"
+                );
 
 
-                900
+            },900);
 
-            );
 
 
             return;
@@ -472,445 +573,156 @@ function(){
         }
 
 
+
         const step =
-
-        bootSteps[
-
-            currentStep
-
-        ];
+        bootSteps[currentStep];
 
 
-        bootProgress.style.width =
 
-        step.progress;
+        if(bootProgress)
+            bootProgress.style.width =
+            step.progress;
 
 
-        bootMessage.textContent =
 
-        step.message;
+        if(bootMessage)
+            bootMessage.textContent =
+            step.message;
+
 
 
         if(
-
-            bootChecks[
-
-                currentStep
-
-            ]
-
+            bootChecks[currentStep]
         ){
 
 
-            bootChecks[
-
-                currentStep
-
-            ].classList.add(
-
+            bootChecks[currentStep]
+            .classList.add(
                 "active"
-
             );
 
 
         }
+
 
 
         currentStep++;
 
 
+
         setTimeout(
-
             runBootStep,
-
             650
-
         );
 
 
     }
 
 
+
     setTimeout(
-
         runBootStep,
-
         300
-
     );
 
 
-}
-);
+});
 /* ==================================================
-YTCC ACHIEVEMENT ENGINE
+   YTCC ACHIEVEMENT ENGINE
 ================================================== */
 
-const YTCC_ACHIEVEMENT_KEY =
 
+const YTCC_ACHIEVEMENT_KEY =
 "YTCC_ACHIEVEMENTS_V1";
+
+
 
 const ytccAchievements = {
 
-```
-firstCommand:{
 
-    card:
+    firstCommand:{
 
-    "achievementFirstCommand",
+        card:
+        "achievementFirstCommand",
 
-
-    name:
-
-    "FIRST COMMAND"
-
-
-},
-
-
-systemOnline:{
-
-    card:
-
-    "achievementSystemOnline",
-
-
-    name:
-
-    "SYSTEM ONLINE"
-
-
-},
-
-
-coreDefender:{
-
-    card:
-
-    "achievementCoreDefender",
-
-
-    name:
-
-    "CORE DEFENDER"
-
-
-},
-
-
-gameOperator:{
-
-    card:
-
-    "achievementGameOperator",
-
-
-    name:
-
-    "GAME OPERATOR"
-
-
-},
-
-
-dataKeeper:{
-
-    card:
-
-    "achievementDataKeeper",
-
-
-    name:
-
-    "DATA KEEPER"
-
-
-}
-```
-
-};
-
-function getYTCCAchievements(){
-
-```
-try{
-
-
-    return JSON.parse(
-
-        localStorage.getItem(
-
-            YTCC_ACHIEVEMENT_KEY
-
-        )
-
-    ) || {};
-
-
-}
-
-
-catch(error){
-
-
-    return {};
-
-
-}
-```
-
-}
-
-function saveYTCCAchievements(
-
-achievements
-
-){
-
-```
-localStorage.setItem(
-
-    YTCC_ACHIEVEMENT_KEY,
-
-    JSON.stringify(
-
-        achievements
-
-    )
-
-);
-```
-
-}
-
-function updateAchievementCount(){
-
-```
-const saved =
-
-getYTCCAchievements();
-
-
-const unlockedCount =
-
-Object.keys(
-
-    saved
-
-).length;
-
-
-const countElement =
-
-document.getElementById(
-
-    "achievementCount"
-
-);
-
-
-if(
-
-    countElement
-
-){
-
-
-    countElement.textContent =
-
-    unlockedCount +
-
-    " / 5 UNLOCKED";
-
-
-}
-```
-
-}
-
-function showAchievementPopup(
-
-achievementName
-
-){
-
-```
-const popup =
-
-document.getElementById(
-
-    "achievementPopup"
-
-);
-
-
-const popupName =
-
-document.getElementById(
-
-    "achievementPopupName"
-
-);
-
-
-if(
-
-    !popup ||
-
-    !popupName
-
-){
-
-
-    return;
-
-
-}
-
-
-popupName.textContent =
-
-achievementName;
-
-
-popup.classList.add(
-
-    "show"
-
-);
-
-
-setTimeout(
-
-
-    function(){
-
-
-        popup.classList.remove(
-
-            "show"
-
-        );
-
+        name:
+        "FIRST COMMAND"
 
     },
 
 
-    4000
+    systemOnline:{
 
+        card:
+        "achievementSystemOnline",
 
-);
-```
+        name:
+        "SYSTEM ONLINE"
 
-}
+    },
 
-function unlockYTCCAchievement(
 
-achievementId
+    coreDefender:{
 
-){
+        card:
+        "achievementCoreDefender",
 
-```
-const achievement =
+        name:
+        "CORE DEFENDER"
 
-ytccAchievements[
+    },
 
-    achievementId
 
-];
+    gameOperator:{
 
+        card:
+        "achievementGameOperator",
 
-if(
+        name:
+        "GAME OPERATOR"
 
-    !achievement
+    },
 
-){
 
+    dataKeeper:{
 
-    return;
+        card:
+        "achievementDataKeeper",
 
+        name:
+        "DATA KEEPER"
 
-}
+    }
 
 
-const saved =
+};
 
-getYTCCAchievements();
 
 
-if(
 
-    saved[
 
-        achievementId
+function getYTCCAchievements(){
 
-    ]
 
-){
+    try{
 
 
-    return;
+        return JSON.parse(
 
+            localStorage.getItem(
+                YTCC_ACHIEVEMENT_KEY
+            )
 
-}
+        ) || {};
 
 
-saved[
+    }
 
-    achievementId
 
-] = true;
+    catch(error){
 
 
-saveYTCCAchievements(
-
-    saved
-
-);
-
-
-const card =
-
-document.getElementById(
-
-    achievement.card
-
-);
-
-
-if(
-
-    card
-
-){
-
-
-    card.classList.add(
-
-        "unlocked"
-
-    );
-
-
-    const label =
-
-    card.querySelector(
-
-        ".achievement-label"
-
-    );
-
-
-    if(
-
-        label
-
-    ){
-
-
-        label.textContent =
-
-        "UNLOCKED";
+        return {};
 
 
     }
@@ -919,104 +731,280 @@ if(
 }
 
 
-updateAchievementCount();
 
 
-showAchievementPopup(
 
-    achievement.name
+function saveYTCCAchievements(
+    achievements
+){
 
-);
-```
+
+    localStorage.setItem(
+
+        YTCC_ACHIEVEMENT_KEY,
+
+        JSON.stringify(
+            achievements
+        )
+
+    );
+
 
 }
 
-function loadYTCCAchievements(){
-
-```
-const saved =
-
-getYTCCAchievements();
 
 
-Object.keys(
-
-    saved
-
-).forEach(
 
 
-    function(
+function updateAchievementCount(){
 
-        achievementId
 
+    const saved =
+    getYTCCAchievements();
+
+
+
+    const unlockedCount =
+    Object.keys(
+        saved
+    ).length;
+
+
+
+    const countElement =
+    document.getElementById(
+        "achievementCount"
+    );
+
+
+
+    if(countElement){
+
+
+        countElement.textContent =
+        unlockedCount +
+        " / 5 UNLOCKED";
+
+
+    }
+
+
+}
+
+
+
+
+
+function showAchievementPopup(
+    achievementName
+){
+
+
+    const popup =
+    document.getElementById(
+        "achievementPopup"
+    );
+
+
+
+    const popupName =
+    document.getElementById(
+        "achievementPopupName"
+    );
+
+
+
+    if(
+        !popup ||
+        !popupName
     ){
 
+        return;
 
-        const achievement =
-
-        ytccAchievements[
-
-            achievementId
-
-        ];
+    }
 
 
-        if(
 
-            !achievement
-
-        ){
+    popupName.textContent =
+    achievementName;
 
 
-            return;
+
+    popup.classList.add(
+        "show"
+    );
+
+
+
+    setTimeout(()=>{
+
+
+        popup.classList.remove(
+            "show"
+        );
+
+
+    },4000);
+
+
+}
+
+
+
+
+
+function unlockYTCCAchievement(
+    achievementId
+){
+
+
+    const achievement =
+    ytccAchievements[
+        achievementId
+    ];
+
+
+
+    if(!achievement)
+        return;
+
+
+
+    const saved =
+    getYTCCAchievements();
+
+
+
+    if(
+        saved[achievementId]
+    ){
+
+        return;
+
+    }
+
+
+
+    saved[achievementId] =
+    true;
+
+
+
+    saveYTCCAchievements(
+        saved
+    );
+
+
+
+    const card =
+    document.getElementById(
+        achievement.card
+    );
+
+
+
+    if(card){
+
+
+        card.classList.add(
+            "unlocked"
+        );
+
+
+
+        const label =
+        card.querySelector(
+            ".achievement-label"
+        );
+
+
+
+        if(label){
+
+
+            label.textContent =
+            "UNLOCKED";
 
 
         }
 
 
-        const card =
-
-        document.getElementById(
-
-            achievement.card
-
-        );
+    }
 
 
-        if(
 
-            card
-
-        ){
+    updateAchievementCount();
 
 
-            card.classList.add(
 
-                "unlocked"
+    showAchievementPopup(
+        achievement.name
+    );
 
+
+}
+
+
+
+
+
+function loadYTCCAchievements(){
+
+
+    const saved =
+    getYTCCAchievements();
+
+
+
+    Object.keys(
+        saved
+    ).forEach(
+        (achievementId)=>{
+
+
+            const achievement =
+            ytccAchievements[
+                achievementId
+            ];
+
+
+
+            if(!achievement)
+                return;
+
+
+
+            const card =
+            document.getElementById(
+                achievement.card
             );
 
 
-            const label =
 
-            card.querySelector(
-
-                ".achievement-label"
-
-            );
+            if(card){
 
 
-            if(
-
-                label
-
-            ){
+                card.classList.add(
+                    "unlocked"
+                );
 
 
-                label.textContent =
 
-                "UNLOCKED";
+                const label =
+                card.querySelector(
+                    ".achievement-label"
+                );
+
+
+
+                if(label){
+
+
+                    label.textContent =
+                    "UNLOCKED";
+
+
+                }
 
 
             }
@@ -1024,213 +1012,499 @@ Object.keys(
 
         }
 
-
-    }
-
-
-);
+    );
 
 
-updateAchievementCount();
-```
+
+    updateAchievementCount();
+
 
 }
 
+
+
+
+
 /* ==================================================
-START ACHIEVEMENT SYSTEM
+   START ACHIEVEMENTS
 ================================================== */
+
 
 document.addEventListener(
 
 "DOMContentLoaded",
 
-function(){
-
-```
-loadYTCCAchievements();
+()=>{
 
 
-setTimeout(
+    loadYTCCAchievements();
 
 
-    function(){
+
+    setTimeout(()=>{
 
 
         unlockYTCCAchievement(
-
             "systemOnline"
-
         );
 
 
-    },
+    },2500);
 
 
-    2500
-
-
-);
-```
-
-}
-);
-
+});
 /* ==================================================
-FIRST COMMAND TRACKER
+   FIRST COMMAND TRACKER
 ================================================== */
+
 
 document.addEventListener(
 
-"click",
+    "click",
 
-function(
-
-event
-
-){
-
-```
-const clickedControl =
-
-event.target.closest(
+    (event)=>{
 
 
-    "button"
+        const clickedControl =
+        event.target.closest(
+            "button"
+        );
 
+
+
+        if(clickedControl){
+
+
+            unlockYTCCAchievement(
+                "firstCommand"
+            );
+
+
+        }
+
+
+    }
 
 );
 
 
-if(
-
-    clickedControl
-
-){
 
 
-    unlockYTCCAchievement(
-
-        "firstCommand"
-
-    );
-
-
-}
-```
-
-}
-);
 
 /* ==================================================
-MINI-GAME TRACKER
+   MINI GAME ACHIEVEMENT TRACKER
 ================================================== */
+
 
 const ytccStartGameButton =
-
 document.getElementById(
-
-"startGameButton"
-
+    "startGameButton"
 );
 
-if(
-
-ytccStartGameButton
-
-){
-
-```
-ytccStartGameButton.addEventListener(
-
-"click",
-
-function(){
 
 
-    unlockYTCCAchievement(
+if(ytccStartGameButton){
 
-        "coreDefender"
+
+    ytccStartGameButton.addEventListener(
+
+        "click",
+
+        ()=>{
+
+
+            unlockYTCCAchievement(
+                "coreDefender"
+            );
+
+
+        }
 
     );
 
 
 }
 
-);
-```
 
-}
+
+
 
 /* ==================================================
-SAVE NOTE TRACKER
+   SAVE NOTE TRACKER
 ================================================== */
+
 
 const ytccSaveNoteButton =
-
 document.getElementById(
-
-"saveNoteButton"
-
+    "saveNoteButton"
 );
 
-if(
-
-ytccSaveNoteButton
-
-){
-
-```
-ytccSaveNoteButton.addEventListener(
-
-"click",
-
-function(){
 
 
-    unlockYTCCAchievement(
+if(ytccSaveNoteButton){
 
-        "dataKeeper"
+
+    ytccSaveNoteButton.addEventListener(
+
+        "click",
+
+        ()=>{
+
+
+            unlockYTCCAchievement(
+                "dataKeeper"
+            );
+
+
+        }
 
     );
 
 
 }
 
-);
-```
 
-}
+
+
 
 /* ==================================================
-GAME SCORE TRACKER
+   GAME SCORE ACHIEVEMENT
 ================================================== */
 
+
 function checkYTCCGameScore(
-
-score
-
-){
-
-```
-if(
-
-    Number(
-
-        score
-
-    ) >= 100
-
+    currentScore
 ){
 
 
-    unlockYTCCAchievement(
+    if(
+        Number(currentScore) >= 100
+    ){
 
-        "gameOperator"
+
+        unlockYTCCAchievement(
+            "gameOperator"
+        );
+
+
+    }
+
+
+}
+
+
+
+
+
+/* ==================================================
+   AUTO CHECK SCORE
+================================================== */
+
+
+setInterval(()=>{
+
+
+    if(
+        typeof score !== "undefined"
+    ){
+
+
+        checkYTCCGameScore(
+            score
+        );
+
+
+    }
+
+
+},1000);
+
+
+
+
+
+/* ==================================================
+   YTCC SYSTEM STATUS
+================================================== */
+
+
+function YTCC_SystemStatus(){
+
+
+    return {
+
+        name:
+        "YOYOTECH COMMAND CONTROL CENTER",
+
+
+        version:
+        "2.0.0",
+
+
+        status:
+        "ONLINE",
+
+
+        firebase:
+        "CONNECTED"
+
+
+    };
+
+
+}
+
+
+
+console.log(
+    YTCC_SystemStatus()
+);
+/* ==================================================
+   YTCC OFFLINE STATUS MONITOR
+================================================== */
+
+
+function updateYTCCConnectionStatus(){
+
+
+    const status =
+    document.getElementById(
+        "connectionStatus"
+    );
+
+
+
+    if(!status)
+        return;
+
+
+
+    if(navigator.onLine){
+
+
+        status.textContent =
+        "ONLINE";
+
+
+    }
+    else{
+
+
+        status.textContent =
+        "OFFLINE MODE";
+
+
+    }
+
+
+}
+
+
+
+
+
+window.addEventListener(
+
+    "online",
+
+    ()=>{
+
+
+        updateYTCCConnectionStatus();
+
+
+        console.log(
+            "YTCC NETWORK RESTORED"
+        );
+
+
+    }
+
+);
+
+
+
+
+
+window.addEventListener(
+
+    "offline",
+
+    ()=>{
+
+
+        updateYTCCConnectionStatus();
+
+
+        console.log(
+            "YTCC OFFLINE MODE ENABLED"
+        );
+
+
+    }
+
+);
+
+
+
+
+
+updateYTCCConnectionStatus();
+
+
+
+
+
+/* ==================================================
+   YTCC COMMAND LOGGER
+================================================== */
+
+
+const YTCC_COMMAND_LOG_KEY =
+"YTCC_COMMAND_HISTORY";
+
+
+
+function saveYTCCCommand(
+    command
+){
+
+
+    let commands =
+    JSON.parse(
+
+        localStorage.getItem(
+            YTCC_COMMAND_LOG_KEY
+        )
+
+    ) || [];
+
+
+
+    commands.push({
+
+        command:
+        command,
+
+
+        time:
+        new Date().toLocaleString()
+
+
+    });
+
+
+
+    localStorage.setItem(
+
+        YTCC_COMMAND_LOG_KEY,
+
+        JSON.stringify(
+            commands
+        )
 
     );
 
 
 }
-```
+
+
+
+
+
+function getYTCCCommands(){
+
+
+    return JSON.parse(
+
+        localStorage.getItem(
+            YTCC_COMMAND_LOG_KEY
+        )
+
+    ) || [];
+
 
 }
+
+
+
+
+
+/* ==================================================
+   COMMAND BUTTON TRACKER
+================================================== */
+
+
+document.addEventListener(
+
+    "click",
+
+    (event)=>{
+
+
+        const button =
+        event.target.closest(
+            "button"
+        );
+
+
+
+        if(button){
+
+
+            saveYTCCCommand(
+
+                button.textContent.trim()
+
+            );
+
+
+        }
+
+
+    }
+
+);
+
+
+
+
+
+/* ==================================================
+   YTCC STARTUP MESSAGE
+================================================== */
+
+
+window.addEventListener(
+
+"load",
+
+()=>{
+
+
+    console.log(
+        "================================"
+    );
+
+
+    console.log(
+        "YTCC COMMAND CENTER ONLINE"
+    );
+
+
+    console.log(
+        "VERSION 2.0.0"
+    );
+
+
+    console.log(
+        "ALL SYSTEMS READY"
+    );
+
+
+    console.log(
+        "================================"
+    );
+
+
+});
