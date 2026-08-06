@@ -1864,21 +1864,24 @@ async function loadYTCCProfile(){
 
         const profile =
         profileSnap.data();
-if(profile.avatar){
+const savedAvatar =
+localStorage.getItem("YTCC_AVATAR");
 
-    if(profileAvatar){
 
-        profileAvatar.src =
-        profile.avatar;
+const finalAvatar =
+savedAvatar || profile.avatar || "avatars/commander.png";
 
-    }
 
-    if(dashboardAvatar){
+if(profileAvatar){
 
-        dashboardAvatar.src =
-        profile.avatar;
+    profileAvatar.src = finalAvatar;
 
-    }
+}
+
+
+if(dashboardAvatar){
+
+    dashboardAvatar.src = finalAvatar;
 
 }
 
