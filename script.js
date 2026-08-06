@@ -2052,12 +2052,27 @@ if(saveUsernameButton){
 
                 );
 
-                document.getElementById(
-                    "profileEditStatus"
-                ).textContent =
-                "USERNAME UPDATED";
+document.getElementById(
+    "profileEditStatus"
+).textContent =
+"✅ USERNAME UPDATED";
 
-                loadYTCCProfile();
+document.getElementById(
+    "newUsernameInput"
+).value = "";
+
+setTimeout(()=>{
+
+    profileEditBox.style.display =
+    "none";
+
+    document.getElementById(
+        "profileEditStatus"
+    ).textContent = "";
+
+},1500);
+
+loadYTCCProfile();
 
             }
 
