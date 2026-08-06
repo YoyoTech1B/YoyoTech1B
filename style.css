@@ -7689,3 +7689,86 @@ max-width:600px
 
 }
 
+/* ==================================================
+   YTCC PROFILE AVATAR PICKER
+================================================== */
+
+#avatarPicker{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:15px;
+
+}
+
+.avatarChoice{
+
+    width:65px;
+
+    height:65px;
+
+    border:2px solid #2aa8ff;
+
+    border-radius:16px;
+
+    background:rgba(15,25,45,.75);
+
+    color:#ffffff;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:0 0 12px rgba(42,168,255,.25);
+
+}
+
+.avatarChoice:hover{
+
+    transform:translateY(-4px) scale(1.05);
+
+    border-color:#67d4ff;
+
+    box-shadow:0 0 18px rgba(103,212,255,.6);
+
+}
+
+.avatarChoice:active{
+
+    transform:scale(.95);
+
+}
+
+#profileAvatar{
+
+    width:90px;
+
+    height:90px;
+
+    margin:20px auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:48px;
+
+    border-radius:50%;
+
+    border:3px solid #2aa8ff;
+
+    background:rgba(15,25,45,.85);
+
+    box-shadow:0 0 18px rgba(42,168,255,.45);
+
+}
