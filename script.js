@@ -2224,7 +2224,7 @@ avatarButtons.forEach(button => {
         const avatar = button.getAttribute("data-avatar");
 
 
-       if(profile.avatar && !localStorage.getItem("YTCC_AVATAR")){
+   
             profileAvatar.src = avatar;
         }
 
