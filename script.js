@@ -2187,6 +2187,25 @@ avatarButtons.forEach(
     }
 
 );
+const dashboardProfileButton =
+document.getElementById("dashboardProfileButton");
+
+const userProfilePanel =
+document.getElementById("userProfilePanel");
+
+if(dashboardProfileButton){
+
+    dashboardProfileButton.addEventListener("click",()=>{
+
+        if(userProfilePanel){
+
+            userProfilePanel.style.display = "block";
+
+        }
+
+    });
+
+}
 /* ==================================================
    YTCC AVATAR SYSTEM
 ================================================== */
