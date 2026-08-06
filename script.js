@@ -1864,7 +1864,23 @@ async function loadYTCCProfile(){
 
         const profile =
         profileSnap.data();
+if(profile.avatar){
 
+    if(profileAvatar){
+
+        profileAvatar.src =
+        profile.avatar;
+
+    }
+
+    if(dashboardAvatar){
+
+        dashboardAvatar.src =
+        profile.avatar;
+
+    }
+
+}
 
 
         const username =
@@ -2183,8 +2199,7 @@ document.getElementById("dashboardAvatar");
 
 avatarButtons.forEach(button=>{
 
-    button.addEventListener("click",()=>{
-
+   button.addEventListener("click", async ()=>{
         const avatar =
         button.dataset.avatar;
 
@@ -2204,7 +2219,35 @@ avatarButtons.forEach(button=>{
             "YTCC_AVATAR",
             avatar
         );
+if(auth.currentUser){
 
+    try{
+
+        await updateDoc(
+
+            doc(
+                db,
+                "profiles",
+                auth.currentUser.uid
+            ),
+
+            {
+                avatar: avatar
+            }
+
+        );
+
+        console.log("Avatar saved!");
+
+    }
+
+    catch(error){
+
+        console.log(error);
+
+    }
+
+}
     });
 
 });
