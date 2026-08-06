@@ -2092,3 +2092,79 @@ loadYTCCProfile();
     );
 
 }
+/* ==================================================
+   YTCC PROFILE AVATAR SYSTEM
+================================================== */
+
+const avatarButtons =
+document.querySelectorAll(
+    ".avatarChoice"
+);
+
+avatarButtons.forEach(
+
+    (button)=>{
+
+        button.addEventListener(
+
+            "click",
+
+            async ()=>{
+
+                const user =
+                auth.currentUser;
+
+                if(!user){
+                    return;
+                }
+
+                const avatar =
+                button.dataset.avatar;
+
+                try{
+
+                    await updateDoc(
+
+                        doc(
+                            db,
+                            "profiles",
+                            user.uid
+                        ),
+
+                        {
+                            avatar: avatar
+                        }
+
+                    );
+
+                    const avatarDisplay =
+                    document.getElementById(
+                        "profileAvatar"
+                    );
+
+                    if(avatarDisplay){
+
+                        avatarDisplay.textContent =
+                        avatar;
+
+                    }
+
+                    console.log(
+                        "Avatar updated!"
+                    );
+
+                }
+
+                catch(error){
+
+                    console.log(error);
+
+                }
+
+            }
+
+        );
+
+    }
+
+);
