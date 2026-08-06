@@ -2211,55 +2211,39 @@ const avatarButtons = document.querySelectorAll(".avatarChoice");
 const profileAvatar = document.getElementById("profileAvatar");
 const dashboardAvatar = document.getElementById("dashboardAvatar");
 
-
 avatarButtons.forEach(button => {
 
     button.addEventListener("click", () => {
 
         const avatar = button.getAttribute("data-avatar");
 
-
-   
+        if (profileAvatar) {
             profileAvatar.src = avatar;
         }
 
-
-        if(dashboardAvatar){
+        if (dashboardAvatar) {
             dashboardAvatar.src = avatar;
         }
 
+        localStorage.setItem("YTCC_AVATAR", avatar);
 
-        localStorage.setItem(
-            "YTCC_AVATAR",
-            avatar
-        );
-
-
-        console.log(
-            "Avatar changed:",
-            avatar
-        );
+        console.log("Avatar changed:", avatar);
 
     });
 
 });
 
-
 // Load saved avatar
 
-const savedAvatar = localStorage.getItem(
-    "YTCC_AVATAR"
-);
+const savedAvatar = localStorage.getItem("YTCC_AVATAR");
 
+if (savedAvatar) {
 
-if(savedAvatar){
-
-    if(profileAvatar){
+    if (profileAvatar) {
         profileAvatar.src = savedAvatar;
     }
 
-
-    if(dashboardAvatar){
+    if (dashboardAvatar) {
         dashboardAvatar.src = savedAvatar;
     }
 
