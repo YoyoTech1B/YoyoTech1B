@@ -2206,91 +2206,66 @@ if(dashboardProfileButton){
     });
 
 }
+
 /* ==================================================
    YTCC AVATAR SYSTEM
 ================================================== */
 
-const avatarButtons =
-document.querySelectorAll(".avatarChoice");
+const avatarButtons = document.querySelectorAll(".avatarChoice");
 
-const profileAvatar =
-document.getElementById("profileAvatar");
+const profileAvatar = document.getElementById("profileAvatar");
+const dashboardAvatar = document.getElementById("dashboardAvatar");
 
-const dashboardAvatar =
-document.getElementById("dashboardAvatar");
 
-avatarButtons.forEach(button=>{
+avatarButtons.forEach(button => {
 
-   button.addEventListener("click", async ()=>{
-        const avatar =
-        button.dataset.avatar;
+    button.addEventListener("click", () => {
+
+        const avatar = button.getAttribute("data-avatar");
+
 
         if(profileAvatar){
-
             profileAvatar.src = avatar;
-
         }
+
 
         if(dashboardAvatar){
-
             dashboardAvatar.src = avatar;
-
         }
+
 
         localStorage.setItem(
             "YTCC_AVATAR",
             avatar
         );
-if(auth.currentUser){
 
-    try{
 
-        await updateDoc(
-
-            doc(
-                db,
-                "profiles",
-                auth.currentUser.uid
-            ),
-
-            {
-                avatar: avatar
-            }
-
+        console.log(
+            "Avatar changed:",
+            avatar
         );
 
-        console.log("Avatar saved!");
-
-    }
-
-    catch(error){
-
-        console.log(error);
-
-    }
-
-}
     });
 
 });
 
-const savedAvatar =
-localStorage.getItem("YTCC_AVATAR");
+
+// Load saved avatar
+
+const savedAvatar = localStorage.getItem(
+    "YTCC_AVATAR"
+);
+
 
 if(savedAvatar){
 
     if(profileAvatar){
-
-        profileAvatar.src =
-        savedAvatar;
-
+        profileAvatar.src = savedAvatar;
     }
 
+
     if(dashboardAvatar){
-
-        dashboardAvatar.src =
-        savedAvatar;
-
+        dashboardAvatar.src = savedAvatar;
     }
 
 }
