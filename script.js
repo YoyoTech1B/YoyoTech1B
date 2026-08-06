@@ -1998,3 +1998,82 @@ if(editProfileButton && profileEditBox){
     );
 
 }
+/* ==================================================
+   YTCC SAVE USERNAME
+================================================== */
+
+const saveUsernameButton =
+document.getElementById(
+    "saveUsernameButton"
+);
+
+if(saveUsernameButton){
+
+    saveUsernameButton.addEventListener(
+
+        "click",
+
+        async ()=>{
+
+            const user = auth.currentUser;
+
+            if(!user){
+                return;
+            }
+
+            const newUsername =
+            document.getElementById(
+                "newUsernameInput"
+            ).value.trim();
+
+            if(newUsername === ""){
+
+                document.getElementById(
+                    "profileEditStatus"
+                ).textContent =
+                "ENTER A USERNAME";
+
+                return;
+            }
+
+            try{
+
+                await updateDoc(
+
+                    doc(
+                        db,
+                        "profiles",
+                        user.uid
+                    ),
+
+                    {
+                        username: newUsername
+                    }
+
+                );
+
+                document.getElementById(
+                    "profileEditStatus"
+                ).textContent =
+                "USERNAME UPDATED";
+
+                loadYTCCProfile();
+
+            }
+
+            catch(error){
+
+                console.log(error);
+
+                document.getElementById(
+                    "profileEditStatus"
+                ).textContent =
+                "UPDATE FAILED";
+
+            }
+
+        }
+
+    );
+
+}
