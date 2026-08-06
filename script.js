@@ -2168,3 +2168,64 @@ avatarButtons.forEach(
     }
 
 );
+/* ==================================================
+   YTCC AVATAR SYSTEM
+================================================== */
+
+const avatarButtons =
+document.querySelectorAll(".avatarChoice");
+
+const profileAvatar =
+document.getElementById("profileAvatar");
+
+const dashboardAvatar =
+document.getElementById("dashboardAvatar");
+
+avatarButtons.forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        const avatar =
+        button.dataset.avatar;
+
+        if(profileAvatar){
+
+            profileAvatar.src = avatar;
+
+        }
+
+        if(dashboardAvatar){
+
+            dashboardAvatar.src = avatar;
+
+        }
+
+        localStorage.setItem(
+            "YTCC_AVATAR",
+            avatar
+        );
+
+    });
+
+});
+
+const savedAvatar =
+localStorage.getItem("YTCC_AVATAR");
+
+if(savedAvatar){
+
+    if(profileAvatar){
+
+        profileAvatar.src =
+        savedAvatar;
+
+    }
+
+    if(dashboardAvatar){
+
+        dashboardAvatar.src =
+        savedAvatar;
+
+    }
+
+}
