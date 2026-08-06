@@ -2115,11 +2115,6 @@ loadYTCCProfile();
    YTCC PROFILE AVATAR SYSTEM
 ================================================== */
 
-const avatarButtons =
-document.querySelectorAll(
-    ".avatarChoice"
-);
-
 avatarButtons.forEach(
 
     (button)=>{
