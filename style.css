@@ -7904,10 +7904,9 @@ max-width:600px
 
 .profile-button{
 
-    width:55px;
-    height:55px;
+    width:42px;
+    height:42px;
 
-    border:none;
     border-radius:50%;
 
     padding:0;
@@ -7920,7 +7919,30 @@ max-width:600px
 
     border:2px solid #00aaff;
 
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
     transition:0.3s;
+
+}
+
+.profile-button img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.top-actions{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
 
 }
 
